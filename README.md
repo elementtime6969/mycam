@@ -17,7 +17,6 @@ Official Android APK download page for MYCAM.
 | APK file | `downloads/Mycam-v1.0.apk` |
 | APK size | `1,726,423` bytes |
 | APK SHA-256 | `B9A0B8E7602491B655B44878899E1F2D25444AD9FC3BD8EAC1C4CA7EB3B4D062` |
-| Signing certificate SHA-256 | `58929bb43f5c40a7d3ca2881d23438facff5125d58e5d66b23aea07ba32cae84` |
 | Published | `2026-06-15` |
 
 ## Install
