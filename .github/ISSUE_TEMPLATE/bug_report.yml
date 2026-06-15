@@ -1,0 +1,40 @@
+name: Bug report
+description: Report a MYCAM problem or download issue
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: input
+    id: device
+    attributes:
+      label: Android device
+      placeholder: "Example: Samsung Galaxy S23"
+    validations:
+      required: false
+  - type: input
+    id: android-version
+    attributes:
+      label: Android version
+      placeholder: "Example: Android 14"
+    validations:
+      required: false
+  - type: input
+    id: app-version
+    attributes:
+      label: MYCAM version
+      placeholder: "Example: 1.0"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the problem without posting private information.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1. Open MYCAM\n2. Tap ...\n3. See ..."
+    validations:
+      required: false
