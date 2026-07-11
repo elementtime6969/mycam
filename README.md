@@ -4,7 +4,7 @@ Official Android APK download page for MYCAM.
 
 ## Download
 
-[Download MYCAM v2.1.5](https://github.com/elementtime6969/mycam/raw/main/downloads/Mycam-v2.1.5.apk)
+[Download MYCAM v2.1.6](https://github.com/elementtime6969/mycam/raw/main/downloads/Mycam-v2.1.6.apk)
 
 ## Current Version
 
@@ -12,12 +12,12 @@ Official Android APK download page for MYCAM.
 | --- | --- |
 | App | MYCAM |
 | Package | `com.destiny.mycam` |
-| Version | `2.1.5` |
-| Version code | `14` |
-| APK file | `downloads/Mycam-v2.1.5.apk` |
-| APK size | `4,297,149` bytes |
-| APK SHA-256 | `8E7263C3E462AC0A378CDBC9BA0D3423629EEE38EE388346D16A3F06CB7D3E3A` |
-| Published | `2026-07-09` |
+| Version | `2.1.6` |
+| Version code | `15` |
+| APK file | `downloads/Mycam-v2.1.6.apk` |
+| APK size | `5,249,429` bytes |
+| APK SHA-256 | `BA289F20D43B09A2D9B0EF5E94817F9704D8B1BB561AC75D3DDDBD86A3DDAE64` |
+| Published | `2026-07-11` |
 
 ## Requirements
 
