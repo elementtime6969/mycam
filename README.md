@@ -6,7 +6,7 @@ By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 
 ## Download
 
-[Download MYCAM v2.1.8](https://github.com/elementtime6969/mycam/raw/main/downloads/Mycam-v2.1.8.apk)
+[Download MYCAM v2.1.9](https://github.com/elementtime6969/mycam/raw/main/downloads/Mycam-v2.1.9.apk)
 
 ## Current Version
 
@@ -14,12 +14,12 @@ By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 | --- | --- |
 | App | MYCAM |
 | Package | `com.destiny.mycam` |
-| Version | `2.1.8` |
-| Version code | `17` |
-| APK file | `downloads/Mycam-v2.1.8.apk` |
-| APK size | `6,607,597` bytes |
-| APK SHA-256 | `A81FA90374477683BC0214FC5BC5A3D022D14A5F36F6132C3949B3ABA069AAEA` |
-| Published | `2026-07-13` |
+| Version | `2.1.9` |
+| Version code | `18` |
+| APK file | `downloads/Mycam-v2.1.9.apk` |
+| APK size | `8,073,381` bytes |
+| APK SHA-256 | `7758E353994E7968D161B348D692CBF04E6ADAC14A2775D2AFE9360A8DEED399` |
+| Published | `2026-07-14` |
 
 ## Requirements
 
