@@ -29,6 +29,20 @@ MYCAM is designed for supported camera apps and social media apps that use Andro
 
 Use MYCAM only with your own accounts, devices, and content, and follow the rules of the apps and platforms you use.
 
+## Use Cases
+
+### Control MYCAM While A Target App Is Active
+
+Use MYCAM Remote to swap media, pause or play, reload, freeze or unfreeze, change speed, mute, and move between clips while the selected target app is using the virtual camera.
+
+![MYCAM remote controls with Live RTMP and WhatsApp selected](docs/assets/mycam-app-remote.jpg)
+
+### Replace A Live Call Camera With Pre-recorded Video
+
+MYCAM can hook the target app camera during a live call or camera session and swap the physical camera feed with selected pre-recorded video, local media, or OBS RTMP output.
+
+![WhatsApp live call using MYCAM virtual camera video and remote controls](docs/assets/mycam-whatsapp-call.jpg)
+
 ## Download
 
 [Download MYCAM v2.1.10](https://github.com/elementtime6969/mycam/raw/main/downloads/Mycam-v2.1.10.apk)
