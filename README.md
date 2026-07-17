@@ -1,8 +1,33 @@
 # MYCAM
 
-Official download and support page for MYCAM.
+Official download and support page for MYCAM, an Android virtual camera tool for rooted phones with LSPosed.
 
 By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
+
+## What MYCAM Does
+
+MYCAM replaces the normal Android camera feed inside supported apps. It hooks into Android Camera1 and Camera2 flows, including preview, capture session, and ImageReader paths, so a selected target app can receive controlled virtual camera video instead of the physical camera feed.
+
+MYCAM can swap the live camera during calls or camera sessions with:
+
+- Pre-recorded video from the phone.
+- Local media selected inside MYCAM.
+- OBS livestream video through Live RTMP.
+- A local MediaMTX server running on the same private Wi-Fi network.
+
+Supported workflows include:
+
+- **Video mode** for selected clips.
+- **Photo mode** for selected images.
+- **Live RTMP** for OBS-to-phone streaming.
+- **Watch mode** to keep MYCAM ready when the target app opens the camera.
+- **Remote controls** for swap, play/pause, reload, freeze/unfreeze, speed, mute, previous, and next.
+- **Clone mode** for creating separated supported social app profiles for accounts you own.
+- **Android ID changer** for testing, app-profile isolation, and supported cloned app environments.
+
+MYCAM is designed for supported camera apps and social media apps that use Android camera APIs, including Instagram, WhatsApp, WhatsApp Business, Messenger, TikTok, Telegram, Snapchat, Facebook, and other supported apps that open the Android camera.
+
+Use MYCAM only with your own accounts, devices, and content, and follow the rules of the apps and platforms you use.
 
 ## Download
 
@@ -25,6 +50,8 @@ By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 
 - A rooted Android phone.
 - LSPosed installed and enabled.
+- The selected target app must be enabled in LSPosed for MYCAM.
+- Live RTMP requires the MYCAM Windows tools package when streaming from OBS.
 
 ## Install
 
