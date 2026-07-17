@@ -6,7 +6,7 @@ By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 
 ## Download
 
-[Download MYCAM v2.1.9](https://github.com/elementtime6969/mycam/raw/main/downloads/Mycam-v2.1.9.apk)
+[Download MYCAM v2.1.10](https://github.com/elementtime6969/mycam/raw/main/downloads/Mycam-v2.1.10.apk)
 
 ## Current Version
 
@@ -14,12 +14,12 @@ By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 | --- | --- |
 | App | MYCAM |
 | Package | `com.destiny.mycam` |
-| Version | `2.1.9` |
-| Version code | `18` |
-| APK file | `downloads/Mycam-v2.1.9.apk` |
-| APK size | `8,073,381` bytes |
-| APK SHA-256 | `7758E353994E7968D161B348D692CBF04E6ADAC14A2775D2AFE9360A8DEED399` |
-| Published | `2026-07-14` |
+| Version | `2.1.10` |
+| Version code | `19` |
+| APK file | `downloads/Mycam-v2.1.10.apk` |
+| APK size | `8,123,165` bytes |
+| APK SHA-256 | `E967DEC3135CA285BE417B31E3BDBE333884F7344A4C13152C8107E1F78B5A99` |
+| Published | `2026-07-17` |
 
 ## Requirements
 
@@ -36,12 +36,12 @@ By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 
 MYCAM uses a server-side update and integrity gate. First launch requires internet so the app can verify the official build.
 
-## Upcoming Live RTMP Tools
+## Live RTMP Tools
 
-Live RTMP support is being prepared for an upcoming MYCAM app update. The companion Windows tools package includes the local media server files and OBS setup needed for optional livestreaming from OBS to MYCAM.
+Live RTMP support uses a companion Windows tools package with the local media server files and OBS setup needed for optional livestreaming from OBS to MYCAM.
 
 - Setup guide: [MYCAM Live RTMP setup](docs/live-rtmp-setup.md)
-- Tools package: [MYCAM-Live-RTMP-tools.rar](https://github.com/elementtime6969/mycam/releases/download/live-rtmp-tools-v1/MYCAM-Live-RTMP-tools.rar)
+- Tools package: [MYCAM-Live-RTMP-tools.rar](https://github.com/elementtime6969/mycam/releases/download/live-rtmp-tools-v2/MYCAM-Live-RTMP-tools.rar)
 
 ## Support And Comments
 
