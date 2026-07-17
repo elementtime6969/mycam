@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://elementtime6969.github.io/mycam/sitemap.xml

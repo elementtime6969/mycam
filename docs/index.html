@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MYCAM Virtual Camera for Android</title>
+  <meta name="description" content="MYCAM is an Android virtual camera for rooted phones with LSPosed. Use local media, OBS RTMP streams, MediaMTX, Watch mode and remote controls in WhatsApp, Messenger and supported camera applications.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://elementtime6969.github.io/mycam/">
+  <meta property="og:title" content="MYCAM Virtual Camera for Android">
+  <meta property="og:description" content="Use local media or OBS RTMP streams as a virtual camera on Android with LSPosed support.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elementtime6969.github.io/mycam/">
+  <meta property="og:image" content="https://elementtime6969.github.io/mycam/assets/mycam-toggle.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17202a;
+      --muted: #53606f;
+      --line: #d6dde5;
+      --panel: #f6f8fb;
+      --accent: #0b6bcb;
+      --accent-strong: #064f99;
+      --green: #13795b;
+      --bg: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #ffffff 0%, #f2f7fc 100%);
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+      gap: 40px;
+      align-items: center;
+      min-height: 680px;
+      padding: 56px 0 72px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--green);
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(40px, 6vw, 78px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      margin: 0 0 26px;
+      color: var(--muted);
+      font-size: 20px;
+      max-width: 680px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 28px 0 24px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 18px;
+      border-radius: 8px;
+      border: 1px solid var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .button.primary {
+      color: #fff;
+      background: var(--accent);
+    }
+
+    .button.primary:hover {
+      background: var(--accent-strong);
+    }
+
+    .button.secondary {
+      color: var(--accent);
+      background: #fff;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .meta span {
+      display: block;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .shots {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      align-items: start;
+    }
+
+    .phone {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #0f1720;
+      box-shadow: 0 20px 45px rgba(24, 38, 55, 0.16);
+    }
+
+    .phone img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    main section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      font-size: 32px;
+      letter-spacing: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .feature,
+    .download-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 18px;
+    }
+
+    .feature h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .feature p,
+    .download-panel p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .two {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .link-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .link-list a {
+      display: block;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 32px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 840px) {
+      .hero,
+      .two,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 36px 0 48px;
+      }
+
+      .meta {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "MYCAM",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Android",
+    "softwareVersion": "2.1.10",
+    "identifier": "com.destiny.mycam",
+    "description": "MYCAM is an Android virtual camera app for rooted phones with LSPosed. It supports local media, OBS RTMP streams through MediaMTX, Watch mode, remote controls and supported camera applications including WhatsApp and Messenger.",
+    "downloadUrl": "https://github.com/elementtime6969/mycam/releases/download/v2.1.10/Mycam-v2.1.10.apk",
+    "installUrl": "https://github.com/elementtime6969/mycam/releases/tag/v2.1.10",
+    "softwareRequirements": "Rooted Android phone with LSPosed",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "MYCAM"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">Android virtual camera</div>
+        <h1>MYCAM Virtual Camera for Android</h1>
+        <p class="lead">Use local media or OBS RTMP streams as your camera source on a rooted Android phone with LSPosed. MYCAM supports Watch mode, remote controls, MediaMTX RTMP tools, WhatsApp, Messenger and other supported camera applications.</p>
+        <div class="actions">
+          <a class="button primary" href="https://github.com/elementtime6969/mycam/releases/download/v2.1.10/Mycam-v2.1.10.apk">Download MYCAM v2.1.10</a>
+          <a class="button secondary" href="live-rtmp-setup.html">Live RTMP setup</a>
+          <a class="button secondary" href="https://github.com/elementtime6969/mycam">GitHub repo</a>
+        </div>
+        <div class="meta">
+          <span>Package: <strong>com.destiny.mycam</strong></span>
+          <span>Current version: <strong>2.1.10</strong></span>
+          <span>Requires: <strong>Root and LSPosed</strong></span>
+          <span>RTMP tools: <strong>OBS and MediaMTX</strong></span>
+        </div>
+      </div>
+      <div class="shots" aria-label="MYCAM screenshots">
+        <div class="phone"><img src="assets/mycam-toggle.png" alt="MYCAM target app and virtual camera controls screenshot"></div>
+        <div class="phone"><img src="assets/mycam-test.png" alt="MYCAM test and setup screen screenshot"></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap">
+        <h2>Features</h2>
+        <div class="grid">
+          <div class="feature">
+            <h3>Virtual camera source</h3>
+            <p>Use selected local media as a camera feed in supported Android camera applications.</p>
+          </div>
+          <div class="feature">
+            <h3>Live RTMP from OBS</h3>
+            <p>Stream from OBS to the local MediaMTX server and activate Live RTMP inside MYCAM.</p>
+          </div>
+          <div class="feature">
+            <h3>Watch mode</h3>
+            <p>Keep the selected source ready for the target application when its camera opens.</p>
+          </div>
+          <div class="feature">
+            <h3>Remote controls</h3>
+            <p>Use MYCAM controls to manage the virtual camera workflow while the target app is active.</p>
+          </div>
+          <div class="feature">
+            <h3>App support</h3>
+            <p>Works with WhatsApp, Messenger and supported applications that open the Android camera.</p>
+          </div>
+          <div class="feature">
+            <h3>Root and LSPosed</h3>
+            <p>Built for rooted Android phones with LSPosed enabled for the selected target app.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap two">
+        <div class="download-panel">
+          <h2>Download</h2>
+          <p>Get the current official APK and read the setup notes before installing.</p>
+          <div class="link-list">
+            <a href="https://github.com/elementtime6969/mycam/releases/download/v2.1.10/Mycam-v2.1.10.apk">Download MYCAM v2.1.10 APK</a>
+            <a href="https://github.com/elementtime6969/mycam/releases">All GitHub releases</a>
+            <a href="https://github.com/elementtime6969/mycam/blob/main/TERMS.md">Terms of Use</a>
+          </div>
+        </div>
+        <div class="download-panel">
+          <h2>Setup Guides</h2>
+          <p>Follow the Android setup guide first. Use the Live RTMP guide if you want OBS streaming.</p>
+          <div class="link-list">
+            <a href="https://youtu.be/p78_HDo5FuM?si=5j9zeaI28PN4RjQJ">MYCAM setup guide on YouTube</a>
+            <a href="live-rtmp-setup.html">OBS and Live RTMP setup</a>
+            <a href="https://github.com/elementtime6969/mycam/releases/download/live-rtmp-tools-v2/MYCAM-Live-RTMP-tools.rar">Download RTMP tools package</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>MYCAM source code is not published. This site provides official downloads, setup documentation and support links.</p>
+    </div>
+  </footer>
+</body>
+</html>
