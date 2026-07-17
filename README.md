@@ -4,6 +4,12 @@ Official download and support page for MYCAM, an Android virtual camera tool for
 
 By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 
+## Download
+
+[Download MYCAM v2.1.10](https://github.com/elementtime6969/mycam/raw/main/downloads/Mycam-v2.1.10.apk)
+
+Scroll down to learn more about MYCAM and OBS setup ↓
+
 ## What MYCAM Does
 
 MYCAM replaces the normal Android camera feed inside supported apps. It hooks into Android Camera1 and Camera2 flows, including preview, capture session, and ImageReader paths, so a selected target app can receive controlled virtual camera video instead of the physical camera feed.
@@ -42,10 +48,6 @@ Use MYCAM Remote to swap media, pause or play, reload, freeze or unfreeze, chang
 MYCAM can hook the target app camera during a live call or camera session and swap the physical camera feed with selected pre-recorded video, local media, or OBS RTMP output.
 
 ![WhatsApp live call using MYCAM virtual camera video and remote controls](docs/assets/mycam-whatsapp-call.jpg)
-
-## Download
-
-[Download MYCAM v2.1.10](https://github.com/elementtime6969/mycam/raw/main/downloads/Mycam-v2.1.10.apk)
 
 ## Current Version
 
