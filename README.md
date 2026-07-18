@@ -6,7 +6,7 @@ By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 
 ## Download
 
-[Download MYCAM v2.1.10](https://github.com/elementtime6969/mycam/raw/main/downloads/Mycam-v2.1.10.apk)
+[Download MYCAM v2.1.11](https://github.com/elementtime6969/mycam/raw/main/downloads/Mycam-v2.1.11.apk)
 
 Scroll down to learn more about MYCAM and OBS setup ↓
 
@@ -55,12 +55,12 @@ MYCAM can hook the target app camera during a live call or camera session and sw
 | --- | --- |
 | App | MYCAM |
 | Package | `com.destiny.mycam` |
-| Version | `2.1.10` |
-| Version code | `19` |
-| APK file | `downloads/Mycam-v2.1.10.apk` |
-| APK size | `8,123,165` bytes |
-| APK SHA-256 | `E967DEC3135CA285BE417B31E3BDBE333884F7344A4C13152C8107E1F78B5A99` |
-| Published | `2026-07-17` |
+| Version | `2.1.11` |
+| Version code | `20` |
+| APK file | `downloads/Mycam-v2.1.11.apk` |
+| APK size | `7,235,745` bytes |
+| APK SHA-256 | `813535F1F6B22ED6467925F94CDF7645F060EEB3FFAED372D204BDC474166E23` |
+| Published | `2026-07-18` |
 
 ## Requirements
 
