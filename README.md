@@ -6,9 +6,15 @@ By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 
 ## Download
 
-[Download MYCAM v2.1.15](https://github.com/elementtime6969/mycam/raw/main/downloads/Mycam-v2.1.15.apk)
+[Download MYCAM v2.1.16](https://github.com/elementtime6969/mycam/raw/main/downloads/Mycam-v2.1.16.apk)
 
 Scroll down to learn more about MYCAM and OBS setup ↓
+
+## Ready Rooted Phone From Us
+
+**Buy a full rooted phone from us if you want MYCAM ready without doing the root and LSPosed setup yourself.** Open MYCAM and submit a rooted phone request with your model, country, shipping details and phone photo. We review availability, pricing and shipping, then reply in your private MYCAM order thread.
+
+![Ready rooted phone for MYCAM setup](docs/assets/rooted-phone-ad.png)
 
 ## What MYCAM Does
 
@@ -55,12 +61,12 @@ MYCAM can hook the target app camera during a live call or camera session and sw
 | --- | --- |
 | App | MYCAM |
 | Package | `com.destiny.mycam` |
-| Version | `2.1.15` |
-| Version code | `24` |
-| APK file | `downloads/Mycam-v2.1.15.apk` |
-| APK size | `7,252,157` bytes |
-| APK SHA-256 | `AC6C70FD5AAF3A1AFEC96B31F075680F191FDF639551C60B7488627A43F8CC48` |
-| Published | `2026-07-20` |
+| Version | `2.1.16` |
+| Version code | `25` |
+| APK file | `downloads/Mycam-v2.1.16.apk` |
+| APK size | `9,071,537` bytes |
+| APK SHA-256 | `DE580D284EF545C7B4B5F19154168638AF90E38ECE3B4BF6C3B2B7C5F5657135` |
+| Published | `2026-07-23` |
 
 ## Requirements
 
