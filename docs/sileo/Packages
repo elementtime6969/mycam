@@ -1,0 +1,19 @@
+Package: com.destiny.mycamios
+Name: MYCAM iOS
+Version: 0.6.5
+Architecture: iphoneos-arm64
+Description: MYCAM virtual camera app and tweak for jailbroken iPhones.
+Maintainer: Destiny
+Author: Destiny
+Section: Tweaks
+Depends: firmware (>= 15.0), mobilesubstrate | ellekit | org.coolstar.libhooker | com.ex.substitute | org.coolstar.tweakinject
+Filename: debs/com.destiny.mycamios_0.6.5_iphoneos-arm64.deb
+Size: 187632
+Installed-Size: 792
+MD5sum: 9ce8af6304957c9de742e93669fc6a37
+SHA1: 652e4347336794d29e00e85c51423c52a7593060
+SHA256: d65eabf66af67533755137e485e430a33486f117d10dd2f7a4154635bffdd623
+Icon: https://elementtime6969.github.io/mycam/sileo/CydiaIcon.png
+Homepage: https://shareswhatyoucan.com/mycam/
+Depiction: https://elementtime6969.github.io/mycam/sileo/package/
+SileoDepiction: https://elementtime6969.github.io/mycam/sileo/depictions/com.destiny.mycamios.json

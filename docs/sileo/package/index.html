@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07110f">
+  <title>MYCAM iOS 0.6.5</title>
+  <style>
+    :root { color-scheme: dark; --bg:#050807; --panel:#0b1412; --line:#21342f; --text:#f4faf8; --muted:#9aada8; --mint:#24d4a3; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; letter-spacing:0; }
+    main { width:min(620px,calc(100% - 28px)); margin:0 auto; padding:22px 0 40px; }
+    header { display:flex; gap:14px; align-items:center; margin-bottom:18px; }
+    img { width:64px; height:64px; border-radius:14px; }
+    h1 { margin:0; font-size:28px; }
+    header p { margin:5px 0 0; color:var(--muted); }
+    section { padding:18px; border:1px solid var(--line); border-radius:8px; background:var(--panel); margin-bottom:12px; }
+    h2 { font-size:16px; margin:0 0 10px; }
+    p, li { color:var(--muted); line-height:1.55; }
+    ul { padding-left:20px; margin-bottom:0; }
+    .meta { display:grid; grid-template-columns:1fr 1fr; padding:0; overflow:hidden; }
+    .meta div { padding:14px 16px; border-bottom:1px solid var(--line); }
+    .meta div:nth-child(odd) { border-right:1px solid var(--line); }
+    .meta div:nth-last-child(-n+2) { border-bottom:0; }
+    .meta span { display:block; color:var(--muted); font-size:12px; margin-bottom:4px; }
+    a { color:var(--mint); }
+    @media(max-width:460px) { .meta { grid-template-columns:1fr; } .meta div,.meta div:nth-child(odd),.meta div:nth-last-child(-n+2){border-right:0;border-bottom:1px solid var(--line)} .meta div:last-child{border-bottom:0} }
+  </style>
+</head>
+<body>
+  <main>
+    <header><img src="../CydiaIcon@2x.png" alt="MYCAM"><div><h1>MYCAM iOS</h1><p>Virtual camera for jailbroken iPhones</p></div></header>
+    <section>
+      <h2>What it does</h2>
+      <p>Use a selected prerecorded video as the camera source in supported camera and social applications. Choose installed target apps, manage clips, and control playback from the MYCAM Remote overlay.</p>
+    </section>
+    <section>
+      <h2>Requirements</h2>
+      <ul><li>iOS 15 or newer</li><li>A jailbroken iPhone</li><li>ElleKit or another compatible tweak injection framework</li></ul>
+    </section>
+    <section class="meta">
+      <div><span>Version</span><strong>0.6.5</strong></div>
+      <div><span>Package</span><strong>com.destiny.mycamios</strong></div>
+      <div><span>Architecture</span><strong>iphoneos-arm64</strong></div>
+      <div><span>Developer</span><strong>Destiny</strong></div>
+    </section>
+    <p><a href="../">Return to the MYCAM repository</a></p>
+  </main>
+</body>
+</html>

@@ -10,6 +10,14 @@ By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 
 Scroll down to learn more about MYCAM and OBS setup ↓
 
+## MYCAM iOS for Sileo
+
+Jailbroken iPhone users can install MYCAM iOS and receive future package updates through the official Sileo repository:
+
+**[Add the MYCAM iOS repository to Sileo](https://shareswhatyoucan.com/mycam/)**
+
+Sileo source: `https://elementtime6969.github.io/mycam/sileo/`
+
 ## Ready Rooted Phone From Us
 
 **Buy a full rooted phone from us if you want MYCAM ready without doing the root and LSPosed setup yourself.** Open MYCAM and submit a rooted phone request with your model, country, shipping details and phone photo. We review availability, pricing and shipping, then reply in your private MYCAM order thread.
