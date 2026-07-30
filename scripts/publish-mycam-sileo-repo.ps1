@@ -98,8 +98,9 @@ $wslPackages = Convert-ToWslPath $packagesPath
 & wsl.exe -e gzip -9 -k -f $wslPackages
 & wsl.exe -e bzip2 -9 -k -f $wslPackages
 & wsl.exe -e xz -9 -k -f $wslPackages
+& wsl.exe -e zstd -19 -q -f $wslPackages -o "$wslPackages.zst"
 
-$indexes = @('Packages', 'Packages.bz2', 'Packages.gz', 'Packages.xz') | ForEach-Object {
+$indexes = @('Packages', 'Packages.bz2', 'Packages.gz', 'Packages.xz', 'Packages.zst') | ForEach-Object {
     Get-FileDigest (Get-Item -LiteralPath (Join-Path $repoRoot $_))
 }
 
