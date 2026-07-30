@@ -51,6 +51,17 @@
     .jump { display: flex; gap: 8px; flex-wrap: wrap; padding: 18px 0; }
     .jump a { min-height: 42px; display: inline-flex; align-items: center; padding: 0 14px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--ink); text-decoration: none; font-weight: 750; }
     .jump a.primary { border-color: var(--blue); background: var(--blue); color: #fff; }
+    .video-guide { padding: 0 0 22px; }
+    .video-guide a { display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; align-items: center; gap: 16px; padding: 18px 20px; border-radius: 8px; background: #c5221f; color: #fff; text-decoration: none; box-shadow: 0 8px 20px rgba(114, 19, 16, 0.2); }
+    .video-guide a:hover { background: #a91d18; }
+    .video-play { position: relative; width: 48px; height: 48px; border-radius: 50%; background: #fff; }
+    .video-play::after { content: ""; position: absolute; top: 15px; left: 19px; border-top: 9px solid transparent; border-bottom: 9px solid transparent; border-left: 14px solid #c5221f; }
+    .video-copy { min-width: 0; }
+    .video-copy small, .video-copy strong, .video-copy span { display: block; }
+    .video-copy small { margin-bottom: 3px; font-size: 12px; font-weight: 800; text-transform: uppercase; }
+    .video-copy strong { font-size: 21px; line-height: 1.2; }
+    .video-copy span { margin-top: 4px; color: #ffe9e7; font-size: 14px; }
+    .video-watch { padding-left: 18px; border-left: 1px solid rgba(255, 255, 255, 0.4); font-weight: 800; white-space: nowrap; }
     main section { padding: 38px 0; border-bottom: 1px solid var(--line); }
     h2 { margin: 0 0 10px; font-size: 28px; }
     h3 { margin: 0 0 7px; font-size: 18px; }
@@ -88,6 +99,8 @@
       .command { grid-template-columns: 1fr; }
       .command code { white-space: normal; overflow-wrap: anywhere; }
       .download-box .button { width: 100%; }
+      .video-guide a { grid-template-columns: 48px minmax(0, 1fr); }
+      .video-watch { grid-column: 1 / -1; padding: 11px 14px; border: 0; border-radius: 6px; background: #fff; color: #a91d18; text-align: center; }
       .device-table, .device-table tbody, .device-table tr, .device-table td { display: block; width: 100%; }
       .device-table thead { display: none; }
       .device-table tr { margin-bottom: 10px; border: 1px solid var(--line); }
@@ -118,6 +131,17 @@
       <a class="primary" href="#mac">Mac setup</a>
       <a href="#compatibility">Supported devices</a>
       <a href="#install-mycam">Install MYCAM</a>
+    </div>
+    <div class="wrap video-guide">
+      <a href="https://youtu.be/JaYVvwRQ4vU?is=_dEw0d2QL0_TNPTS" target="_blank" rel="noopener noreferrer">
+        <span class="video-play" aria-hidden="true"></span>
+        <span class="video-copy">
+          <small>Complete video tutorial</small>
+          <strong>Watch the full MYCAM iOS setup</strong>
+          <span>Jailbreak, Sileo, ElleKit and MYCAM installation</span>
+        </span>
+        <span class="video-watch">Watch on YouTube</span>
+      </a>
     </div>
   </header>
 
