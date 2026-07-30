@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07110f">
+  <title>MYCAM iOS Jailbreak Setup for Mac and Windows</title>
+  <meta name="description" content="Prepare a supported jailbroken iPhone for MYCAM iOS using palera1n on macOS or WinRa1n on Windows, install Sileo, and add the MYCAM repository.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://elementtime6969.github.io/mycam/ios-setup.html">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17202a;
+      --muted: #53606f;
+      --line: #d6dde5;
+      --panel: #f6f8fb;
+      --blue: #0b6bcb;
+      --blue-dark: #064f99;
+      --green: #13795b;
+      --green-soft: #e9f6f1;
+      --amber: #9a6100;
+      --amber-soft: #fff7e5;
+      --red: #9d2d2d;
+      --red-soft: #fff0f0;
+      --bg: #fff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.55;
+      letter-spacing: 0;
+    }
+    a { color: var(--blue); }
+    .wrap { width: min(980px, calc(100% - 32px)); margin: 0 auto; }
+    .topbar { border-bottom: 1px solid var(--line); background: #fff; }
+    .topbar-inner { min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-weight: 800; }
+    .brand img { width: 38px; height: 38px; border-radius: 8px; }
+    .back { text-decoration: none; font-weight: 700; }
+    header { padding: 42px 0 30px; border-bottom: 1px solid var(--line); background: #f7faf9; }
+    .header-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 28px; }
+    .eyebrow { margin: 0 0 8px; color: var(--green); font-size: 13px; font-weight: 800; text-transform: uppercase; }
+    h1 { margin: 0; max-width: 760px; font-size: clamp(32px, 6vw, 52px); line-height: 1.05; }
+    .lead { max-width: 720px; margin: 15px 0 0; color: var(--muted); font-size: 18px; }
+    .status { padding: 10px 12px; border: 1px solid #aad7c6; border-radius: 8px; background: var(--green-soft); color: var(--green); font-size: 13px; font-weight: 800; white-space: nowrap; }
+    .jump { display: flex; gap: 8px; flex-wrap: wrap; padding: 18px 0; }
+    .jump a { min-height: 42px; display: inline-flex; align-items: center; padding: 0 14px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--ink); text-decoration: none; font-weight: 750; }
+    .jump a.primary { border-color: var(--blue); background: var(--blue); color: #fff; }
+    main section { padding: 38px 0; border-bottom: 1px solid var(--line); }
+    h2 { margin: 0 0 10px; font-size: 28px; }
+    h3 { margin: 0 0 7px; font-size: 18px; }
+    .section-intro { margin: 0 0 20px; color: var(--muted); }
+    .notice { margin: 16px 0; padding: 14px 16px; border: 1px solid #ead29a; border-left: 4px solid #d79619; border-radius: 8px; background: var(--amber-soft); color: #5e4619; }
+    .notice.danger { border-color: #efb8b8; border-left-color: #c44848; background: var(--red-soft); color: #682222; }
+    .notice strong { color: inherit; }
+    .steps { display: grid; gap: 12px; }
+    .step { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 14px; padding: 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+    .step-number { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: #e4eef9; color: var(--blue-dark); font-weight: 800; }
+    .step p { margin: 0; color: var(--muted); }
+    .command { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; margin-top: 11px; }
+    code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+    .command code { min-width: 0; padding: 12px; overflow-x: auto; border: 1px solid #c5ced8; border-radius: 8px; background: #101820; color: #e9f7f2; white-space: nowrap; }
+    button, .button { min-height: 44px; padding: 0 14px; border: 1px solid var(--blue); border-radius: 8px; background: #fff; color: var(--blue); font: inherit; font-weight: 750; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+    .button.primary { background: var(--blue); color: #fff; }
+    .button.primary:hover { background: var(--blue-dark); }
+    .download-box { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 18px; margin-bottom: 18px; padding: 18px; border: 1px solid #9fcdbd; border-radius: 8px; background: var(--green-soft); }
+    .download-box p { margin: 4px 0 0; color: #41635a; }
+    .download-meta { margin-top: 7px; color: #55736b; font-size: 13px; }
+    .compat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .compat { padding: 17px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+    .compat ul { margin: 10px 0 0; padding-left: 20px; color: var(--muted); }
+    .compat li { margin: 5px 0; }
+    .device-table { width: 100%; border-collapse: collapse; margin-top: 18px; }
+    .device-table th, .device-table td { padding: 11px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .device-table th { background: #edf2f6; }
+    .finish { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .finish-card { padding: 17px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+    .finish-card p { margin: 0 0 13px; color: var(--muted); }
+    footer { padding: 28px 0 44px; color: var(--muted); font-size: 13px; }
+    @media (max-width: 720px) {
+      .header-grid, .compat-grid, .finish, .download-box { grid-template-columns: 1fr; }
+      .status { justify-self: start; }
+      .command { grid-template-columns: 1fr; }
+      .command code { white-space: normal; overflow-wrap: anywhere; }
+      .download-box .button { width: 100%; }
+      .device-table, .device-table tbody, .device-table tr, .device-table td { display: block; width: 100%; }
+      .device-table thead { display: none; }
+      .device-table tr { margin-bottom: 10px; border: 1px solid var(--line); }
+      .device-table td { border: 0; border-bottom: 1px solid var(--line); }
+      .device-table td:last-child { border-bottom: 0; }
+      .device-table td::before { content: attr(data-label); display: block; margin-bottom: 3px; color: var(--muted); font-size: 12px; font-weight: 800; text-transform: uppercase; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="./"><img src="sileo/CydiaIcon@2x.png" alt="MYCAM"><span>MYCAM</span></a>
+      <a class="back" href="./">Back to downloads</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="wrap header-grid">
+      <div>
+        <p class="eyebrow">Jailbroken iPhone setup</p>
+        <h1>Prepare iOS for MYCAM</h1>
+        <p class="lead">Jailbreak a compatible iPhone, install Sileo, add the MYCAM repository, and install the current MYCAM iOS package.</p>
+      </div>
+      <div class="status">MYCAM iOS 0.6.5</div>
+    </div>
+    <div class="wrap jump" aria-label="Setup sections">
+      <a class="primary" href="#mac">Mac setup</a>
+      <a href="#windows">Windows setup</a>
+      <a href="#compatibility">Supported devices</a>
+      <a href="#install-mycam">Install MYCAM</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="before-start">
+      <div class="wrap">
+        <h2>Before you start</h2>
+        <div class="compat-grid">
+          <div class="compat">
+            <h3>Prepare the phone</h3>
+            <ul>
+              <li>Back up the iPhone before changing its jailbreak state.</li>
+              <li>Charge the phone and keep a reliable Lightning cable connected.</li>
+              <li>Use a USB-A to Lightning cable when possible; USB-C can cause DFU problems.</li>
+              <li>MYCAM uses a rootless package, so choose the Rootless palera1n environment.</li>
+            </ul>
+          </div>
+          <div class="compat">
+            <h3>Semi-tethered behavior</h3>
+            <ul>
+              <li>The phone can restart into normal iOS without a computer.</li>
+              <li>After a reboot, run the jailbreak again to return to the jailbroken state.</li>
+              <li>Your installed jailbreak packages remain and return after rejailbreaking.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="notice danger"><strong>iPhone 8, 8 Plus and X on iOS 16:</strong> Palera1n requires passcode and SEP restrictions. If a passcode was previously configured, the official guide says the device must be erased before jailbreaking, with the passcode kept disabled while jailbroken. This also affects Touch ID, Face ID and Apple Pay.</div>
+      </div>
+    </section>
+
+    <section id="mac">
+      <div class="wrap">
+        <h2>Mac jailbreak setup</h2>
+        <p class="section-intro">Use the official Palera1n installer in Terminal, verify the installation, then start a Rootless jailbreak.</p>
+        <div class="steps">
+          <article class="step">
+            <div class="step-number">1</div>
+            <div>
+              <h3>Install Palera1n</h3>
+              <p>Open Terminal and run the official installation script. Press Enter when prompted and accept adding Palera1n to PATH if asked.</p>
+              <div class="command"><code>/bin/sh -c "$(curl -fsSL https://static.palera.in/scripts/install.sh)"</code><button type="button" data-copy='/bin/sh -c "$(curl -fsSL https://static.palera.in/scripts/install.sh)"'>Copy</button></div>
+            </div>
+          </article>
+          <article class="step">
+            <div class="step-number">2</div>
+            <div>
+              <h3>Verify the installation</h3>
+              <p>Confirm that Terminal can find Palera1n and display its installed version.</p>
+              <div class="command"><code>palera1n --version</code><button type="button" data-copy="palera1n --version">Copy</button></div>
+            </div>
+          </article>
+          <article class="step">
+            <div class="step-number">3</div>
+            <div>
+              <h3>Start Rootless mode</h3>
+              <p>Connect the iPhone before running the command. Press Enter when Palera1n is ready and follow its on-screen recovery and DFU instructions.</p>
+              <div class="command"><code>palera1n -l</code><button type="button" data-copy="palera1n -l">Copy</button></div>
+            </div>
+          </article>
+          <article class="step">
+            <div class="step-number">4</div>
+            <div>
+              <h3>Install Sileo</h3>
+              <p>When the iPhone boots, open the Palera1n Loader, select Sileo, and allow the bootstrap installation to finish. Sileo will then appear on the Home Screen.</p>
+            </div>
+          </article>
+        </div>
+        <div class="notice"><strong>Apple Silicon note:</strong> if Palera1n displays <code>Checkmate!</code> but stops progressing through a USB-C port, unplug and reconnect the cable as described by the official guide.</div>
+        <p><a href="https://ios.cfw.guide/installing-palera1n/">Open the full Palera1n installation guide</a></p>
+      </div>
+    </section>
+
+    <section id="windows">
+      <div class="wrap">
+        <h2>Windows jailbreak setup</h2>
+        <p class="section-intro">The supplied WinRa1n package provides a Windows interface. Use its Palera1n Rootless option for a MYCAM-compatible iOS 15+ setup.</p>
+        <div class="download-box">
+          <div>
+            <h3>WinRa1n 2.1 for Windows</h3>
+            <p>Download and extract the RAR file before opening the program.</p>
+            <div class="download-meta">Archive size: approximately 104 MB</div>
+          </div>
+          <a class="button primary" href="https://shareswhatyoucan.com/mycam/downloads/WinRa1n2.1.rar">Download WinRa1n 2.1</a>
+        </div>
+        <div class="notice danger"><strong>Third-party Windows tool:</strong> WinRa1n is not produced or supported by the Palera1n team, and the included executable is not digitally signed. The supplied file was scanned with Microsoft Defender before publishing with no detection, but you should still use it at your own discretion. Palera1n officially recommends Palen1x for Windows computers.</div>
+        <div class="steps">
+          <article class="step">
+            <div class="step-number">1</div>
+            <div><h3>Extract and open WinRa1n</h3><p>Extract <code>WinRa1n2.1.rar</code>, right-click <code>WinRa1n2.1.exe</code>, and choose Run as administrator.</p></div>
+          </article>
+          <article class="step">
+            <div class="step-number">2</div>
+            <div><h3>Connect the iPhone</h3><p>Unlock the iPhone, connect it directly to the computer, and trust the computer if iOS asks. A USB-A to Lightning cable is recommended.</p></div>
+          </article>
+          <article class="step">
+            <div class="step-number">3</div>
+            <div><h3>Select Palera1n Rootless</h3><p>Choose Palera1n and Rootless mode when those options are shown. Do not choose a Rootful or Checkra1n workflow for the MYCAM iOS 15+ package.</p></div>
+          </article>
+          <article class="step">
+            <div class="step-number">4</div>
+            <div><h3>Enter recovery and DFU mode</h3><p>Start the process and follow the button instructions displayed by WinRa1n. Keep the cable connected while the exploit and boot process complete.</p></div>
+          </article>
+          <article class="step">
+            <div class="step-number">5</div>
+            <div><h3>Install Sileo</h3><p>After the phone boots, open the Palera1n Loader and install Sileo. Rebooting removes the active jailbreak state, so repeat the WinRa1n Palera1n process when you need to rejailbreak.</p></div>
+          </article>
+        </div>
+        <div class="notice"><strong>Official Windows alternative:</strong> create a Palen1x bootable USB and run Palera1n from it. Do not use WSL or a normal virtual machine for the DFU jailbreak process.</div>
+        <p><a href="https://palera.in/download/">Open Palera1n's official Other PC and Palen1x downloads</a></p>
+      </div>
+    </section>
+
+    <section id="compatibility">
+      <div class="wrap">
+        <h2>Supported iOS versions and devices</h2>
+        <p class="section-intro">For this MYCAM setup, use iOS or iPadOS 15.0 or later on a Palera1n-compatible checkm8 device with an A8 through A11 chip. Newer iPhones such as iPhone XS, XR, 11 and later are not supported by Palera1n.</p>
+        <table class="device-table">
+          <thead><tr><th>Category</th><th>Supported models</th><th>Chip range</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Category">iPhone</td><td data-label="Supported models">iPhone 6s, 6s Plus, SE (1st generation), 7, 7 Plus, 8, 8 Plus and iPhone X</td><td data-label="Chip range">A9 to A11</td></tr>
+            <tr><td data-label="Category">iPad</td><td data-label="Supported models">iPad mini 4; iPad 5th, 6th and 7th generation; iPad Air 2; iPad Pro 9.7-inch, 10.5-inch and 12.9-inch 1st/2nd generation</td><td data-label="Chip range">A8X to A10X</td></tr>
+            <tr><td data-label="Category">iPod</td><td data-label="Supported models">iPod touch 7th generation</td><td data-label="Chip range">A10</td></tr>
+          </tbody>
+        </table>
+        <div class="notice">Device support comes from Palera1n's compatibility chart. Actual available iOS versions depend on the model: supported iPhones top out at iOS 15 or iOS 16, while some supported iPads can run later iPadOS releases.</div>
+        <p><a href="https://docs.palera.in/docs/reference/compatibility-chart/">Check the official Palera1n compatibility chart</a></p>
+      </div>
+    </section>
+
+    <section id="install-mycam">
+      <div class="wrap">
+        <h2>Install MYCAM from Sileo</h2>
+        <div class="finish">
+          <div class="finish-card">
+            <h3>1. Add the repository</h3>
+            <p>Open Sileo, go to Sources, choose Add Source, and enter the official MYCAM repository URL.</p>
+            <div class="command"><code>https://shareswhatyoucan.com/mycam/</code><button type="button" data-copy="https://shareswhatyoucan.com/mycam/">Copy</button></div>
+          </div>
+          <div class="finish-card">
+            <h3>2. Install MYCAM iOS</h3>
+            <p>Refresh Sources, open MYCAM iOS, tap Get, complete the queue, and respring when Sileo requests it.</p>
+            <a class="button primary" href="sileo://source/https://shareswhatyoucan.com/mycam/">Add source in Sileo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">Use jailbreak tools only on devices you own. Back up important data and follow the linked official documentation when troubleshooting.</div>
+  </footer>
+  <script>
+    document.querySelectorAll('[data-copy]').forEach((button) => {
+      button.addEventListener('click', async () => {
+        const value = button.getAttribute('data-copy');
+        try {
+          await navigator.clipboard.writeText(value);
+          button.textContent = 'Copied';
+          window.setTimeout(() => { button.textContent = 'Copy'; }, 1400);
+        } catch {
+          window.prompt('Copy this value:', value);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
