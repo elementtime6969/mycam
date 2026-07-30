@@ -197,6 +197,14 @@
         <p class="section-intro">The supplied WinRa1n package provides a Windows interface. Use its Palera1n Rootless option for a MYCAM-compatible iOS 15+ setup.</p>
         <div class="download-box">
           <div>
+            <h3>UsbDk 1.0.22 x64 driver</h3>
+            <p>Install the official signed UsbDk driver before opening WinRa1n, then restart Windows.</p>
+            <div class="download-meta">Required by WinRa1n on 64-bit Windows</div>
+          </div>
+          <a class="button primary" href="https://shareswhatyoucan.com/mycam/downloads/UsbDk_1.0.22_x64.msi">Download UsbDk driver</a>
+        </div>
+        <div class="download-box">
+          <div>
             <h3>WinRa1n 2.1 for Windows</h3>
             <p>Download and extract the RAR file before opening the program.</p>
             <div class="download-meta">Archive size: approximately 104 MB</div>
@@ -204,25 +212,30 @@
           <a class="button primary" href="https://shareswhatyoucan.com/mycam/downloads/WinRa1n2.1.rar">Download WinRa1n 2.1</a>
         </div>
         <div class="notice danger"><strong>Third-party Windows tool:</strong> WinRa1n is not produced or supported by the Palera1n team, and the included executable is not digitally signed. The supplied file was scanned with Microsoft Defender before publishing with no detection, but you should still use it at your own discretion. Palera1n officially recommends Palen1x for Windows computers.</div>
+        <div class="notice"><strong>Driver note:</strong> UsbDk 1.0.22 comes from the official Daynix GitHub release and has a valid Red Hat code-signing signature. Windows Memory Integrity may block this older driver. If Windows reports that the driver cannot load, use the official Palen1x method below instead of weakening Windows security.</div>
         <div class="steps">
           <article class="step">
             <div class="step-number">1</div>
-            <div><h3>Extract and open WinRa1n</h3><p>Extract <code>WinRa1n2.1.rar</code>, right-click <code>WinRa1n2.1.exe</code>, and choose Run as administrator.</p></div>
+            <div><h3>Install UsbDk and restart</h3><p>Run <code>UsbDk_1.0.22_x64.msi</code>, finish the driver installation, and restart Windows before continuing.</p></div>
           </article>
           <article class="step">
             <div class="step-number">2</div>
-            <div><h3>Connect the iPhone</h3><p>Unlock the iPhone, connect it directly to the computer, and trust the computer if iOS asks. A USB-A to Lightning cable is recommended.</p></div>
+            <div><h3>Extract and open WinRa1n</h3><p>Extract <code>WinRa1n2.1.rar</code>, right-click <code>WinRa1n2.1.exe</code>, and choose Run as administrator.</p></div>
           </article>
           <article class="step">
             <div class="step-number">3</div>
-            <div><h3>Select Palera1n Rootless</h3><p>Choose Palera1n and Rootless mode when those options are shown. Do not choose a Rootful or Checkra1n workflow for the MYCAM iOS 15+ package.</p></div>
+            <div><h3>Connect the iPhone</h3><p>Unlock the iPhone, connect it directly to the computer, and trust the computer if iOS asks. A USB-A to Lightning cable is recommended.</p></div>
           </article>
           <article class="step">
             <div class="step-number">4</div>
-            <div><h3>Enter recovery and DFU mode</h3><p>Start the process and follow the button instructions displayed by WinRa1n. Keep the cable connected while the exploit and boot process complete.</p></div>
+            <div><h3>Select Palera1n Rootless</h3><p>Choose Palera1n and Rootless mode when those options are shown. Do not choose a Rootful or Checkra1n workflow for the MYCAM iOS 15+ package.</p></div>
           </article>
           <article class="step">
             <div class="step-number">5</div>
+            <div><h3>Enter recovery and DFU mode</h3><p>Start the process and follow the button instructions displayed by WinRa1n. Keep the cable connected while the exploit and boot process complete.</p></div>
+          </article>
+          <article class="step">
+            <div class="step-number">6</div>
             <div><h3>Install Sileo</h3><p>After the phone boots, open the Palera1n Loader and install Sileo. Rebooting removes the active jailbreak state, so repeat the WinRa1n Palera1n process when you need to rejailbreak.</p></div>
           </article>
         </div>
