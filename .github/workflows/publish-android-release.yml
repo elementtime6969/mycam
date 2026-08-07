@@ -53,8 +53,14 @@ jobs:
           gh release list --limit 100 --json tagName --jq '.[].tagName' |
             while IFS= read -r tag; do
               if [[ "$tag" == v* ]]; then
-                gh release delete "$tag" --cleanup-tag --yes
+                gh release delete "$tag" --yes
               fi
+            done
+
+          git ls-remote --tags --refs origin 'v*' |
+            awk '{print $2}' |
+            while IFS= read -r ref; do
+              git push origin ":$ref"
             done
 
       - name: Publish current Android release
