@@ -1,0 +1,77 @@
+name: Publish Android release
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "downloads/Mycam-v*.apk"
+      - "version.json"
+      - ".github/workflows/publish-android-release.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: mycam-android-release
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate release metadata
+        id: release
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          version="$(jq -r '.versionName' version.json)"
+          apk="$(jq -r '.apkFile' version.json)"
+          expected="downloads/Mycam-v${version}.apk"
+
+          test -n "$version"
+          test "$apk" = "$expected"
+          test -s "$apk"
+
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "apk=$apk" >> "$GITHUB_OUTPUT"
+          echo "tag=v$version" >> "$GITHUB_OUTPUT"
+
+      - name: Remove previous Android releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          gh release list --limit 100 --json tagName --jq '.[].tagName' |
+            while IFS= read -r tag; do
+              if [[ "$tag" == v* ]]; then
+                gh release delete "$tag" --cleanup-tag --yes
+              fi
+            done
+
+      - name: Publish current Android release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.release.outputs.version }}
+          APK: ${{ steps.release.outputs.apk }}
+          TAG: ${{ steps.release.outputs.tag }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git tag -f "$TAG" "$GITHUB_SHA"
+          git push origin "refs/tags/$TAG" --force
+
+          gh release create "$TAG" "$APK#MYCAM Android APK" \
+            --verify-tag \
+            --latest \
+            --title "MYCAM $VERSION" \
+            --notes "Latest official MYCAM Android release. This release replaces all previous Android APK releases."
