@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07110f">
+  <title>MYCAM iOS Repository for Sileo</title>
+  <meta name="description" content="Add the official MYCAM iOS repository to Sileo and receive MYCAM updates on jailbroken iPhones.">
+  <link rel="icon" href="CydiaIcon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #050807;
+      --panel: #0b1412;
+      --panel-2: #101d19;
+      --line: #21342f;
+      --text: #f4faf8;
+      --muted: #9aada8;
+      --mint: #24d4a3;
+      --mint-dark: #092f25;
+      --blue: #69a7ff;
+      --yellow: #f1c76a;
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .shell { width: min(720px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 48px; }
+    .topbar { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+    .icon { width: 64px; height: 64px; border-radius: 14px; flex: none; }
+    .brand { min-width: 0; }
+    h1 { margin: 0; font-size: clamp(26px, 7vw, 38px); line-height: 1; }
+    .eyebrow { margin: 7px 0 0; color: var(--muted); font-size: 14px; }
+    .status { margin-left: auto; display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 750; }
+    .status::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 4px rgba(36, 212, 163, .12); }
+    .panel { border: 1px solid var(--line); background: var(--panel); border-radius: var(--radius); }
+    .install { padding: 20px; }
+    .version { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; margin-bottom: 18px; }
+    .version strong { font-size: 19px; }
+    .version span { color: var(--muted); font-size: 13px; }
+    .source-label { display: block; margin-bottom: 7px; color: var(--muted); font-size: 12px; font-weight: 750; text-transform: uppercase; }
+    .source { display: grid; grid-template-columns: 1fr auto; gap: 8px; margin-bottom: 12px; }
+    .source code { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 13px; border: 1px solid var(--line); background: #060b0a; border-radius: var(--radius); color: #d7e5e1; font-size: 13px; }
+    .button { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid transparent; border-radius: var(--radius); padding: 0 16px; font: inherit; font-weight: 750; text-decoration: none; cursor: pointer; }
+    .button-primary { width: 100%; background: var(--mint); color: #04110d; }
+    .button-primary:active { background: #1cb98d; }
+    .button-copy { background: var(--panel-2); border-color: var(--line); color: var(--text); }
+    .fallback { margin: 12px 0 0; text-align: center; color: var(--muted); font-size: 13px; }
+    .fallback a { color: var(--blue); }
+    .section-title { margin: 26px 0 10px; font-size: 14px; color: var(--muted); text-transform: uppercase; }
+    .rows { overflow: hidden; }
+    .row { display: grid; grid-template-columns: 42px 1fr auto; align-items: center; gap: 12px; padding: 15px 16px; border-bottom: 1px solid var(--line); }
+    .row:last-child { border-bottom: 0; }
+    .row-index { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: var(--mint-dark); color: var(--mint); font-weight: 800; }
+    .row strong { display: block; font-size: 15px; }
+    .row small { display: block; margin-top: 3px; color: var(--muted); line-height: 1.35; }
+    .tag { border: 1px solid var(--line); border-radius: 999px; padding: 5px 8px; color: var(--yellow); font-size: 11px; white-space: nowrap; }
+    .details { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; overflow: hidden; background: var(--line); }
+    .detail { padding: 15px 16px; background: var(--panel); }
+    .detail span { display: block; color: var(--muted); font-size: 12px; margin-bottom: 5px; }
+    .detail strong { font-size: 14px; overflow-wrap: anywhere; }
+    .notice { margin-top: 14px; padding: 14px 16px; border-left: 3px solid var(--yellow); background: #17140b; color: #d9cfb5; font-size: 13px; line-height: 1.5; }
+    footer { margin-top: 28px; display: flex; justify-content: space-between; gap: 16px; color: var(--muted); font-size: 12px; }
+    footer a { color: inherit; }
+    @media (max-width: 560px) {
+      .shell { width: min(100% - 24px, 720px); padding-top: 18px; }
+      .icon { width: 54px; height: 54px; border-radius: 12px; }
+      .status { font-size: 0; }
+      .source { grid-template-columns: 1fr; }
+      .source code { white-space: normal; overflow-wrap: anywhere; }
+      .details { grid-template-columns: 1fr; }
+      .row { grid-template-columns: 38px 1fr; }
+      .tag { grid-column: 2; justify-self: start; }
+      footer { display: block; line-height: 1.8; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <img class="icon" src="CydiaIcon@2x.png" alt="MYCAM">
+      <div class="brand">
+        <h1>MYCAM iOS</h1>
+        <p class="eyebrow">Official Sileo repository</p>
+      </div>
+      <div class="status">Online</div>
+    </header>
+
+    <section class="panel install" aria-labelledby="install-title">
+      <div class="version">
+        <strong id="install-title">Install with Sileo</strong>
+        <span>Current version 0.6.5</span>
+      </div>
+      <label class="source-label" for="source-url">Repository URL</label>
+      <div class="source">
+        <code id="source-url">https://elementtime6969.github.io/mycam/sileo/</code>
+        <button class="button button-copy" id="copy-source" type="button">Copy</button>
+      </div>
+      <a class="button button-primary" href="sileo://source/https://elementtime6969.github.io/mycam/sileo/">Add to Sileo</a>
+      <p class="fallback">Sileo not opening? Copy the URL, then use <strong>Sources &gt; Add Source</strong>. <a href="debs/com.destiny.mycamios_0.6.5_iphoneos-arm64.deb">Direct .deb</a></p>
+    </section>
+
+    <h2 class="section-title">Install steps</h2>
+    <section class="panel rows">
+      <div class="row">
+        <div class="row-index">1</div>
+        <div><strong>Add this repository</strong><small>Tap Add to Sileo above and confirm the source.</small></div>
+        <span class="tag">Sileo</span>
+      </div>
+      <div class="row">
+        <div class="row-index">2</div>
+        <div><strong>Install MYCAM iOS</strong><small>Open the MYCAM package, tap Get, then complete the queue.</small></div>
+        <span class="tag">0.6.5</span>
+      </div>
+      <div class="row">
+        <div class="row-index">3</div>
+        <div><strong>Respring when requested</strong><small>Open MYCAM after the package finishes installing.</small></div>
+        <span class="tag">Required</span>
+      </div>
+    </section>
+
+    <h2 class="section-title">Package</h2>
+    <section class="panel details">
+      <div class="detail"><span>Name</span><strong>MYCAM iOS</strong></div>
+      <div class="detail"><span>Bundle ID</span><strong>com.destiny.mycamios</strong></div>
+      <div class="detail"><span>Architecture</span><strong>iphoneos-arm64</strong></div>
+      <div class="detail"><span>Requires</span><strong>iOS 15+, jailbreak, ElleKit</strong></div>
+    </section>
+    <div class="notice">This package is for jailbroken iPhones. Keep the repository installed in Sileo to receive future MYCAM versions through the normal package update screen.</div>
+
+    <footer>
+      <span>MYCAM by Destiny</span>
+      <a href="https://elementtime6969.github.io/mycam/">MYCAM documentation and terms</a>
+    </footer>
+  </main>
+  <script>
+    const button = document.getElementById('copy-source');
+    const source = document.getElementById('source-url').textContent;
+    button.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(source);
+        button.textContent = 'Copied';
+        setTimeout(() => { button.textContent = 'Copy'; }, 1600);
+      } catch {
+        window.prompt('Copy this repository URL:', source);
+      }
+    });
+  </script>
+</body>
+</html>

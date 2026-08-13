@@ -1,0 +1,59 @@
+{
+    "minVersion":  "0.4",
+    "class":  "DepictionTabView",
+    "tintColor":  "#24d4a3",
+    "tabs":  [
+                 {
+                     "class":  "DepictionStackView",
+                     "tabname":  "Details",
+                     "views":  [
+                                   {
+                                       "class":  "DepictionHeaderView",
+                                       "title":  "MYCAM iOS"
+                                   },
+                                   {
+                                       "class":  "DepictionMarkdownView",
+                                       "markdown":  "Use prerecorded video as the camera source in supported camera and social apps on a jailbroken iPhone. Select installed target apps, manage clips, and control playback with the MYCAM Remote overlay."
+                                   },
+                                   {
+                                       "class":  "DepictionSubheaderView",
+                                       "title":  "Requirements"
+                                   },
+                                   {
+                                       "class":  "DepictionMarkdownView",
+                                       "markdown":  "- Jailbroken iPhone on iOS 15 or newer\n- Sileo\n- ElleKit or another compatible tweak injection framework"
+                                   },
+                                   {
+                                       "class":  "DepictionTableTextView",
+                                       "title":  "Version",
+                                       "text":  "0.6.5"
+                                   },
+                                   {
+                                       "class":  "DepictionTableTextView",
+                                       "title":  "Package",
+                                       "text":  "com.destiny.mycamios"
+                                   },
+                                   {
+                                       "class":  "DepictionTableButtonView",
+                                       "title":  "MYCAM website",
+                                       "action":  "https://elementtime6969.github.io/mycam/",
+                                       "openExternal":  1
+                                   }
+                               ]
+                 },
+                 {
+                     "class":  "DepictionStackView",
+                     "tabname":  "Changelog",
+                     "views":  [
+                                   {
+                                       "class":  "DepictionHeaderView",
+                                       "title":  "0.6.5"
+                                   },
+                                   {
+                                       "class":  "DepictionMarkdownView",
+                                       "markdown":  "Current stable MYCAM iOS package."
+                                   }
+                               ]
+                 }
+             ]
+}

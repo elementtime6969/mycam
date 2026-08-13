@@ -1,0 +1,27 @@
+Origin: MYCAM
+Label: MYCAM
+Suite: stable
+Version: 1.0
+Codename: mycam
+Architectures: iphoneos-arm64
+Components: main
+Description: Official MYCAM iOS repository
+Date: Thu, 30 Jul 2026 10:13:16 GMT
+MD5Sum:
+ 1b8188e4b1974a2a1ba2bc80a1dc7486 873 Packages
+ c42ed9b8f3afa30f47694aeb3c1f7a8d 596 Packages.bz2
+ 1d0a9bec586381b6c6bb2b1733444bc0 531 Packages.gz
+ 21764690f1645ba7c4011ee5e5294e3b 600 Packages.xz
+ 812cdb5f0bce2a7bfaf563db897378b1 523 Packages.zst
+SHA1:
+ 0ca93c8e5c45d3f873faeee6deb7b174594c37a1 873 Packages
+ fa38e5193e399efa3c589f1801404460f8cb8790 596 Packages.bz2
+ 2547b8a5db2ec71926f60ada81f1470db58d0a41 531 Packages.gz
+ 66d3e7487004d6312d3143f0bc48879d497c140c 600 Packages.xz
+ 87f0e90e772cf87d926aa027e9701a3d103c1b42 523 Packages.zst
+SHA256:
+ ff1e4842848a61ccc7e42f7902e5b06309728104761971664778e0f9bda0701c 873 Packages
+ 95a8ada62b10dca7dc91df9127f4a82d3e8631e1a864f445a42938b33f0e2733 596 Packages.bz2
+ 4503e4f865b65fbb0bc8dcfecdc6abf24bae3f1cadc0ebc9f478be186e57dadc 531 Packages.gz
+ 2a5895c5a17483f0f80a73c7f3ba713bb29f5c60f361dcc2fff465c809cc49f3 600 Packages.xz
+ d243b9acdbf05812c7822122e601dc923eca58c4547c0c927fc4aeef709763cf 523 Packages.zst

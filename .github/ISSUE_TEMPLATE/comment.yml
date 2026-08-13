@@ -1,0 +1,12 @@
+name: Comment or feedback
+description: Leave a MYCAM comment, question, or general feedback
+title: "[Comment]: "
+labels: ["feedback"]
+body:
+  - type: textarea
+    id: comment
+    attributes:
+      label: Comment
+      description: Share your comment or question.
+    validations:
+      required: true
