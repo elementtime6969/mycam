@@ -26,9 +26,9 @@ You are responsible for your firewall settings, network configuration, device se
 
 The tools package may include third-party software used for local streaming setup. Third-party software remains governed by its own license terms, notices, and support policies.
 
-## Root, LSPosed, And Device Changes
+## Rooted Device And Standalone Setup
 
-MYCAM is intended for rooted Android devices with LSPosed. Rooting, module installation, and system-level changes can affect device security, app compatibility, warranty status, and data safety. You are responsible for deciding whether those changes are appropriate for your device.
+MYCAM is a standalone app intended for rooted Android devices. Rooting and system-level changes can affect device security, app compatibility, warranty status, and data safety. You are responsible for deciding whether those changes are appropriate for your device.
 
 ## Updates And Integrity Checks
 

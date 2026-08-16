@@ -1,12 +1,12 @@
 # MYCAM
 
-Official download and support page for MYCAM, an Android virtual camera tool for rooted phones with LSPosed.
+Official download and support page for MYCAM, a standalone Android virtual camera tool for rooted phones.
 
 By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 
 ## Download
 
-[Download MYCAM v2.9.18](https://github.com/elementtime6969/mycam/raw/main/downloads/Mycam-v2.9.18.apk)
+[Download MYCAM v2.9.19](https://github.com/elementtime6969/mycam/releases/latest/download/Mycam-v2.9.19.apk)
 
 Scroll down to learn more about MYCAM and OBS setup ↓
 
@@ -20,7 +20,7 @@ Sileo source: `https://elementtime6969.github.io/mycam/sileo/`
 
 ## Ready Rooted Phone From Us
 
-**Buy a full rooted phone from us if you want MYCAM ready without doing the root and LSPosed setup yourself.** Open MYCAM and submit a rooted phone request with your model, country, shipping details and phone photo. We review availability, pricing and shipping, then reply in your private MYCAM order thread.
+**Buy a full rooted phone from us if you want MYCAM ready without doing the device setup yourself.** Open MYCAM and submit a rooted phone request with your model, country, shipping details and phone photo. We review availability, pricing and shipping, then reply in your private MYCAM order thread.
 
 ![Ready rooted phone for MYCAM setup](docs/assets/rooted-phone-ad.png)
 
@@ -69,17 +69,17 @@ MYCAM can hook the target app camera during a live call or camera session and sw
 | --- | --- |
 | App | MYCAM |
 | Package | `com.destiny.mycam` |
-| Version | `2.9.18` |
+| Version | `2.9.19` |
 | Version code | `38` |
-| APK file | `downloads/Mycam-v2.9.18.apk` |
-| APK size | `79,740,485` bytes |
-| Published | `2026-08-13` |
+| APK file | `downloads/Mycam-v2.9.19.apk` |
+| APK size | `81,920,472` bytes |
+| Published | `2026-08-16` |
 
 ## Requirements
 
 - A rooted Android phone.
-- LSPosed installed and enabled.
-- The selected target app must be enabled in LSPosed for MYCAM.
+- Install the standalone MYCAM APK.
+- Select and prepare the target app inside MYCAM.
 - Live RTMP requires the MYCAM Windows tools package when streaming from OBS.
 
 ## Install
@@ -87,7 +87,7 @@ MYCAM can hook the target app camera during a live call or camera session and sw
 1. Download the APK from the link above.
 2. Open the APK on your Android device.
 3. If Android asks, allow installs from the browser or file manager you used.
-4. Follow the [MYCAM setup guide on YouTube](https://youtu.be/p78_HDo5FuM?si=5j9zeaI28PN4RjQJ).
+4. Follow the [new MYCAM standalone setup tutorial](https://youtu.be/57yzC7uYvX0?is=32Vgl2QqTEK6dMv6).
 5. Open MYCAM after installation.
 
 MYCAM uses a server-side update and integrity gate. First launch requires internet so the app can verify the official build.
@@ -97,7 +97,6 @@ MYCAM uses a server-side update and integrity gate. First launch requires intern
 Live RTMP support uses a companion Windows tools package with the local media server files and OBS setup needed for optional livestreaming from OBS to MYCAM.
 
 - Setup guide: [MYCAM Live RTMP setup](docs/live-rtmp-setup.md)
-- Tools package: [MYCAM-Live-RTMP-tools.rar](https://github.com/elementtime6969/mycam/releases/download/live-rtmp-tools-v2/MYCAM-Live-RTMP-tools.rar)
 
 ## Support And Comments
 
