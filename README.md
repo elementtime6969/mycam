@@ -1,14 +1,14 @@
 # MYCAM
 
-Official download and support page for MYCAM, a standalone Android virtual camera tool for rooted phones.
+Official download and support page for MYCAM, an Android virtual camera tool for rooted phones with standalone and Legacy LSPosed modes.
 
 By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 
 ## Download
 
-[Download MYCAM v2.9.19](https://github.com/elementtime6969/mycam/releases/latest/download/Mycam-v2.9.19.apk)
+[Download MYCAM v2.10.1](https://github.com/elementtime6969/mycam/releases/latest/download/Mycam-v2.10.1.apk)
 
-Scroll down to learn more about MYCAM and OBS setup ↓
+Scroll down to learn more about MYCAM modes and OBS setup.
 
 ## MYCAM iOS for Sileo
 
@@ -37,6 +37,8 @@ MYCAM can swap the live camera during calls or camera sessions with:
 
 Supported workflows include:
 
+- **Standalone engine** for MYCAM setup directly on rooted Android phones.
+- **MYCAM Legacy LSPosed mode** for users who enable MYCAM through LSPosed.
 - **Video mode** for selected clips.
 - **Photo mode** for selected images.
 - **Live RTMP** for OBS-to-phone streaming.
@@ -69,16 +71,17 @@ MYCAM can hook the target app camera during a live call or camera session and sw
 | --- | --- |
 | App | MYCAM |
 | Package | `com.destiny.mycam` |
-| Version | `2.9.19` |
-| Version code | `38` |
-| APK file | `downloads/Mycam-v2.9.19.apk` |
-| APK size | `81,920,472` bytes |
-| Published | `2026-08-16` |
+| Version | `2.10.1` |
+| Version code | `40` |
+| APK file | `downloads/Mycam-v2.10.1.apk` |
+| APK size | `83,141,031` bytes |
+| Published | `2026-08-18` |
 
 ## Requirements
 
 - A rooted Android phone.
-- Install the standalone MYCAM APK.
+- Install the current MYCAM APK.
+- Use the standalone engine, or use MYCAM Legacy LSPosed mode for LSPosed setups.
 - Select and prepare the target app inside MYCAM.
 - Live RTMP requires the MYCAM Windows tools package when streaming from OBS.
 
@@ -87,7 +90,7 @@ MYCAM can hook the target app camera during a live call or camera session and sw
 1. Download the APK from the link above.
 2. Open the APK on your Android device.
 3. If Android asks, allow installs from the browser or file manager you used.
-4. Follow the [new MYCAM standalone setup tutorial](https://youtu.be/57yzC7uYvX0?is=32Vgl2QqTEK6dMv6).
+4. Follow the [MYCAM standalone setup tutorial](https://youtu.be/57yzC7uYvX0?is=32Vgl2QqTEK6dMv6) or the [MYCAM Legacy LSPosed tutorial](https://youtu.be/dzsUGq8qy1Y?si=q0GkRN_WRSyMR5h4).
 5. Open MYCAM after installation.
 
 MYCAM uses a server-side update and integrity gate. First launch requires internet so the app can verify the official build.
