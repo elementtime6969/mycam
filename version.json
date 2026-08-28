@@ -4,7 +4,7 @@
   "versionName": "2.13.0",
   "versionCode": 42,
   "apkFile": "downloads/Mycam-v2.13.0.apk",
-  "downloadUrl": "https://github.com/elementtime6969/mycam/releases/download/v2.13.0/Mycam-v2.13.0.apk",
+  "downloadUrl": "https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/Mycam-v2.13.0.apk",
   "sizeBytes": 94004538,
   "publishedAt": "2026-08-28",
   "distribution": "Direct APK download"

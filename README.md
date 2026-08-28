@@ -6,7 +6,7 @@ By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 
 ## Download
 
-[Download MYCAM v2.13.0](https://github.com/elementtime6969/mycam/releases/download/v2.13.0/Mycam-v2.13.0.apk)
+[Download MYCAM v2.13.0](https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/Mycam-v2.13.0.apk)
 
 Scroll down to learn more about MYCAM modes and OBS setup.
 
