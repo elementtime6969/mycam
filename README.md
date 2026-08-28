@@ -6,7 +6,7 @@ By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 
 ## Download
 
-[Download MYCAM v2.12.0](https://github.com/elementtime6969/mycam/releases/download/v2.12.0/Mycam-v2.12.0.apk)
+[Download MYCAM v2.13.0](https://github.com/elementtime6969/mycam/releases/download/v2.13.0/Mycam-v2.13.0.apk)
 
 Scroll down to learn more about MYCAM modes and OBS setup.
 
@@ -71,11 +71,11 @@ MYCAM can hook the target app camera during a live call or camera session and sw
 | --- | --- |
 | App | MYCAM |
 | Package | `com.destiny.mycam` |
-| Version | `2.12.0` |
+| Version | `2.13.0` |
 | Version code | `42` |
-| APK file | `downloads/Mycam-v2.12.0.apk` |
-| APK size | `87,650,399` bytes |
-| Published | `2026-08-21` |
+| APK file | `downloads/Mycam-v2.13.0.apk` |
+| APK size | `94,004,538` bytes |
+| Published | `2026-08-28` |
 
 ## Requirements
 
@@ -90,7 +90,7 @@ MYCAM can hook the target app camera during a live call or camera session and sw
 1. Download the APK from the link above.
 2. Open the APK on your Android device.
 3. If Android asks, allow installs from the browser or file manager you used.
-4. Follow the [MYCAM standalone setup tutorial](https://youtu.be/57yzC7uYvX0?is=32Vgl2QqTEK6dMv6) or the [MYCAM Legacy LSPosed tutorial](https://youtu.be/dzsUGq8qy1Y?si=q0GkRN_WRSyMR5h4).
+4. Follow the [MYCAM standalone setup tutorial](https://youtu.be/57yzC7uYvX0?is=32Vgl2QqTEK6dMv6), the [MYCAM Legacy LSPosed tutorial](https://youtu.be/dzsUGq8qy1Y?si=q0GkRN_WRSyMR5h4), or the [non-rooted Android tutorial](https://youtu.be/-KzP4UlDhIs?is=hfUcxlNKUhFTQ3NL).
 5. Open MYCAM after installation.
 
 MYCAM uses a server-side update and integrity gate. First launch requires internet so the app can verify the official build.

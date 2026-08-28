@@ -148,6 +148,18 @@
       border-color: #168ac0;
     }
 
+    .button.nonroot {
+      color: #fff;
+      background: #111827;
+      border-color: #111827;
+      box-shadow: 0 8px 18px rgba(17, 24, 39, 0.18);
+    }
+
+    .button.nonroot:hover {
+      background: #000;
+      border-color: #000;
+    }
+
     .meta {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -293,6 +305,53 @@
       font-size: 14px;
     }
 
+    .ad-pop {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 20;
+      width: min(360px, calc(100% - 36px));
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 8px;
+      color: #fff;
+      background: #0b1220;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.32);
+    }
+
+    .ad-pop h2 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .ad-pop p {
+      margin: 0 0 14px;
+      color: #dce8f6;
+    }
+
+    .ad-pop-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .ad-pop-close {
+      margin-left: auto;
+      min-width: 44px;
+      min-height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 8px;
+      color: #fff;
+      background: transparent;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .ad-pop[hidden] {
+      display: none;
+    }
+
     @media (max-width: 840px) {
       .hero,
       .two,
@@ -318,10 +377,10 @@
     "name": "MYCAM",
     "applicationCategory": "MultimediaApplication",
     "operatingSystem": "Android",
-    "softwareVersion": "2.12.0",
+    "softwareVersion": "2.13.0",
     "identifier": "com.destiny.mycam",
     "description": "MYCAM is an Android virtual camera app for rooted phones with standalone and Legacy LSPosed modes. It supports local media, OBS RTMP streams through MediaMTX, Watch mode, Clone mode, Android ID changer, remote controls, rooted phone requests and supported camera applications including WhatsApp and Messenger.",
-    "downloadUrl": "https://github.com/elementtime6969/mycam/releases/download/v2.12.0/Mycam-v2.12.0.apk",
+    "downloadUrl": "https://github.com/elementtime6969/mycam/releases/download/v2.13.0/Mycam-v2.13.0.apk",
     "installUrl": "https://github.com/elementtime6969/mycam/releases/latest",
     "softwareRequirements": "Rooted Android phone; optional LSPosed for MYCAM Legacy mode",
     "offers": {
@@ -344,17 +403,18 @@
         <h1>MYCAM Virtual Camera for Android</h1>
         <p class="lead">Use local media or OBS RTMP streams as your camera source with MYCAM on a rooted Android phone. Choose the standalone engine, or use MYCAM Legacy LSPosed mode if your setup runs through LSPosed.</p>
         <div class="actions">
-          <a class="button primary" href="https://github.com/elementtime6969/mycam/releases/download/v2.12.0/Mycam-v2.12.0.apk">Download MYCAM v2.12.0</a>
+          <a class="button primary" href="https://github.com/elementtime6969/mycam/releases/download/v2.13.0/Mycam-v2.13.0.apk">Download MYCAM v2.13.0</a>
           <a class="button secondary" href="ios-setup.html">iOS Setup</a>
           <a class="button secondary" href="live-rtmp-setup.html">Live RTMP setup</a>
           <a class="button secondary" href="https://github.com/elementtime6969/mycam">GitHub repo</a>
           <a class="button tutorial" href="https://youtu.be/57yzC7uYvX0?is=32Vgl2QqTEK6dMv6" target="_blank" rel="noopener noreferrer">MYCAM standalone tutorial</a>
           <a class="button tutorial" href="https://youtu.be/dzsUGq8qy1Y?si=q0GkRN_WRSyMR5h4" target="_blank" rel="noopener noreferrer">MYCAM Legacy LSPosed tutorial</a>
+          <a class="button nonroot" href="https://youtu.be/-KzP4UlDhIs?is=hfUcxlNKUhFTQ3NL" target="_blank" rel="noopener noreferrer">Non-rooted Android tutorial</a>
           <a class="button telegram" href="https://t.me/+isz4hFM1tgY1NTZk" target="_blank" rel="noopener noreferrer">Join MYCAM on Telegram</a>
         </div>
         <div class="meta">
           <span>Package: <strong>com.destiny.mycam</strong></span>
-          <span>Current version: <strong>2.12.0</strong></span>
+          <span>Current version: <strong>2.13.0</strong></span>
           <span>Requires: <strong>Rooted Android phone</strong></span>
           <span>Modes: <strong>Standalone engine and Legacy LSPosed</strong></span>
           <span>RTMP tools: <strong>OBS and MediaMTX</strong></span>
@@ -377,7 +437,7 @@
           <p><strong>Want MYCAM ready without doing the device setup yourself?</strong> Submit a rooted phone request inside MYCAM with your model, country, shipping details and phone photo.</p>
           <p>We review availability, pricing and shipping, then reply in your private MYCAM order thread.</p>
           <div class="actions">
-            <a class="button primary" href="https://github.com/elementtime6969/mycam/releases/download/v2.12.0/Mycam-v2.12.0.apk">Download MYCAM v2.12.0</a>
+            <a class="button primary" href="https://github.com/elementtime6969/mycam/releases/download/v2.13.0/Mycam-v2.13.0.apk">Download MYCAM v2.13.0</a>
             <a class="button secondary" href="https://github.com/elementtime6969/mycam/issues">Ask before ordering</a>
           </div>
         </div>
@@ -437,7 +497,7 @@
           <h2>Download</h2>
           <p>Get the current official APK and read the setup notes before installing.</p>
           <div class="link-list">
-            <a href="https://github.com/elementtime6969/mycam/releases/download/v2.12.0/Mycam-v2.12.0.apk">Download MYCAM v2.12.0 APK</a>
+            <a href="https://github.com/elementtime6969/mycam/releases/download/v2.13.0/Mycam-v2.13.0.apk">Download MYCAM v2.13.0 APK</a>
             <a href="https://github.com/elementtime6969/mycam/releases/latest">Latest GitHub release</a>
             <a href="https://github.com/elementtime6969/mycam/blob/main/TERMS.md">Terms of Use</a>
           </div>
@@ -448,6 +508,7 @@
           <div class="link-list">
             <a href="https://youtu.be/57yzC7uYvX0?is=32Vgl2QqTEK6dMv6" target="_blank" rel="noopener noreferrer">MYCAM standalone tutorial</a>
             <a href="https://youtu.be/dzsUGq8qy1Y?si=q0GkRN_WRSyMR5h4" target="_blank" rel="noopener noreferrer">MYCAM Legacy LSPosed tutorial</a>
+            <a href="https://youtu.be/-KzP4UlDhIs?is=hfUcxlNKUhFTQ3NL" target="_blank" rel="noopener noreferrer">Non-rooted Android tutorial</a>
             <a href="live-rtmp-setup.html">OBS and Live RTMP setup</a>
           </div>
         </div>
@@ -455,10 +516,29 @@
     </section>
   </main>
 
+  <aside class="ad-pop" id="nonroot-ad" aria-label="MYCAM non-rooted Android notice">
+    <h2>Use MYCAM Without Rooting</h2>
+    <p>MYCAM now includes a non-rooted Android setup option. Watch the new tutorial before installing.</p>
+    <div class="ad-pop-actions">
+      <a class="button nonroot" href="https://youtu.be/-KzP4UlDhIs?is=hfUcxlNKUhFTQ3NL" target="_blank" rel="noopener noreferrer">Watch tutorial</a>
+      <button class="ad-pop-close" type="button" aria-label="Close notice">X</button>
+    </div>
+  </aside>
+
   <footer>
     <div class="wrap">
       <p>MYCAM source code is not published. This site provides official downloads, setup documentation and support links.</p>
     </div>
   </footer>
+  <script>
+    const nonrootAd = document.getElementById("nonroot-ad");
+    const nonrootClose = document.querySelector(".ad-pop-close");
+
+    if (nonrootClose && nonrootAd) {
+      nonrootClose.addEventListener("click", () => {
+        nonrootAd.hidden = true;
+      });
+    }
+  </script>
 </body>
 </html>
