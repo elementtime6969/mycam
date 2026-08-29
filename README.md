@@ -1,12 +1,16 @@
 # MYCAM
 
-Official download and support page for MYCAM, an Android virtual camera tool for rooted phones with standalone and Legacy LSPosed modes.
+Official download and support page for MYCAM, an Android virtual camera tool with standalone, Legacy LSPosed and supported non-root engine modes.
 
 By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 
 ## Download
 
 [Download MYCAM v2.17.0](https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/Mycam-v2.17.0.apk)
+
+Non-root engine users must also install the third-party helper that powers the non-root setup:
+
+[Download MOCHI helper](https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/MOCHI.apk)
 
 Scroll down to learn more about MYCAM modes and OBS setup.
 
@@ -39,6 +43,7 @@ Supported workflows include:
 
 - **Standalone engine** for MYCAM setup directly on rooted Android phones.
 - **MYCAM Legacy LSPosed mode** for users who enable MYCAM through LSPosed.
+- **Non-root engine** with the required MOCHI helper APK for supported non-root setups.
 - **Video mode** for selected clips.
 - **Photo mode** for selected images.
 - **Live RTMP** for OBS-to-phone streaming.
@@ -79,7 +84,7 @@ MYCAM can hook the target app camera during a live call or camera session and sw
 
 ## Requirements
 
-- A rooted Android phone.
+- A rooted Android phone for standalone and MYCAM Legacy LSPosed modes, or a supported non-root Android setup with the MOCHI helper.
 - Install the current MYCAM APK.
 - Use the standalone engine, or use MYCAM Legacy LSPosed mode for LSPosed setups.
 - Select and prepare the target app inside MYCAM.
@@ -90,8 +95,9 @@ MYCAM can hook the target app camera during a live call or camera session and sw
 1. Download the APK from the link above.
 2. Open the APK on your Android device.
 3. If Android asks, allow installs from the browser or file manager you used.
-4. Follow the [MYCAM standalone setup tutorial](https://youtu.be/57yzC7uYvX0?is=32Vgl2QqTEK6dMv6), the [MYCAM Legacy LSPosed tutorial](https://youtu.be/dzsUGq8qy1Y?si=q0GkRN_WRSyMR5h4), or the [non-rooted Android tutorial](https://youtu.be/-KzP4UlDhIs?is=hfUcxlNKUhFTQ3NL).
-5. Open MYCAM after installation.
+4. For non-root engine setup, install the [MOCHI helper](https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/MOCHI.apk).
+5. Follow the [MYCAM standalone setup tutorial](https://youtu.be/57yzC7uYvX0?is=32Vgl2QqTEK6dMv6), the [MYCAM Legacy LSPosed tutorial](https://youtu.be/dzsUGq8qy1Y?si=q0GkRN_WRSyMR5h4), or the [non-rooted Android tutorial](https://youtu.be/N-sgR6y6h9s?is=lj3b_pDY7KCkOEXu).
+6. Open MYCAM after installation.
 
 MYCAM uses a server-side update and integrity gate. First launch requires internet so the app can verify the official build.
 
