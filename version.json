@@ -1,11 +1,11 @@
 {
   "app": "MYCAM",
   "packageName": "com.destiny.mycam",
-  "versionName": "2.20.1",
-  "versionCode": 49,
-  "apkFile": "downloads/Mycam-v2.20.1.apk",
-  "downloadUrl": "https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/Mycam-v2.20.1.apk",
-  "sizeBytes": 94723255,
+  "versionName": "2.20.2",
+  "versionCode": 50,
+  "apkFile": "downloads/Mycam-v2.20.2.apk",
+  "downloadUrl": "https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/Mycam-v2.20.2.apk",
+  "sizeBytes": 94723251,
   "publishedAt": "2026-08-31",
   "distribution": "Direct APK download",
   "toolsDownloadUrl": "https://github.com/elementtime6969/mycam/releases/latest/download/tools.rar"

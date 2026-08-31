@@ -6,6 +6,10 @@ Download and extract the MYCAM Windows RTMP tools package before starting:
 
 [Download MYCAM Live RTMP tools](https://github.com/elementtime6969/mycam/releases/latest/download/tools.rar)
 
+For OBS LIVE STREAMING TUTORIAL WATCH IT:
+
+[Watch the OBS Live RTMP tutorial](https://youtu.be/4k45NKvzP4k?is=LY8h0Eux9Xc-1cVY)
+
 ## 1. Start The Local Media Server
 
 Double-click `START-MYCAM-SERVER.cmd` and leave its window open. Windows may ask for firewall access; allow access on private networks.

@@ -6,7 +6,7 @@ By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 
 ## Download
 
-[Download MYCAM v2.20.1](https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/Mycam-v2.20.1.apk)
+[Download MYCAM v2.20.2](https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/Mycam-v2.20.2.apk)
 
 Non-root engine users must also install the third-party helper that powers the non-root setup:
 
@@ -76,10 +76,10 @@ MYCAM can hook the target app camera during a live call or camera session and sw
 | --- | --- |
 | App | MYCAM |
 | Package | `com.destiny.mycam` |
-| Version | `2.20.1` |
-| Version code | `49` |
-| APK file | `downloads/Mycam-v2.20.1.apk` |
-| APK size | `94,723,255` bytes |
+| Version | `2.20.2` |
+| Version code | `50` |
+| APK file | `downloads/Mycam-v2.20.2.apk` |
+| APK size | `94,723,251` bytes |
 | Published | `2026-08-31` |
 
 ## Requirements
@@ -106,6 +106,7 @@ MYCAM uses a server-side update and integrity gate. First launch requires intern
 Live RTMP support uses a companion Windows tools package with the local media server files and OBS setup needed for optional livestreaming from OBS to MYCAM.
 
 - Tools download: [Download MYCAM Live RTMP tools](https://github.com/elementtime6969/mycam/releases/latest/download/tools.rar)
+- OBS tutorial: [For OBS LIVE STREAMING TUTORIAL WATCH IT](https://youtu.be/4k45NKvzP4k?is=LY8h0Eux9Xc-1cVY)
 - Setup guide: [MYCAM Live RTMP setup](docs/live-rtmp-setup.md)
 
 ## Support And Comments
