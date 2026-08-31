@@ -2,7 +2,9 @@
 
 Live RTMP support lets MYCAM use a local RTMP video stream from OBS as the camera video source for a selected target application. This is optional and intended for users who want to livestream from OBS to MYCAM on the same private Wi-Fi network.
 
-Prepare the MYCAM Windows RTMP tools folder on your PC before starting.
+Download and extract the MYCAM Windows RTMP tools package before starting:
+
+[Download MYCAM Live RTMP tools](https://github.com/elementtime6969/mycam/releases/latest/download/tools.rar)
 
 ## 1. Start The Local Media Server
 
