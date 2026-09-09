@@ -213,9 +213,31 @@
       margin: 0;
       list-style: none;
     }
-    .pro-benefits li { padding: 18px; border: 1px solid #e8dec4; border-radius: 12px; background: #fff; }
-    .pro-benefits h3 { margin: 0 0 6px; font-size: 18px; }
-    .pro-benefits p { margin: 0; color: var(--muted); }
+    .pro-benefits li {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      padding: 18px;
+      border: 1px solid #d4aa43;
+      border-radius: 12px;
+      background: linear-gradient(120deg, #f2cf79, #fff3c8 48%, #edc46a);
+      box-shadow: 0 4px 14px rgba(174, 119, 17, 0.14);
+    }
+    .pro-benefits li::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: -50% auto -50% -80%;
+      width: 50%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+      transform: skewX(-20deg);
+      animation: pro-shine 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .pro-benefits li:nth-child(3n + 2)::before { animation-delay: 0.6s; }
+    .pro-benefits li:nth-child(3n)::before { animation-delay: 1.2s; }
+    .pro-benefits h3 { margin: 0 0 6px; color: #382504; font-size: 18px; }
+    .pro-benefits p { margin: 0; color: #51401d; }
     .pro-plan { margin-top: 24px; padding: 22px; border-radius: 12px; color: #fff; background: #17202a; }
     .pro-plan h3 { margin: 0 0 8px; font-size: 24px; }
     .pro-plan p { margin: 8px 0; color: #e1e7ee; }
@@ -223,7 +245,8 @@
     .pro-note { color: var(--muted); font-size: 14px; margin: 18px 0 0; }
 
     @media (prefers-reduced-motion: reduce) {
-      .pro-button::before { animation: none; display: none; }
+      .pro-button::before,
+      .pro-benefits li::before { animation: none; display: none; }
     }
 
     @media (max-width: 600px) {
@@ -556,7 +579,7 @@
         <li><h3>Voice Studio</h3><p>Turn text into speech, transform recordings and create voices with MYCAM's voice tools.</p></li>
         <li><h3>Chat translation</h3><p>Use MYCAM's translation tools to communicate across languages in supported chat apps.</p></li>
         <li><h3>AI video tools</h3><p>Access MYCAM's AI video tools when available for your app version and account.</p></li>
-        <li><h3>MyCam shared access</h3><p>Your valid MYCAM subscription also unlocks TESTER101 on the same phone until the same expiry date. Compatible versions of both apps are required.</p></li>
+        <li><h3>MyCam shared access</h3><p>Your valid MYCAM subscription also unlocks Hinge Auto Bomber on the same phone until the same expiry date. Compatible versions of both apps are required.</p></li>
       </ul>
       <div class="pro-plan">
         <h3>30 days of MYCAM PRO</h3>
