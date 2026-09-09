@@ -126,6 +126,112 @@
       background: #fff;
     }
 
+    .pro-button {
+      position: relative;
+      overflow: hidden;
+      gap: 12px;
+      min-height: 56px;
+      padding: 14px 24px;
+      border: 1px solid #e1b44e;
+      border-radius: 12px;
+      color: #241a05;
+      background: linear-gradient(115deg, #eabc54, #fff0b8 48%, #edbd52);
+      box-shadow: 0 6px 24px rgba(174, 119, 17, 0.24);
+      font: inherit;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+    }
+
+    .pro-button::before {
+      content: "";
+      position: absolute;
+      inset: -50% auto -50% -80%;
+      width: 50%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.85), transparent);
+      transform: skewX(-20deg);
+      animation: pro-shine 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .pro-button:hover { box-shadow: 0 8px 28px rgba(174, 119, 17, 0.38); }
+    .pro-button:focus-visible,
+    .pro-close:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    .pro-hint { margin: 10px 0 0; color: var(--muted); font-size: 14px; }
+
+    @keyframes pro-shine {
+      0%, 30% { left: -80%; }
+      65%, 100% { left: 140%; }
+    }
+
+    .pro-dialog {
+      width: min(900px, calc(100% - 24px));
+      max-height: calc(100% - 32px);
+      max-height: calc(100dvh - 32px);
+      padding: 0;
+      border: 1px solid #dbc98e;
+      border-radius: 20px;
+      color: var(--ink);
+      background: #fffdf7;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+      overscroll-behavior: contain;
+    }
+
+    .pro-dialog::backdrop { background: rgba(12, 20, 33, 0.76); }
+    body.pro-open { overflow: hidden; }
+    .pro-dialog-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 24px;
+      border-bottom: 1px solid #e8dec4;
+      background: #fffdf7;
+    }
+    .pro-brand { color: #72500c; letter-spacing: 0.08em; font-weight: 800; }
+    .pro-close {
+      min-height: 44px;
+      padding: 8px 14px;
+      border: 1px solid #d6c9a8;
+      border-radius: 8px;
+      color: var(--ink);
+      background: #fff;
+      font: inherit;
+      cursor: pointer;
+    }
+    .pro-content { padding: 24px; }
+    .pro-content h2 { font-size: clamp(28px, 5vw, 40px); line-height: 1.15; margin-bottom: 12px; }
+    .pro-intro { color: var(--muted); margin: 0 0 24px; font-size: 18px; }
+    .pro-benefits {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .pro-benefits li { padding: 18px; border: 1px solid #e8dec4; border-radius: 12px; background: #fff; }
+    .pro-benefits h3 { margin: 0 0 6px; font-size: 18px; }
+    .pro-benefits p { margin: 0; color: var(--muted); }
+    .pro-plan { margin-top: 24px; padding: 22px; border-radius: 12px; color: #fff; background: #17202a; }
+    .pro-plan h3 { margin: 0 0 8px; font-size: 24px; }
+    .pro-plan p { margin: 8px 0; color: #e1e7ee; }
+    .pro-plan .button { margin-top: 12px; }
+    .pro-note { color: var(--muted); font-size: 14px; margin: 18px 0 0; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .pro-button::before { animation: none; display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .pro-benefits { grid-template-columns: 1fr; }
+      .pro-content { padding: 20px 16px; }
+      .pro-dialog-bar { padding: 10px 16px; }
+    }
+
     .button.tutorial {
       color: #fff;
       background: #ff0000;
@@ -402,6 +508,8 @@
         <div class="eyebrow">Android virtual camera</div>
         <h1>MYCAM Virtual Camera for Android</h1>
         <p class="lead">Use local media or OBS RTMP streams as your camera source with MYCAM on Android. Choose the standalone engine, MYCAM Legacy LSPosed mode, or the supported non-root engine powered by MOCHI.</p>
+        <button class="button pro-button" id="open-pro" type="button" aria-haspopup="dialog" aria-controls="mycam-pro"><span aria-hidden="true">&#10022;</span> MYCAM PRO <span aria-hidden="true">&#8599;</span></button>
+        <p class="pro-hint">One subscription. Explore all the benefits.</p>
         <div class="actions">
           <a class="button primary" href="https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/Mycam-v2.24.1.apk">Download MYCAM v2.24.1</a>
           <a class="button secondary" href="https://github.com/elementtime6969/mycam/releases/latest/download/tools.rar">Download Live RTMP tools</a>
@@ -430,6 +538,35 @@
       </div>
     </div>
   </header>
+
+  <dialog class="pro-dialog" id="mycam-pro" aria-labelledby="pro-title">
+    <div class="pro-dialog-bar">
+      <span class="pro-brand">&#10022; MYCAM PRO</span>
+      <form method="dialog"><button class="pro-close" autofocus>Close <span aria-hidden="true">&#215;</span></button></form>
+    </div>
+    <div class="pro-content">
+      <h2 id="pro-title">More possibilities. One subscription.</h2>
+      <p class="pro-intro">Unlock MYCAM's engines and services on your phone, with tools for your camera, live streams, voice and chats.</p>
+      <ul class="pro-benefits">
+        <li><h3>Every MYCAM engine</h3><p>Access Standalone, Legacy LSPosed and the supported non-root engine with MOCHI. Choose the setup that suits your phone.</p></li>
+        <li><h3>Your photos and videos, live</h3><p>Use your selected images and videos as the camera source in supported apps and video calls.</p></li>
+        <li><h3>Controls at your fingertips</h3><p>Switch media, play or pause, freeze a frame, adjust playback speed and mute audio from the remote. Adjust framing with supported zoom, rotation and size controls.</p></li>
+        <li><h3>OBS streaming and Watch mode</h3><p>Bring an OBS stream into your camera workflow with Live RTMP and MediaMTX, or view your live stream using Watch mode.</p></li>
+        <li><h3>Clone and profile tools</h3><p>Create separate supported app profiles for accounts you own, with Android ID tools for your testing and profile setup.</p></li>
+        <li><h3>Voice Studio</h3><p>Turn text into speech, transform recordings and create voices with MYCAM's voice tools.</p></li>
+        <li><h3>Chat translation</h3><p>Use MYCAM's translation tools to communicate across languages in supported chat apps.</p></li>
+        <li><h3>AI video tools</h3><p>Access MYCAM's AI video tools when available for your app version and account.</p></li>
+        <li><h3>MyCam shared access</h3><p>Your valid MYCAM subscription also unlocks TESTER101 on the same phone until the same expiry date. Compatible versions of both apps are required.</p></li>
+      </ul>
+      <div class="pro-plan">
+        <h3>30 days of MYCAM PRO</h3>
+        <p><strong>&pound;10 with Stripe &middot; &pound;16 with Bitcoin &middot; &#8358;19,000 with Flutterwave</strong></p>
+        <p>Choose your payment option inside MYCAM. One payment, with no automatic renewal.</p>
+        <a class="button primary" href="https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/Mycam-v2.24.1.apk">Download MYCAM</a>
+      </div>
+      <p class="pro-note">Features depend on your device, app version and selected engine. Root or the MOCHI helper is required for the relevant camera modes. Voice and AI services have their own availability and usage limits; PRO does not include unlimited generation.</p>
+    </div>
+  </dialog>
 
   <main>
     <section class="promo-section">
@@ -542,6 +679,18 @@
     </div>
   </footer>
   <script>
+    const proDialog = document.getElementById("mycam-pro");
+    const proButton = document.getElementById("open-pro");
+
+    proButton.addEventListener("click", () => {
+      proDialog.showModal();
+      document.body.classList.add("pro-open");
+    });
+    proDialog.addEventListener("close", () => {
+      document.body.classList.remove("pro-open");
+      proButton.focus();
+    });
+
     const nonrootAd = document.getElementById("nonroot-ad");
     const nonrootClose = document.querySelector(".ad-pop-close");
 
