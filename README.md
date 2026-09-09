@@ -6,11 +6,17 @@ By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 
 ## Download
 
-[Download MYCAM v2.24.1](https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/Mycam-v2.24.1.apk)
+[Download MYCAM v2.24.2](https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/Mycam-v2.24.2.apk)
 
 Non-root engine users must also install the third-party helper that powers the non-root setup:
 
 [Download MOCHI helper](https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/MOCHI.apk)
+
+## Hinge Auto
+
+Hinge Auto is available as a companion download for MYCAM users. If you already have an active MYCAM subscription on your phone, you can use Hinge Auto for free with the same subscription access.
+
+[Download Hinge Auto v1.3](https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/HingeAuto-v1.3.apk)
 
 Scroll down to learn more about MYCAM modes and OBS setup.
 
@@ -76,10 +82,10 @@ MYCAM can hook the target app camera during a live call or camera session and sw
 | --- | --- |
 | App | MYCAM |
 | Package | `com.destiny.mycam` |
-| Version | `2.24.1` |
-| Version code | `56` |
-| APK file | `downloads/Mycam-v2.24.1.apk` |
-| APK size | `98,971,263` bytes |
+| Version | `2.24.2` |
+| Version code | `57` |
+| APK file | `downloads/Mycam-v2.24.2.apk` |
+| APK size | `98,971,403` bytes |
 | Published | `2026-09-09` |
 
 ## Requirements

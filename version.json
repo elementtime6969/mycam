@@ -1,12 +1,23 @@
 {
   "app": "MYCAM",
   "packageName": "com.destiny.mycam",
-  "versionName": "2.24.1",
-  "versionCode": 56,
-  "apkFile": "downloads/Mycam-v2.24.1.apk",
-  "downloadUrl": "https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/Mycam-v2.24.1.apk",
-  "sizeBytes": 98971263,
+  "versionName": "2.24.2",
+  "versionCode": 57,
+  "apkFile": "downloads/Mycam-v2.24.2.apk",
+  "downloadUrl": "https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/Mycam-v2.24.2.apk",
+  "sizeBytes": 98971403,
   "publishedAt": "2026-09-09",
   "distribution": "Direct APK download",
-  "toolsDownloadUrl": "https://github.com/elementtime6969/mycam/releases/latest/download/tools.rar"
+  "toolsDownloadUrl": "https://github.com/elementtime6969/mycam/releases/latest/download/tools.rar",
+  "companionApps": [
+    {
+      "name": "Hinge Auto",
+      "versionName": "1.3",
+      "versionCode": 4,
+      "apkFile": "downloads/HingeAuto-v1.3.apk",
+      "downloadUrl": "https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/HingeAuto-v1.3.apk",
+      "sizeBytes": 3093572,
+      "access": "Free for users with an active MYCAM subscription on the same phone"
+    }
+  ]
 }
