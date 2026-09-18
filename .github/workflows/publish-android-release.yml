@@ -47,14 +47,22 @@ jobs:
           expected="downloads/Mycam-v${version}.apk"
 
           test -n "$version"
-          test "$apk" = "$expected"
-          test -s "$apk"
+          if [[ "$apk" != "$expected" || ! -s "$apk" ]]; then
+            echo "No tracked APK found for automated release publishing. Skipping release workflow."
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+            echo "version=$version" >> "$GITHUB_OUTPUT"
+            echo "apk=$apk" >> "$GITHUB_OUTPUT"
+            echo "tag=v$version" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
 
+          echo "publish=true" >> "$GITHUB_OUTPUT"
           echo "version=$version" >> "$GITHUB_OUTPUT"
           echo "apk=$apk" >> "$GITHUB_OUTPUT"
           echo "tag=v$version" >> "$GITHUB_OUTPUT"
 
       - name: Remove previous Android releases
+        if: steps.release.outputs.publish == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -75,6 +83,7 @@ jobs:
             done
 
       - name: Publish current Android release
+        if: steps.release.outputs.publish == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           VERSION: ${{ steps.release.outputs.version }}
