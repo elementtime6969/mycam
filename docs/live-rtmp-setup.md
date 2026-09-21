@@ -4,7 +4,7 @@ Live RTMP support lets MYCAM use a local RTMP video stream from OBS as the camer
 
 Download and extract the MYCAM Windows RTMP tools package before starting:
 
-[Download MYCAM Live RTMP tools](https://github.com/elementtime6969/mycam/releases/latest/download/tools.rar)
+[Download MYCAM Live RTMP tools](https://github.com/elementtime6969/mycam/releases/download/v2.25.7/tools.rar)
 
 For OBS LIVE STREAMING TUTORIAL WATCH IT:
 
