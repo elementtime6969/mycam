@@ -3,757 +3,119 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MYCAM Virtual Camera for Android</title>
-  <meta name="description" content="MYCAM is an Android virtual camera for rooted phones with standalone and Legacy LSPosed modes, plus a supported non-root engine powered by the MOCHI helper. Use local media, OBS RTMP streams, MediaMTX, Watch mode, Clone mode, Android ID changer, Hinge Auto companion access and remote controls in supported camera applications.">
+  <title>MYCAM | Android, iOS &amp; Windows Virtual Camera</title>
+  <meta name="description" content="Explore MYCAM's Android camera engines, iOS setup and upcoming Windows PC Studio. Watch engine demos and tutorials, download MYCAM, MOCHI and Live RTMP tools.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://elementtime6969.github.io/mycam/">
-  <meta property="og:title" content="MYCAM Virtual Camera for Android">
-  <meta property="og:description" content="Use local media or OBS RTMP streams with MYCAM's standalone engine, Legacy LSPosed mode, or supported non-root engine powered by MOCHI.">
+  <meta property="og:title" content="MYCAM | Your camera. Your creative control.">
+  <meta property="og:description" content="Three Android engines. iOS support. Windows Studio is coming. Explore the demos and find your setup.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://elementtime6969.github.io/mycam/">
-  <meta property="og:image" content="https://elementtime6969.github.io/mycam/assets/mycam-app-remote.jpg">
+  <meta property="og:image" content="https://elementtime6969.github.io/mycam/assets/mycam-pc-studio.png">
   <meta name="twitter:card" content="summary_large_image">
-  <style>
-    :root {
-      color-scheme: light;
-      --ink: #17202a;
-      --muted: #53606f;
-      --line: #d6dde5;
-      --panel: #f6f8fb;
-      --accent: #0b6bcb;
-      --accent-strong: #064f99;
-      --green: #13795b;
-      --bg: #ffffff;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--ink);
-      background: var(--bg);
-      line-height: 1.55;
-    }
-
-    a {
-      color: var(--accent);
-    }
-
-    header {
-      border-bottom: 1px solid var(--line);
-      background: linear-gradient(180deg, #ffffff 0%, #f2f7fc 100%);
-    }
-
-    .wrap {
-      width: min(1120px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
-      gap: 40px;
-      align-items: center;
-      min-height: 680px;
-      padding: 56px 0 72px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--green);
-      font-weight: 700;
-      font-size: 14px;
-      margin-bottom: 14px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--green);
-    }
-
-    h1 {
-      margin: 0 0 16px;
-      font-size: clamp(40px, 6vw, 78px);
-      line-height: 1.02;
-      letter-spacing: 0;
-    }
-
-    .lead {
-      margin: 0 0 26px;
-      color: var(--muted);
-      font-size: 20px;
-      max-width: 680px;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 28px 0 24px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 12px 18px;
-      border-radius: 8px;
-      border: 1px solid var(--accent);
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    .button.primary {
-      color: #fff;
-      background: var(--accent);
-    }
-
-    .button.primary:hover {
-      background: var(--accent-strong);
-    }
-
-    .button.secondary {
-      color: var(--accent);
-      background: #fff;
-    }
-
-    .pro-button {
-      position: relative;
-      overflow: hidden;
-      gap: 12px;
-      min-height: 56px;
-      padding: 14px 24px;
-      border: 1px solid #e1b44e;
-      border-radius: 12px;
-      color: #241a05;
-      background: linear-gradient(115deg, #eabc54, #fff0b8 48%, #edbd52);
-      box-shadow: 0 6px 24px rgba(174, 119, 17, 0.24);
-      font: inherit;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      cursor: pointer;
-    }
-
-    .pro-button::before {
-      content: "";
-      position: absolute;
-      inset: -50% auto -50% -80%;
-      width: 50%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.85), transparent);
-      transform: skewX(-20deg);
-      animation: pro-shine 4s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    .pro-button:hover { box-shadow: 0 8px 28px rgba(174, 119, 17, 0.38); }
-    .pro-button:focus-visible,
-    .pro-close:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
-    .pro-hint { margin: 10px 0 0; color: var(--muted); font-size: 14px; }
-
-    @keyframes pro-shine {
-      0%, 30% { left: -80%; }
-      65%, 100% { left: 140%; }
-    }
-
-    .pro-dialog {
-      width: min(900px, calc(100% - 24px));
-      max-height: calc(100% - 32px);
-      max-height: calc(100dvh - 32px);
-      padding: 0;
-      border: 1px solid #dbc98e;
-      border-radius: 20px;
-      color: var(--ink);
-      background: #fffdf7;
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
-      overscroll-behavior: contain;
-    }
-
-    .pro-dialog::backdrop { background: rgba(12, 20, 33, 0.76); }
-    body.pro-open { overflow: hidden; }
-    .pro-dialog-bar {
-      position: sticky;
-      top: 0;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 12px 24px;
-      border-bottom: 1px solid #e8dec4;
-      background: #fffdf7;
-    }
-    .pro-brand { color: #72500c; letter-spacing: 0.08em; font-weight: 800; }
-    .pro-close {
-      min-height: 44px;
-      padding: 8px 14px;
-      border: 1px solid #d6c9a8;
-      border-radius: 8px;
-      color: var(--ink);
-      background: #fff;
-      font: inherit;
-      cursor: pointer;
-    }
-    .pro-content { padding: 24px; }
-    .pro-content h2 { font-size: clamp(28px, 5vw, 40px); line-height: 1.15; margin-bottom: 12px; }
-    .pro-intro { color: var(--muted); margin: 0 0 24px; font-size: 18px; }
-    .pro-benefits {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      padding: 0;
-      margin: 0;
-      list-style: none;
-    }
-    .pro-benefits li {
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
-      padding: 18px;
-      border: 1px solid #d4aa43;
-      border-radius: 12px;
-      background: linear-gradient(120deg, #f2cf79, #fff3c8 48%, #edc46a);
-      box-shadow: 0 4px 14px rgba(174, 119, 17, 0.14);
-    }
-    .pro-benefits li::before {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      inset: -50% auto -50% -80%;
-      width: 50%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
-      transform: skewX(-20deg);
-      animation: pro-shine 6s ease-in-out infinite;
-      pointer-events: none;
-    }
-    .pro-benefits li:nth-child(3n + 2)::before { animation-delay: 0.6s; }
-    .pro-benefits li:nth-child(3n)::before { animation-delay: 1.2s; }
-    .pro-benefits h3 { margin: 0 0 6px; color: #382504; font-size: 18px; }
-    .pro-benefits p { margin: 0; color: #51401d; }
-    .pro-plan { margin-top: 24px; padding: 22px; border-radius: 12px; color: #fff; background: #17202a; }
-    .pro-plan h3 { margin: 0 0 8px; font-size: 24px; }
-    .pro-plan p { margin: 8px 0; color: #e1e7ee; }
-    .pro-plan .button { margin-top: 12px; }
-    .pro-note { color: var(--muted); font-size: 14px; margin: 18px 0 0; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .pro-button::before,
-      .pro-benefits li::before { animation: none; display: none; }
-    }
-
-    @media (max-width: 600px) {
-      .pro-benefits { grid-template-columns: 1fr; }
-      .pro-content { padding: 20px 16px; }
-      .pro-dialog-bar { padding: 10px 16px; }
-    }
-
-    .button.tutorial {
-      color: #fff;
-      background: #ff0000;
-      border-color: #ff0000;
-    }
-
-    .button.tutorial:hover {
-      background: #cc0000;
-      border-color: #cc0000;
-    }
-
-    .button.telegram {
-      color: #fff;
-      background: #229ed9;
-      border-color: #229ed9;
-    }
-
-    .button.telegram:hover {
-      background: #168ac0;
-      border-color: #168ac0;
-    }
-
-    .button.nonroot {
-      color: #fff;
-      background: #111827;
-      border-color: #111827;
-      box-shadow: 0 8px 18px rgba(17, 24, 39, 0.18);
-    }
-
-    .button.nonroot:hover {
-      background: #000;
-      border-color: #000;
-    }
-
-    .button.hinge {
-      color: #fff;
-      background: #c0185a;
-      border-color: #c0185a;
-    }
-
-    .button.hinge:hover {
-      background: #981146;
-      border-color: #981146;
-    }
-
-    .meta {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      max-width: 620px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .meta span {
-      display: block;
-      padding: 10px 12px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fff;
-    }
-
-    .shots {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      align-items: start;
-    }
-
-    .phone {
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #0f1720;
-      box-shadow: 0 20px 45px rgba(24, 38, 55, 0.16);
-    }
-
-    .phone img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    .promo-section {
-      background: #071411;
-      color: #f8fffd;
-    }
-
-    .promo-section strong,
-    .promo-section h2 {
-      color: #fff;
-    }
-
-    .promo {
-      display: grid;
-      grid-template-columns: minmax(0, 0.92fr) minmax(280px, 1.08fr);
-      gap: 32px;
-      align-items: center;
-    }
-
-    .promo-copy p {
-      margin: 0 0 18px;
-      color: #c6d8d3;
-      font-size: 18px;
-    }
-
-    .promo-copy .button.secondary {
-      color: #dffcf4;
-      background: transparent;
-      border-color: rgba(111, 236, 190, 0.5);
-    }
-
-    .promo-image {
-      margin: 0;
-      overflow: hidden;
-      border-radius: 8px;
-      border: 1px solid rgba(111, 236, 190, 0.24);
-    }
-
-    .promo-image img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    main section {
-      padding: 56px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    h2 {
-      margin: 0 0 18px;
-      font-size: 32px;
-      letter-spacing: 0;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .feature,
-    .download-panel {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--panel);
-      padding: 18px;
-    }
-
-    .feature h3 {
-      margin: 0 0 8px;
-      font-size: 18px;
-    }
-
-    .feature p,
-    .download-panel p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .two {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: 24px;
-      align-items: start;
-    }
-
-    .link-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .link-list a {
-      display: block;
-      padding: 12px 14px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fff;
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    footer {
-      padding: 32px 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .ad-pop {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 20;
-      width: min(360px, calc(100% - 36px));
-      padding: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 8px;
-      color: #fff;
-      background: #0b1220;
-      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.32);
-    }
-
-    .ad-pop h2 {
-      margin: 0 0 8px;
-      font-size: 22px;
-    }
-
-    .ad-pop p {
-      margin: 0 0 14px;
-      color: #dce8f6;
-    }
-
-    .ad-pop-actions {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .ad-pop-close {
-      margin-left: auto;
-      min-width: 44px;
-      min-height: 44px;
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      border-radius: 8px;
-      color: #fff;
-      background: transparent;
-      font: inherit;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .ad-pop[hidden] {
-      display: none;
-    }
-
-    @media (max-width: 840px) {
-      .hero,
-      .two,
-      .grid,
-      .promo {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        min-height: auto;
-        padding: 36px 0 48px;
-      }
-
-      .meta {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <meta name="theme-color" content="#101311">
+  <link rel="icon" href="assets/mycam-logo.png" type="image/png">
+  <link rel="stylesheet" href="assets/site.css?v=20260925">
+  <script src="assets/lucide.min.js" defer></script>
+  <script src="assets/site.js?v=20260925" defer></script>
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "MYCAM",
-    "applicationCategory": "MultimediaApplication",
-    "operatingSystem": "Android",
-    "softwareVersion": "2.28.9",
-    "identifier": "com.destiny.mycam",
-    "description": "MYCAM is an Android virtual camera app for rooted phones with standalone and Legacy LSPosed modes, plus a supported non-root engine powered by the MOCHI helper APK. It supports local media, OBS RTMP streams through MediaMTX, Watch mode, Clone mode, Android ID changer, Hinge Auto companion access, remote controls, rooted phone requests and supported camera applications including WhatsApp and Messenger.",
-    "downloadUrl": "https://github.com/elementtime6969/mycam/releases/latest/download/Mycam-v2.28.9.apk",
-    "installUrl": "https://github.com/elementtime6969/mycam/releases/latest",
-    "softwareRequirements": "Rooted Android phone for standalone and MYCAM Legacy LSPosed modes, or supported non-root Android setup with the MOCHI helper APK",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "author": {
-      "@type": "Organization",
-      "name": "MYCAM"
-    }
-  }
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"MYCAM","applicationCategory":"MultimediaApplication","operatingSystem":"Android","softwareVersion":"2.28.9","identifier":"com.destiny.mycam","description":"Android virtual camera with Standalone, Legacy LSPosed and supported non-root modes powered by MOCHI. Includes local media, remote controls and OBS RTMP workflows.","downloadUrl":"https://github.com/elementtime6969/mycam/releases/latest/download/Mycam-v2.28.9.apk","installUrl":"https://github.com/elementtime6969/mycam/releases/latest","softwareRequirements":"Root for Standalone and Legacy LSPosed modes, or a supported non-root setup with MOCHI","author":{"@type":"Organization","name":"MYCAM"}}
   </script>
 </head>
 <body>
-  <header>
-    <div class="wrap hero">
-      <div>
-        <div class="eyebrow">Android virtual camera</div>
-        <h1>MYCAM Virtual Camera for Android</h1>
-        <p class="lead">Use local media or OBS RTMP streams as your camera source with MYCAM on Android. Choose the standalone engine, MYCAM Legacy LSPosed mode, or the supported non-root engine powered by MOCHI.</p>
-        <button class="button pro-button" id="open-pro" type="button" aria-haspopup="dialog" aria-controls="mycam-pro"><span aria-hidden="true">&#10022;</span> MYCAM PRO <span aria-hidden="true">&#8599;</span></button>
-        <p class="pro-hint">One subscription. Explore all the benefits.</p>
-        <div class="actions">
-          <a class="button primary" href="https://github.com/elementtime6969/mycam/releases/latest/download/Mycam-v2.28.9.apk">Download MYCAM v2.28.9</a>
-          <a class="button secondary" href="https://github.com/elementtime6969/mycam/releases/download/v2.25.7/tools.rar">Download Live RTMP tools</a>
-          <a class="button hinge" href="https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/HingeAuto-v1.3.apk">Download Hinge Auto</a>
-          <a class="button nonroot" href="https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/MOCHI.apk">Download MOCHI helper</a>
-          <a class="button secondary" href="ios-setup.html">iOS Setup</a>
-          <a class="button secondary" href="live-rtmp-setup.html">Live RTMP setup</a>
-          <a class="button secondary" href="https://github.com/elementtime6969/mycam">GitHub repo</a>
-          <a class="button tutorial" href="https://youtu.be/57yzC7uYvX0?is=32Vgl2QqTEK6dMv6" target="_blank" rel="noopener noreferrer">MYCAM standalone tutorial</a>
-          <a class="button tutorial" href="https://youtu.be/dzsUGq8qy1Y?si=q0GkRN_WRSyMR5h4" target="_blank" rel="noopener noreferrer">MYCAM Legacy LSPosed tutorial</a>
-          <a class="button tutorial" href="https://youtu.be/N-sgR6y6h9s?is=lj3b_pDY7KCkOEXu" target="_blank" rel="noopener noreferrer">Non-rooted Android tutorial</a>
-          <a class="button tutorial" href="https://youtu.be/4k45NKvzP4k?is=LY8h0Eux9Xc-1cVY" target="_blank" rel="noopener noreferrer">For OBS LIVE STREAMING TUTORIAL WATCH IT</a>
-          <a class="button telegram" href="https://t.me/+isz4hFM1tgY1NTZk" target="_blank" rel="noopener noreferrer">Join MYCAM on Telegram</a>
-        </div>
-        <div class="meta">
-          <span>Package: <strong>com.destiny.mycam</strong></span>
-          <span>Current version: <strong>2.28.9</strong></span>
-          <span>Root modes: <strong>Standalone and Legacy LSPosed</strong></span>
-          <span>Non-root mode: <strong>MYCAM plus MOCHI helper</strong></span>
-          <span>RTMP tools: <strong>OBS and MediaMTX</strong></span>
-          <span>Clone tools: <strong>Supported social apps</strong></span>
-        </div>
-      </div>
-      <div class="shots" aria-label="MYCAM screenshots">
-        <div class="phone"><img src="assets/mycam-app-remote.jpg" alt="MYCAM app screen with remote controls and Live RTMP option"></div>
-        <div class="phone"><img src="assets/mycam-whatsapp-call.jpg" alt="WhatsApp call using MYCAM remote controls and virtual camera video"></div>
-      </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#" aria-label="MYCAM home"><img src="assets/mycam-logo.png" width="40" height="40" alt=""><span>MYCAM<span class="brand-dot">.</span></span></a>
+      <nav class="desktop-nav" aria-label="Main navigation"><a href="#engines">Engines</a><a href="#windows">Windows Studio <span class="nav-new">NEW</span></a><a href="#tutorials">Tutorials</a></nav>
+      <a class="button small mint" href="#downloads">Get MYCAM <i data-lucide="arrow-down-to-line" aria-hidden="true"></i></a>
+      <button class="icon-button menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation" type="button"><i data-lucide="menu" aria-hidden="true"></i></button>
     </div>
+    <nav id="mobile-nav" aria-label="Mobile navigation" hidden><a href="#engines">Engines</a><a href="#windows">Windows Studio</a><a href="#tutorials">Tutorials</a><a href="#downloads">Downloads</a></nav>
+    <div class="scroll-progress" aria-hidden="true"></div>
   </header>
-
-  <dialog class="pro-dialog" id="mycam-pro" aria-labelledby="pro-title">
-    <div class="pro-dialog-bar">
-      <span class="pro-brand">&#10022; MYCAM PRO</span>
-      <form method="dialog"><button class="pro-close" autofocus>Close <span aria-hidden="true">&#215;</span></button></form>
-    </div>
-    <div class="pro-content">
-      <h2 id="pro-title">More possibilities. One subscription.</h2>
-      <p class="pro-intro">Unlock MYCAM's engines and services on your phone, with tools for your camera, live streams, voice and chats.</p>
-      <ul class="pro-benefits">
-        <li><h3>Every MYCAM engine</h3><p>Access Standalone, Legacy LSPosed and the supported non-root engine with MOCHI. Choose the setup that suits your phone.</p></li>
-        <li><h3>Your photos and videos, live</h3><p>Use your selected images and videos as the camera source in supported apps and video calls.</p></li>
-        <li><h3>Controls at your fingertips</h3><p>Switch media, play or pause, freeze a frame, adjust playback speed and mute audio from the remote. Adjust framing with supported zoom, rotation and size controls.</p></li>
-        <li><h3>OBS streaming and Watch mode</h3><p>Bring an OBS stream into your camera workflow with Live RTMP and MediaMTX, or view your live stream using Watch mode.</p></li>
-        <li><h3>Clone and profile tools</h3><p>Create separate supported app profiles for accounts you own, with Android ID tools for your testing and profile setup.</p></li>
-        <li><h3>Voice Studio</h3><p>Turn text into speech, transform recordings and create voices with MYCAM's voice tools.</p></li>
-        <li><h3>Chat translation</h3><p>Use MYCAM's translation tools to communicate across languages in supported chat apps.</p></li>
-        <li><h3>AI video tools</h3><p>Access MYCAM's AI video tools when available for your app version and account.</p></li>
-        <li><h3>MYCAM shared access</h3><p>Your valid MYCAM subscription also unlocks Hinge Auto on the same phone until the same expiry date. Compatible versions of both apps are required.</p></li>
-      </ul>
-      <div class="pro-plan">
-        <h3>30 days of MYCAM PRO</h3>
-        <p><strong>&pound;10 with Stripe &middot; &pound;16 with Bitcoin &middot; &#8358;19,000 with Flutterwave</strong></p>
-        <p>Choose your payment option inside MYCAM. One payment, with no automatic renewal.</p>
-        <a class="button primary" href="https://github.com/elementtime6969/mycam/releases/latest/download/Mycam-v2.28.9.apk">Download MYCAM</a>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero-copy">
+        <a class="announcement" href="#windows"><span class="status-dot"></span> A bigger stage. Windows Studio is coming. <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+        <h1 id="hero-title">MYCAM<span class="brand-dot">.</span></h1>
+        <p class="hero-tagline">Your camera. Your creative control.</p>
+        <p class="hero-description">Videos, photos and live streams. One creative toolkit for your camera, with a setup that fits your device.</p>
+        <div class="actions hero-actions"><a class="button mint" href="https://github.com/elementtime6969/mycam/releases/latest/download/Mycam-v2.28.9.apk"><i data-lucide="download" aria-hidden="true"></i> Download Android <span class="version">v2.28.9</span></a><a class="button outline" href="#windows"><i data-lucide="monitor" aria-hidden="true"></i> Meet Windows Studio</a></div>
       </div>
-      <p class="pro-note">Features depend on your device, app version and selected engine. Root or the MOCHI helper is required for the relevant camera modes. Voice and AI services have their own availability and usage limits; PRO does not include unlimited generation.</p>
-    </div>
-  </dialog>
-
-  <main>
-    <section class="promo-section">
-      <div class="wrap promo">
-        <div class="promo-copy">
-          <div class="eyebrow">Ready rooted phones</div>
-          <h2>Buy A Full Rooted Phone From Us</h2>
-          <p><strong>Want MYCAM ready without doing the device setup yourself?</strong> Submit a rooted phone request inside MYCAM with your model, country, shipping details and phone photo.</p>
-          <p>We review availability, pricing and shipping, then reply in your private MYCAM order thread.</p>
-          <div class="actions">
-            <a class="button primary" href="https://github.com/elementtime6969/mycam/releases/latest/download/Mycam-v2.28.9.apk">Download MYCAM v2.28.9</a>
-            <a class="button secondary" href="https://github.com/elementtime6969/mycam/issues">Ask before ordering</a>
-          </div>
-        </div>
-        <figure class="promo-image">
-          <img src="assets/rooted-phone-ad.png" alt="Ready rooted phone setup for MYCAM">
-        </figure>
-      </div>
+      <div class="hero-stage"><img class="hero-product" src="assets/mycam-pc-studio.png" width="1440" height="900" alt="MYCAM PC Studio preview showing sources, a 3D character and picture, voice and avatar controls" fetchpriority="high"><div class="stage-caption"><span>WINDOWS STUDIO / DEVELOPMENT PREVIEW</span><a href="#windows" aria-label="Explore Windows Studio"><i data-lucide="arrow-down" aria-hidden="true"></i></a></div></div>
     </section>
+    <div class="platform-strip"><div class="wrap platforms">
+      <a href="#engines"><i data-lucide="smartphone" aria-hidden="true"></i><span><strong>Android</strong><small>Three engines. One app.</small></span><span class="platform-status">Available</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+      <a href="ios-setup.html"><i data-lucide="tablet-smartphone" aria-hidden="true"></i><span><strong>iPhone</strong><small>Jailbreak + Sileo</small></span><span class="platform-status">Setup guide</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+      <a href="#windows"><i data-lucide="monitor" aria-hidden="true"></i><span><strong>Windows</strong><small>MYCAM PC Studio</small></span><span class="platform-status soon">Coming soon</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+    </div></div>
 
-    <section>
-      <div class="wrap two">
-        <div class="download-panel">
-          <h2>Hinge Auto</h2>
-          <p>Hinge Auto is available as a companion app for MYCAM users. If you already have an active MYCAM subscription on your phone, you can use Hinge Auto for free with the same subscription access.</p>
-          <div class="link-list">
-            <a href="https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/HingeAuto-v1.3.apk">Download Hinge Auto v1.3 APK</a>
-          </div>
-        </div>
-        <div class="download-panel">
-          <h2>Subscriber Access</h2>
-          <p>Install the current MYCAM build first, then install Hinge Auto on the same phone. MYCAM subscription access is checked separately from app installation.</p>
-          <div class="link-list">
-            <a href="https://github.com/elementtime6969/mycam/releases/latest/download/Mycam-v2.28.9.apk">Download MYCAM v2.28.9 APK</a>
-          </div>
-        </div>
+    <section id="engines" class="section light-section"><div class="wrap">
+      <div class="section-heading reveal"><div><p class="eyebrow">01 / ANDROID ENGINES</p><h2>Your phone.<br>Your way in.</h2></div><p>Rooted or non-rooted, start with the engine that matches your setup. All three are inside MYCAM.</p></div>
+      <div class="engine-tabs" role="tablist" aria-label="Android engine">
+        <button type="button" role="tab" id="tab-standalone" aria-selected="true" aria-controls="engine-panel" data-engine="standalone"><span>01</span> Standalone <i data-lucide="zap" aria-hidden="true"></i></button>
+        <button type="button" role="tab" id="tab-nonroot" aria-selected="false" aria-controls="engine-panel" tabindex="-1" data-engine="nonroot"><span>02</span> Non-root <i data-lucide="unlock-keyhole" aria-hidden="true"></i></button>
+        <button type="button" role="tab" id="tab-legacy" aria-selected="false" aria-controls="engine-panel" tabindex="-1" data-engine="legacy"><span>03</span> Legacy <i data-lucide="layers" aria-hidden="true"></i></button>
       </div>
-    </section>
+      <div class="engine-showcase" id="engine-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-standalone">
+        <div class="engine-copy"><span class="tag" id="engine-requirement">ROOTED ANDROID</span><h3 id="engine-title">Standalone.<br>Direct by design.</h3><p id="engine-description">Prepare your target app directly inside MYCAM. The standalone engine works without an LSPosed setup on supported rooted phones.</p><ol class="setup-steps" id="engine-steps"><li>Install the latest MYCAM APK.</li><li>Select the standalone engine.</li><li>Choose and prepare your target app.</li></ol><div class="actions"><a class="button ink" id="engine-download" href="https://github.com/elementtime6969/mycam/releases/latest/download/Mycam-v2.28.9.apk">Download MYCAM <i data-lucide="download" aria-hidden="true"></i></a><a class="text-link" id="engine-youtube" href="https://youtu.be/57yzC7uYvX0?is=32Vgl2QqTEK6dMv6" target="_blank" rel="noopener noreferrer">Open YouTube <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div></div>
+        <div class="engine-media"><div class="media-label"><span id="engine-demo-label">STANDALONE / DEMO &amp; SETUP</span><span><i data-lucide="youtube" aria-hidden="true"></i> WATCH</span></div><div class="video-player" id="engine-player" data-video="57yzC7uYvX0" data-title="MYCAM standalone tutorial"><img src="https://i.ytimg.com/vi/57yzC7uYvX0/hqdefault.jpg" alt="MYCAM standalone video tutorial thumbnail" loading="lazy" width="480" height="360"><button class="video-play" type="button" aria-label="Play MYCAM standalone tutorial"><span class="play-circle"><i data-lucide="play" aria-hidden="true"></i></span><span>Watch the engine in action</span></button></div><p class="media-footnote">Playback uses YouTube. Device and target-app compatibility varies.</p></div>
+      </div>
+      <noscript><p>Other guides: <a href="https://youtu.be/N-sgR6y6h9s?is=lj3b_pDY7KCkOEXu">Non-root with MOCHI</a> &middot; <a href="https://youtu.be/dzsUGq8qy1Y?si=q0GkRN_WRSyMR5h4">Legacy LSPosed</a>. <a href="https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/MOCHI.apk">Download MOCHI</a> for the non-root engine.</p></noscript>
+    </div></section>
 
-    <section>
-      <div class="wrap">
-        <h2>Features</h2>
-        <div class="grid">
-          <div class="feature">
-            <h3>Virtual camera source</h3>
-            <p>Use selected local media as a camera feed in supported Android camera applications.</p>
-          </div>
-          <div class="feature">
-            <h3>Live RTMP from OBS</h3>
-            <p>Stream from OBS to the local MediaMTX server and activate Live RTMP inside MYCAM.</p>
-          </div>
-          <div class="feature">
-            <h3>Watch mode</h3>
-            <p>Keep the selected source ready for the target application when its camera opens.</p>
-          </div>
-          <div class="feature">
-            <h3>Remote controls</h3>
-            <p>Use MYCAM controls to manage the virtual camera workflow while the target app is active.</p>
-          </div>
-          <div class="feature">
-            <h3>Clone mode</h3>
-            <p>Create separated supported social app profiles for accounts you own, with MYCAM controls available per target.</p>
-          </div>
-          <div class="feature">
-            <h3>Android ID changer</h3>
-            <p>Change Android ID profiles for testing, app-profile isolation, and supported cloned app environments.</p>
-          </div>
-          <div class="feature">
-            <h3>App support</h3>
-            <p>Works with WhatsApp, Messenger and supported applications that open the Android camera.</p>
-          </div>
-          <div class="feature">
-            <h3>Standalone engine</h3>
-            <p>Install MYCAM on a rooted Android phone, then select and prepare the target app directly inside MYCAM.</p>
-          </div>
-          <div class="feature">
-            <h3>Non-root engine</h3>
-            <p>Install MYCAM with the required MOCHI helper APK for supported non-root Android setups.</p>
-          </div>
-          <div class="feature">
-            <h3>MYCAM Legacy LSPosed</h3>
-            <p>Use the LSPosed mode inside MYCAM Legacy when your setup depends on LSPosed module activation.</p>
-          </div>
-        </div>
+    <section class="section control-section" id="creative-tools"><div class="wrap control-layout">
+      <div class="control-copy reveal"><p class="eyebrow">02 / CREATIVE CONTROL</p><h2>Make the feed<br>your own.</h2><p class="section-intro">Switch the source. Set the framing. Keep your controls close, even when your camera app is open.</p>
+        <div class="feature-line"><i data-lucide="sliders-horizontal" aria-hidden="true"></i><div><h3>A remote that stays with you</h3><p>Play, pause, switch clips, rotate and adjust playback with supported remote controls.</p></div></div>
+        <div class="feature-line"><i data-lucide="radio" aria-hidden="true"></i><div><h3>From OBS to your camera</h3><p>Bring your stream into MYCAM with Live RTMP, MediaMTX and the downloadable tools.</p><a class="text-link" href="live-rtmp-setup.html">Explore Live RTMP <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div></div>
+        <div class="feature-line"><i data-lucide="audio-lines" aria-hidden="true"></i><div><h3>More than a video source</h3><p>Discover Voice Studio, supported chat translation, and separate app profiles for accounts you own. Availability and limits depend on your version and plan.</p></div></div>
       </div>
-    </section>
+      <div class="phone-gallery reveal"><figure><img src="assets/mycam-app-remote.jpg" alt="MYCAM Android remote with playback and source controls" width="1080" height="2400" loading="lazy"><figcaption>IN MYCAM</figcaption></figure><figure><img src="assets/mycam-whatsapp-call.jpg" alt="MYCAM remote visible during a WhatsApp video call" width="1080" height="2400" loading="lazy"><figcaption>IN YOUR WORKFLOW</figcaption></figure></div>
+    </div></section>
 
-    <section>
-      <div class="wrap two">
-        <div class="download-panel">
-          <h2>Download</h2>
-          <p>Get the current official APK and read the setup notes before installing.</p>
-          <div class="link-list">
-            <a href="https://github.com/elementtime6969/mycam/releases/latest/download/Mycam-v2.28.9.apk">Download MYCAM v2.28.9 APK</a>
-            <a href="https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/HingeAuto-v1.3.apk">Download Hinge Auto v1.3 APK</a>
-            <a href="https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/MOCHI.apk">Download MOCHI helper for non-root engine</a>
-            <a href="https://github.com/elementtime6969/mycam/releases/download/v2.25.7/tools.rar">Download Live RTMP tools</a>
-            <a href="https://github.com/elementtime6969/mycam/releases/latest">Latest GitHub release</a>
-            <a href="https://github.com/elementtime6969/mycam/blob/main/TERMS.md">Terms of Use</a>
-          </div>
-        </div>
-        <div class="download-panel">
-          <h2>Setup Guides</h2>
-          <p>Pick the tutorial for your selected MYCAM mode. Use the Live RTMP guide if you want OBS streaming.</p>
-          <div class="link-list">
-            <a href="https://youtu.be/57yzC7uYvX0?is=32Vgl2QqTEK6dMv6" target="_blank" rel="noopener noreferrer">MYCAM standalone tutorial</a>
-            <a href="https://youtu.be/dzsUGq8qy1Y?si=q0GkRN_WRSyMR5h4" target="_blank" rel="noopener noreferrer">MYCAM Legacy LSPosed tutorial</a>
-            <a href="https://youtu.be/N-sgR6y6h9s?is=lj3b_pDY7KCkOEXu" target="_blank" rel="noopener noreferrer">Non-rooted Android tutorial</a>
-            <a href="https://youtu.be/4k45NKvzP4k?is=LY8h0Eux9Xc-1cVY" target="_blank" rel="noopener noreferrer">For OBS LIVE STREAMING TUTORIAL WATCH IT</a>
-            <a href="live-rtmp-setup.html">OBS and Live RTMP setup</a>
-          </div>
-        </div>
+    <section id="windows" class="section windows-section"><div class="wrap">
+      <div class="section-heading reveal"><div><p class="eyebrow">03 / A NEW WORKSPACE</p><h2>MYCAM<br><span class="accent">PC Studio.</span></h2></div><div><span class="tag dark-tag">WINDOWS / COMING SOON</span><p>A bigger canvas for your ideas. A dedicated desktop workspace for media, virtual-camera output, voice and 3D creativity.</p><a class="button youtube" href="https://youtu.be/7yKQAaP4SZ0?si=lLMXI89LKjY_VblE" target="_blank" rel="noopener noreferrer"><i data-lucide="youtube" aria-hidden="true"></i> Watch the Windows tutorial</a></div></div>
+      <figure class="studio-preview reveal"><img src="assets/mycam-pc-studio.png" alt="MYCAM PC Studio development preview with source playlist, 3D character preview and avatar controls" width="1440" height="900" loading="lazy"><figcaption><span>MYCAM PC STUDIO</span><span>Development preview. Interface may change.</span></figcaption></figure>
+      <div class="studio-features"><div><span>01</span><h3>One creative workspace</h3><p>Manage video, photos, webcam sources and playback in a desktop-sized studio.</p></div><div><span>02</span><h3>3D, with room to explore</h3><p>Photo animation, character controls and expressions, with supported GPU acceleration.</p></div><div><span>03</span><h3>Built for your workflow</h3><p>Virtual-camera output for compatible desktop apps and browsers, plus remote controls.</p></div></div>
+      <div class="windows-watch reveal"><div><h3>See the Windows version.</h3><p>Your first look at the desktop workflow.</p><p class="muted">The Windows installer is not publicly released yet. Windows 11 x64 is required; local neural portrait processing needs supported NVIDIA CUDA hardware.</p></div><div class="video-player" data-video="7yKQAaP4SZ0" data-title="MYCAM Windows PC Studio tutorial"><img src="https://i.ytimg.com/vi/7yKQAaP4SZ0/hqdefault.jpg" alt="MYCAM Windows tutorial thumbnail" width="480" height="360" loading="lazy"><button class="video-play" type="button" aria-label="Play MYCAM Windows tutorial"><span class="play-circle"><i data-lucide="play" aria-hidden="true"></i></span><span>Windows tutorial</span></button></div></div>
+    </div></section>
+
+    <section id="tutorials" class="section light-section"><div class="wrap">
+      <div class="section-heading reveal"><div><p class="eyebrow">04 / WATCH &amp; GET STARTED</p><h2>Less guessing.<br>More creating.</h2></div><p>Real walkthroughs for every setup. Choose your platform or engine and follow along.</p></div>
+      <div class="tutorial-grid">
+        <a class="tutorial-card" href="https://youtu.be/7yKQAaP4SZ0?si=lLMXI89LKjY_VblE" data-tutorial="windows"><div class="tutorial-image"><img src="https://i.ytimg.com/vi/7yKQAaP4SZ0/hqdefault.jpg" alt="" width="480" height="360" loading="lazy"><span class="tutorial-play"><i data-lucide="play" aria-hidden="true"></i></span><span class="image-tag">NEW / WINDOWS</span></div><div class="tutorial-caption"><span>PC STUDIO</span><h3>MYCAM Windows tutorial</h3><i data-lucide="arrow-up-right" aria-hidden="true"></i></div></a>
+        <a class="tutorial-card" href="https://youtu.be/57yzC7uYvX0?is=32Vgl2QqTEK6dMv6" data-tutorial="standalone"><div class="tutorial-image"><img src="https://i.ytimg.com/vi/57yzC7uYvX0/hqdefault.jpg" alt="" width="480" height="360" loading="lazy"><span class="tutorial-play"><i data-lucide="play" aria-hidden="true"></i></span></div><div class="tutorial-caption"><span>ANDROID / ROOTED</span><h3>Standalone engine</h3><i data-lucide="arrow-up-right" aria-hidden="true"></i></div></a>
+        <a class="tutorial-card" href="https://youtu.be/N-sgR6y6h9s?is=lj3b_pDY7KCkOEXu" data-tutorial="nonroot"><div class="tutorial-image"><img src="https://i.ytimg.com/vi/N-sgR6y6h9s/hqdefault.jpg" alt="" width="480" height="360" loading="lazy"><span class="tutorial-play"><i data-lucide="play" aria-hidden="true"></i></span></div><div class="tutorial-caption"><span>ANDROID / NO ROOT</span><h3>Non-root engine + MOCHI</h3><i data-lucide="arrow-up-right" aria-hidden="true"></i></div></a>
+        <a class="tutorial-card" href="https://youtu.be/dzsUGq8qy1Y?si=q0GkRN_WRSyMR5h4" data-tutorial="legacy"><div class="tutorial-image"><img src="https://i.ytimg.com/vi/dzsUGq8qy1Y/hqdefault.jpg" alt="" width="480" height="360" loading="lazy"><span class="tutorial-play"><i data-lucide="play" aria-hidden="true"></i></span></div><div class="tutorial-caption"><span>ANDROID / LSPOSED</span><h3>MYCAM Legacy</h3><i data-lucide="arrow-up-right" aria-hidden="true"></i></div></a>
+        <a class="tutorial-card" href="https://youtu.be/4k45NKvzP4k?is=LY8h0Eux9Xc-1cVY" data-tutorial="obs"><div class="tutorial-image"><img src="https://i.ytimg.com/vi/4k45NKvzP4k/hqdefault.jpg" alt="" width="480" height="360" loading="lazy"><span class="tutorial-play"><i data-lucide="play" aria-hidden="true"></i></span></div><div class="tutorial-caption"><span>LIVE RTMP</span><h3>OBS live streaming</h3><i data-lucide="arrow-up-right" aria-hidden="true"></i></div></a>
+        <a class="tutorial-card" href="https://youtu.be/JaYVvwRQ4vU?is=_dEw0d2QL0_TNPTS" data-tutorial="ios"><div class="tutorial-image"><img src="https://i.ytimg.com/vi/JaYVvwRQ4vU/hqdefault.jpg" alt="" width="480" height="360" loading="lazy"><span class="tutorial-play"><i data-lucide="play" aria-hidden="true"></i></span></div><div class="tutorial-caption"><span>IPHONE / SILEO</span><h3>MYCAM iOS setup</h3><i data-lucide="arrow-up-right" aria-hidden="true"></i></div></a>
       </div>
-    </section>
+    </div></section>
+
+    <section class="section pro-section" id="pro"><div class="wrap pro-layout reveal"><div><p class="eyebrow">MYCAM PRO</p><h2>One subscription.<br>More possibilities.</h2><p>Explore the engines and creative tools on your phone. Your active MYCAM subscription also unlocks Hinge Auto on the same phone.</p></div><div class="pro-actions"><button class="button mint" type="button" id="open-pro" aria-haspopup="dialog" aria-controls="mycam-pro">Explore PRO <i data-lucide="arrow-up-right" aria-hidden="true"></i></button><p>Plans and payment options inside MYCAM.<br>Feature and service limits apply.</p></div></div></section>
+
+    <section id="downloads" class="section downloads-section"><div class="wrap">
+      <div class="section-heading reveal"><div><p class="eyebrow">05 / GET MYCAM</p><h2>Your next setup<br>starts here.</h2></div><p>Official downloads. Choose your platform, then pick up the helpers your workflow needs.</p></div>
+      <div class="download-platforms">
+        <article class="platform-download"><i data-lucide="smartphone" aria-hidden="true"></i><h3>Android</h3><p>MYCAM v2.28.9<br>Standalone, Legacy and non-root engines.</p><a class="button mint" href="https://github.com/elementtime6969/mycam/releases/latest/download/Mycam-v2.28.9.apk">Download APK <i data-lucide="download" aria-hidden="true"></i></a><small>Non-root setups also need MOCHI below.</small></article>
+        <article class="platform-download"><i data-lucide="tablet-smartphone" aria-hidden="true"></i><h3>iPhone</h3><p>MYCAM iOS<br>For supported jailbroken devices.</p><a class="button outline" href="ios-setup.html">iOS setup guide <i data-lucide="arrow-up-right" aria-hidden="true"></i></a><small>Sileo, ElleKit and the MYCAM repository.</small></article>
+        <article class="platform-download"><i data-lucide="monitor" aria-hidden="true"></i><h3>Windows</h3><p>MYCAM PC Studio<br>The desktop version is coming soon.</p><a class="button outline" href="https://youtu.be/7yKQAaP4SZ0?si=lLMXI89LKjY_VblE" target="_blank" rel="noopener noreferrer">Watch tutorial <i data-lucide="play" aria-hidden="true"></i></a><small>Installer not yet available for download.</small></article>
+      </div>
+      <div class="download-tools">
+        <a href="https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/MOCHI.apk"><i data-lucide="puzzle" aria-hidden="true"></i><span><strong>MOCHI helper</strong><small>Required for the supported non-root engine</small></span><i data-lucide="download" aria-hidden="true"></i></a>
+        <a href="https://github.com/elementtime6969/mycam/releases/download/v2.25.7/tools.rar"><i data-lucide="radio" aria-hidden="true"></i><span><strong>Live RTMP tools</strong><small>OBS + MediaMTX workflow / tools.rar</small></span><i data-lucide="download" aria-hidden="true"></i></a>
+        <a href="https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/HingeAuto-v1.3.apk"><i data-lucide="layers-2" aria-hidden="true"></i><span><strong>Hinge Auto v1.3</strong><small>Included with an active MYCAM subscription on the same phone</small></span><i data-lucide="download" aria-hidden="true"></i></a>
+      </div>
+      <p class="download-note">Compatibility depends on device, OS, engine and target app. Use only media and likenesses you have permission to use. Never use MYCAM to bypass age, identity or liveness verification.</p>
+    </div></section>
+
+    <section class="section light-section"><div class="wrap phone-order reveal"><img src="assets/rooted-phone-ad.png" width="1774" height="887" loading="lazy" alt="MYCAM ready rooted phone offer"><div><p class="eyebrow">READY ROOTED PHONES</p><h2>Want the phone<br>ready to go?</h2><p>Request a full rooted phone inside MYCAM. Tell us your preferred model, country and shipping details. We will confirm availability and pricing in your private order thread.</p><a class="button ink" href="https://github.com/elementtime6969/mycam/releases/latest/download/Mycam-v2.28.9.apk">Get MYCAM to enquire <i data-lucide="arrow-up-right" aria-hidden="true"></i></a><a class="text-link" href="https://github.com/elementtime6969/mycam/issues">Ask before ordering</a></div></div></section>
   </main>
+  <footer><div class="wrap"><div class="footer-top"><a class="brand" href="#"><img src="assets/mycam-logo.png" width="40" height="40" alt=""><span>MYCAM<span class="brand-dot">.</span></span></a><p>Your camera. Your creative control.</p><a class="text-link" href="https://t.me/+isz4hFM1tgY1NTZk" target="_blank" rel="noopener noreferrer">Join us on Telegram <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div><div class="footer-bottom"><p>Official downloads and setup guides. MYCAM application source code is not published.</p><nav aria-label="Footer navigation"><a href="https://github.com/elementtime6969/mycam">GitHub repo</a><a href="https://github.com/elementtime6969/mycam/releases/latest">Latest release</a><a href="https://github.com/elementtime6969/mycam/blob/main/TERMS.md">Terms of Use</a><a href="live-rtmp-setup.html">RTMP guide</a></nav></div></div></footer>
 
-  <aside class="ad-pop" id="nonroot-ad" aria-label="MYCAM non-rooted Android notice">
-    <h2>Use MYCAM Without Rooting</h2>
-    <p>MYCAM now includes a non-rooted Android setup option powered by the MOCHI helper APK. Download MYCAM and MOCHI, then watch the new tutorial before installing.</p>
-    <div class="ad-pop-actions">
-      <a class="button nonroot" href="https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/MOCHI.apk">Download MOCHI</a>
-      <a class="button tutorial" href="https://youtu.be/N-sgR6y6h9s?is=lj3b_pDY7KCkOEXu" target="_blank" rel="noopener noreferrer">Watch tutorial</a>
-      <button class="ad-pop-close" type="button" aria-label="Close notice">X</button>
-    </div>
-  </aside>
-
-  <footer>
-    <div class="wrap">
-      <p>MYCAM source code is not published. This site provides official downloads, setup documentation and support links.</p>
-    </div>
-  </footer>
-  <script>
-    const proDialog = document.getElementById("mycam-pro");
-    const proButton = document.getElementById("open-pro");
-
-    proButton.addEventListener("click", () => {
-      proDialog.showModal();
-      document.body.classList.add("pro-open");
-    });
-    proDialog.addEventListener("close", () => {
-      document.body.classList.remove("pro-open");
-      proButton.focus();
-    });
-
-    const nonrootAd = document.getElementById("nonroot-ad");
-    const nonrootClose = document.querySelector(".ad-pop-close");
-
-    if (nonrootClose && nonrootAd) {
-      nonrootClose.addEventListener("click", () => {
-        nonrootAd.hidden = true;
-      });
-    }
-  </script>
+  <dialog id="tutorial-dialog" class="tutorial-dialog" aria-labelledby="tutorial-title"><div class="dialog-bar"><h2 id="tutorial-title">MYCAM tutorial</h2><button class="icon-button" type="button" data-close-dialog aria-label="Close tutorial"><i data-lucide="x" aria-hidden="true"></i></button></div><div id="tutorial-mount"></div><p class="dialog-footnote">Player not loading? <a id="tutorial-external" href="https://youtu.be/7yKQAaP4SZ0?si=lLMXI89LKjY_VblE" target="_blank" rel="noopener noreferrer">Watch on YouTube <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></p></dialog>
+  <dialog id="mycam-pro" class="pro-dialog" aria-labelledby="pro-title"><div class="dialog-bar"><span class="eyebrow">MYCAM PRO</span><button class="icon-button" type="button" data-close-dialog aria-label="Close PRO details"><i data-lucide="x" aria-hidden="true"></i></button></div><div class="pro-content"><h2 id="pro-title">More possibilities.<br>One subscription.</h2><p>Phone camera engines, live streams, voice and chat tools in one MYCAM plan.</p><ul class="pro-benefits"><li><h3>Every Android engine</h3><p>Standalone, Legacy LSPosed and supported non-root setups with MOCHI.</p></li><li><h3>Media + remote controls</h3><p>Images and videos, playback controls, supported framing and rotation tools.</p></li><li><h3>OBS streaming + Watch mode</h3><p>Bring a live stream into your workflow through RTMP and MediaMTX.</p></li><li><h3>Clone + profile tools</h3><p>Separate supported app profiles and Android ID tools for accounts you own and testing.</p></li><li><h3>Voice Studio + translation</h3><p>Text-to-speech, voice transformation and supported chat translation.</p></li><li><h3>AI video tools</h3><p>Available according to your app version, account and service limits.</p></li><li><h3>Hinge Auto access</h3><p>Use the compatible companion app on the same phone until your MYCAM subscription expires.</p></li></ul><div class="pro-plan"><h3>30 days of MYCAM PRO</h3><p>&pound;10 with Stripe &middot; &pound;16 with Bitcoin &middot; &#8358;19,000 with Flutterwave</p><p>Choose and confirm your payment option inside MYCAM. No automatic renewal.</p><a class="button mint" href="https://github.com/elementtime6969/mycam/releases/latest/download/Mycam-v2.28.9.apk">Download MYCAM <i data-lucide="download" aria-hidden="true"></i></a></div><p class="muted">Features depend on device, version and engine. Voice and AI services have separate availability and usage limits; PRO does not include unlimited generation.</p></div></dialog>
+  <aside id="nonroot-notice" class="nonroot-notice" aria-label="Non-root Android setup" hidden><button class="icon-button" type="button" id="close-notice" aria-label="Dismiss non-root notice"><i data-lucide="x" aria-hidden="true"></i></button><span class="eyebrow">NO ROOT? NO PROBLEM.</span><h2>There is a setup for that.</h2><p>Use MYCAM without rooting on supported phones, with the MOCHI helper.</p><a class="text-link" href="#engines" id="notice-engine">Explore non-root <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></aside>
 </body>
 </html>
