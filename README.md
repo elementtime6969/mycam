@@ -1,6 +1,6 @@
 # MYCAM
 
-Official download and support page for MYCAM, an Android virtual camera tool with standalone, Legacy LSPosed and supported non-root engine modes.
+Official downloads and support for MYCAM on Android, Windows PC Studio and supported jailbroken iPhones.
 
 By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 
@@ -11,6 +11,21 @@ By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 Non-root engine users must also install the third-party helper that powers the non-root setup:
 
 [Download MOCHI helper](https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/MOCHI.apk)
+
+## Windows PC Studio
+
+**[Download MYCAM PC Studio v1.0.0 for Windows](https://github.com/elementtime6969/mycam/releases/download/pc-v1.0.0/MYCAM-PC-Setup-1.0.0-x64.exe)**
+
+Run this single setup `.exe`. After you accept the terms, it automatically downloads and SHA-256-verifies the remaining components, installs the camera interfaces and creates Start menu and desktop shortcuts. Do not download or unpack the component ZIP files yourself.
+
+- Windows 11 x64, administrator access and internet required. Allow 12 GB free during installation.
+- Local neural portrait processing requires supported NVIDIA CUDA hardware.
+- Activate with a valid MYCAM key or purchase access inside the app. Feature and voice-account limits still apply.
+- This release is not Authenticode publisher-signed; Windows may show an unknown-publisher warning. Verify the official release and checksums before installing.
+
+[Windows tutorial](https://youtu.be/7yKQAaP4SZ0?si=lLMXI89LKjY_VblE) · [Windows release and SHA-256 checksums](https://github.com/elementtime6969/mycam/releases/tag/pc-v1.0.0)
+
+The application source code and signing keys are not included. Use only authorized media; never use MYCAM to bypass age, identity or liveness verification.
 
 ## Hinge Auto
 
