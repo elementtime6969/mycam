@@ -6,7 +6,7 @@ By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 
 ## Download
 
-[Download MYCAM v2.29.12](https://github.com/elementtime6969/mycam/releases/latest/download/Mycam-v2.29.12.apk)
+[Download MYCAM v2.29.13](https://github.com/elementtime6969/mycam/releases/latest/download/Mycam-v2.29.13.apk)
 
 Non-root engine users must also install the third-party helper that powers the non-root setup:
 
@@ -99,11 +99,11 @@ MYCAM can hook the target app camera during a live call or camera session and sw
 | --- | --- |
 | App | MYCAM |
 | Package | `com.destiny.mycam` |
-| Version | `2.29.12` |
-| Version code | `77` |
-| APK file | `Mycam-v2.29.12.apk` release asset |
-| APK size | `151,889,728` bytes |
-| Published | `2026-09-28` |
+| Version | `2.29.13` |
+| Version code | `78` |
+| APK file | `Mycam-v2.29.13.apk` release asset |
+| APK size | `151,906,344` bytes |
+| Published | `2026-09-30` |
 
 ## Requirements
 
