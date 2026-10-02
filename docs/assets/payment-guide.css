@@ -1,0 +1,10 @@
+.payment-guide{box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;margin:32px auto;padding:clamp(24px,4vw,48px);border:2px solid #b5f5cf;border-radius:24px;background:#192b21;color:#f2f5f2}
+.payment-guide__copy{flex:1 1 280px;min-width:0}
+.payment-guide h2{margin:0 0 12px;font-size:clamp(32px,5vw,56px);line-height:1.1;font-weight:850;letter-spacing:0}
+.payment-guide p{margin:0;color:#dce9df;font-size:clamp(17px,2vw,21px);line-height:1.5}
+.payment-guide__actions{display:flex;flex-direction:column;gap:14px;max-width:100%;align-items:stretch}
+.payment-guide a{display:block;padding:18px 26px;border-radius:12px;background:#b5f5cf;color:#101311;text-decoration:none;font-size:clamp(20px,2.5vw,26px);font-weight:800;text-align:center;line-height:1.35}
+.payment-guide a:hover{background:#d5ffe5}
+.payment-guide select{max-width:100%;padding:10px 12px;border:1px solid #8baf98;border-radius:8px;background:#192b21;color:#f2f5f2;font:inherit}
+.payment-guide :is(a,select):focus-visible{outline:3px solid #65b8ff;outline-offset:5px}
+@media(max-width:500px){.payment-guide__actions{width:100%}.payment-guide__copy{flex-basis:100%}}
