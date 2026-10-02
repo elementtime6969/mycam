@@ -7,4 +7,10 @@
 .payment-guide a:hover{background:#d5ffe5}
 .payment-guide select{max-width:100%;padding:10px 12px;border:1px solid #8baf98;border-radius:8px;background:#192b21;color:#f2f5f2;font:inherit}
 .payment-guide :is(a,select):focus-visible{outline:3px solid #65b8ff;outline-offset:5px}
+.payment-guide--hero{width:100%;max-width:360px;margin:0;padding:20px;gap:16px;text-align:start}
+.payment-guide--hero h2{font-size:32px}
+.payment-guide--hero p{font-size:16px}
+.payment-guide--hero .payment-guide__copy{flex-basis:100%}
+.payment-guide--hero .payment-guide__actions{width:100%}
+.payment-guide--hero a{padding:14px 18px;font-size:20px}
 @media(max-width:500px){.payment-guide__actions{width:100%}.payment-guide__copy{flex-basis:100%}}
