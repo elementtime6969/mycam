@@ -1,5 +1,13 @@
 (() => {
   'use strict';
+  const videos = {
+    en: 'A-nVZqbEzdc',
+    fr: 'B3G80XloARw',
+    es: 'WnyNgGWxoGI',
+    hi: 'HB3ZVIAa10I',
+    ru: 'K9ltlWo3M9o',
+    zh: 'o0ih62T4tmM'
+  };
   const messages = {
     en: ['How to pay', 'Watch the crypto payment tutorial on YouTube.', 'Watch on YouTube', 'Tutorial link language'],
     es: ['Cómo pagar', 'Mira el tutorial de pago con criptomonedas en YouTube.', 'Ver en YouTube', 'Idioma del enlace al tutorial'],
@@ -15,6 +23,7 @@
     for (const panel of panels) {
       panel.lang = code;
       panel.dir = code === 'ar' ? 'rtl' : 'ltr';
+      panel.querySelector('[data-guide-link]').href = `https://www.youtube.com/shorts/${videos[code] || videos.en}`;
       ['title', 'description', 'link'].forEach((key, index) => {
         panel.querySelector(`[data-guide-${key}]`).textContent = messages[code][index];
       });
@@ -23,7 +32,7 @@
       select.setAttribute('aria-label', messages[code][3]);
     }
   }
-  const preferred = (navigator.languages || [navigator.language]).map(code => code.split('-')[0]).find(code => Object.hasOwn(messages, code));
+  const preferred = (navigator.languages || [navigator.language]).map(code => code.toLowerCase().split(/[-_]/)[0]).find(code => Object.hasOwn(messages, code));
   render(preferred || 'en');
   for (const panel of panels) panel.querySelector('select').addEventListener('change', event => render(event.target.value));
 })();
