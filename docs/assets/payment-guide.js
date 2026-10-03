@@ -18,8 +18,18 @@
     ar: ['كيفية الدفع', 'شاهد شرح الدفع بالعملات المشفرة على YouTube.', 'شاهد على YouTube', 'لغة رابط الشرح']
   };
   const panels = [...document.querySelectorAll('[data-payment-guide]')];
+  const storageKey = 'mycam-payment-guide-language';
+  const normalize = language => String(language || '').toLowerCase().split(/[-_]/)[0];
+  const supported = language => Object.prototype.hasOwnProperty.call(messages, language);
+  function savedLanguage() {
+    try {
+      const code = normalize(localStorage.getItem(storageKey));
+      return supported(code) ? code : null;
+    } catch { return null; }
+  }
   function render(language) {
-    const code = Object.hasOwn(messages, language) ? language : 'en';
+    const normalized = normalize(language);
+    const code = supported(normalized) ? normalized : 'en';
     for (const panel of panels) {
       panel.lang = code;
       panel.dir = code === 'ar' ? 'rtl' : 'ltr';
@@ -32,7 +42,18 @@
       select.setAttribute('aria-label', messages[code][3]);
     }
   }
-  const preferred = (navigator.languages || [navigator.language]).map(code => code.toLowerCase().split(/[-_]/)[0]).find(code => Object.hasOwn(messages, code));
-  render(preferred || 'en');
-  for (const panel of panels) panel.querySelector('select').addEventListener('change', event => render(event.target.value));
+  const preferred = (navigator.languages || [navigator.language]).map(normalize).find(supported);
+  render(savedLanguage() || preferred || 'en');
+  for (const panel of panels) {
+    const select = panel.querySelector('select');
+    const applySelection = () => {
+      const code = normalize(select.value);
+      render(code);
+      try { localStorage.setItem(storageKey, code); } catch { /* Storage may be disabled. */ }
+    };
+    select.addEventListener('input', applySelection);
+    select.addEventListener('change', applySelection);
+    panel.querySelector('[data-guide-link]').addEventListener('click', applySelection);
+  }
+  window.addEventListener('pageshow', () => render(savedLanguage() || panels[0]?.querySelector('select').value || preferred || 'en'));
 })();
