@@ -12,14 +12,14 @@
   "companionApps": [
     {
       "name": "A1 assistant",
-      "versionName": "1.7.4",
-      "versionCode": 23,
-      "apkFile": "downloads/A1-assistant-v1.7.4.apk",
-      "downloadUrl": "https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/A1-assistant-v1.7.4.apk",
-      "sizeBytes": 3164823,
+      "versionName": "1.7.6",
+      "versionCode": 25,
+      "apkFile": "downloads/A1-assistant-v1.7.6.apk",
+      "downloadUrl": "https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/A1-assistant-v1.7.6.apk",
+      "sizeBytes": 3164827,
       "access": "Included with an active MYCAM subscription on the same phone; shared access can also be purchased inside A1 assistant",
       "packageName": "com.destiny.a1assistant",
-      "sha256": "5832a81daa6caf01d9e9c08e0c23006e5c623cb1b5243b577704db01b2f0db22",
+      "sha256": "351d4a07aa722430e901d04df6092a6c4d13969fedb9623a9eb620f6f325fe94",
       "publishedAt": "2026-10-10"
     }
   ]
