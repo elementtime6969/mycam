@@ -2,11 +2,13 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.7.0/firebas
 import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword,
   sendEmailVerification, sendPasswordResetEmail, signOut, reload } from 'https://www.gstatic.com/firebasejs/11.7.0/firebase-auth.js';
 
-// Firebase browser configuration is public. Payment credentials remain server-side.
-const app = initializeApp({ apiKey: 'FIREBASE_BROWSER_API_KEY_REMOVED',
-  authDomain: 'wallpaper-5b02e.firebaseapp.com', projectId: 'wallpaper-5b02e', appId: '1:817689287186:web:5024c448678fc3520296cb' });
-const auth = getAuth(app);
 const ENDPOINT = 'https://europe-west2-wallpaper-5b02e.cloudfunctions.net/myCamWebStore';
+async function startStore() {
+const response = await fetch(`${ENDPOINT}?config=web`, { cache: 'no-store', signal: AbortSignal.timeout(15000) });
+if (!response.ok) throw new Error('Store connection unavailable');
+const config = await response.json();
+if (config.projectId !== 'wallpaper-5b02e' || !config.apiKey || !config.authDomain || !config.appId) throw new Error('Store configuration unavailable');
+const auth = getAuth(initializeApp(config));
 const $ = id => document.getElementById(id);
 const show = (id, visible) => { $(id).hidden = !visible; };
 const money = value => new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(value);
@@ -257,3 +259,11 @@ window.addEventListener('focus', () => { if (auth.currentUser && !working) loadA
 if (location.hash === '#gold') pendingView = 'project';
 loadCatalog().catch(error => { $('buy-keys').textContent = 'Prices unavailable'; notice(errorMessage(error), true); });
 icons();
+
+}
+startStore().catch(() => {
+  const status = document.getElementById('store-status');
+  status.textContent = 'The store could not connect. Please reload the page to sign in or buy keys.';
+  status.dataset.error = 'true'; status.hidden = false;
+  for (const id of ['buy-keys', 'login-button', 'account-signin', 'request-gold']) document.getElementById(id).disabled = true;
+});
