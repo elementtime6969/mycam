@@ -4,6 +4,12 @@ Official downloads and support for MYCAM on Android, Windows PC Studio and suppo
 
 **[Join the MYCAM Telegram community](https://t.me/+isz4hFM1tgY1NTZk)** for updates, setup help and community support.
 
+**[Buy MYCAM keys now](https://elementtime6969.github.io/mycam/store.html#keys)** · **[MYCAM Gold](https://elementtime6969.github.io/mycam/store.html#gold)** · **[My account](https://elementtime6969.github.io/mycam/store.html#account)**
+
+Sign in to purchase activation keys with crypto or PayPal when available. Prices match the app; each key provides one calendar month from activation. Verified purchases are saved in your account.
+
+Gold is a **£3,000 one-time approved project** paid through NOWPayments only. Submit your email, Telegram username and project brief, then chat with the admin. Payment stays locked until the project scope is approved. Requests may be declined; Gold is not unlimited development.
+
 By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 
 ## Download

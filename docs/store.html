@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MYCAM Store | Keys &amp; Gold</title>
+  <meta name="description" content="Buy MYCAM activation keys with PayPal or crypto, manage your keys, and discuss a custom app project with MYCAM Gold.">
+  <meta name="theme-color" content="#101311"><link rel="icon" href="assets/mycam-logo.png">
+  <link rel="stylesheet" href="assets/site.css?v=20261010-store"><link rel="stylesheet" href="assets/store.css?v=20261010-1">
+  <script src="assets/lucide.min.js" defer></script><script type="module" src="assets/store.js?v=20261010-1"></script>
+</head>
+<body class="store-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="wrap store-header">
+    <a class="brand" href="./"><img src="assets/mycam-logo.png" width="36" height="36" alt=""><span>MYCAM<span class="brand-dot">.</span></span></a>
+    <nav aria-label="Store navigation"><a href="#keys">Keys</a><a href="#gold">Gold</a><a href="#account">My account</a></nav>
+    <button class="button small outline" id="login-button" type="button">Sign in <i data-lucide="log-in"></i></button>
+  </div></header>
+  <main id="main" class="wrap store-main">
+    <div class="store-title"><div><p class="eyebrow">KEYS &amp; CUSTOM PROJECTS</p><h1>MYCAM Store</h1><p>Keys for your next month. Gold for your next project.</p></div><a class="text-link" href="./#downloads">Downloads <i data-lucide="arrow-up-right"></i></a></div>
+    <div id="store-status" class="store-status" role="status" aria-live="polite" hidden></div>
+    <noscript><p>JavaScript is required for account sign-in and secure checkout.</p></noscript>
+    <div class="store-products">
+      <section class="key-product" id="keys" aria-labelledby="keys-heading">
+        <div class="product-kicker"><i data-lucide="key-round"></i><span>MYCAM PRO</span><span class="product-tag">ACTIVATION KEY</span></div>
+        <h2 id="keys-heading">Your next month,<br>ready when you are.</h2>
+        <p>One calendar month per key, starting when activated. Your purchased keys stay in your account.</p>
+        <div class="key-price"><strong id="key-price">&mdash;</strong><span>GBP / key</span></div>
+        <form id="key-form">
+          <fieldset class="payment-options"><legend>Payment method</legend>
+            <label><input type="radio" name="provider" value="nowpayments" checked> <span>Crypto <small>BTC + supported currencies</small></span></label>
+            <label id="paypal-option"><input type="radio" name="provider" value="paypal"> <span>PayPal <small id="paypal-note">One-time payment</small></span></label>
+          </fieldset>
+          <div class="purchase-total"><label for="quantity">Keys <input id="quantity" type="number" min="1" max="50" step="1" value="1" required></label><span>Total <strong id="key-total">&mdash;</strong></span></div>
+          <label class="check-line"><input id="key-consent" type="checkbox" required><span>I accept the <a href="terms.html" target="_blank" rel="noopener">terms</a> and <a href="refunds.html" target="_blank" rel="noopener">refund policy</a>. This is a one-time key purchase, not a recurring subscription.</span></label>
+          <button class="button mint wide" id="buy-keys" type="submit" disabled>Loading prices&hellip;</button>
+          <p class="purchase-note" id="crypto-note">Send the full amount shown by NOWPayments. Exchange or network fees must not reduce the amount received. Partial payments do not issue keys.</p>
+          <button class="plain-link" id="reload-prices" type="button">Refresh prices</button>
+        </form>
+      </section>
+      <section class="gold-product" id="gold" aria-labelledby="gold-heading">
+        <div class="gold-member-card" aria-label="MYCAM Gold member card">
+          <div class="gold-card-top"><img src="assets/mycam-logo.png" width="32" height="32" alt=""><span>MYCAM <b>GOLD</b></span><i data-lucide="sparkles"></i></div>
+          <div class="gold-card-word">GOLD MEMBER</div><div class="gold-card-bottom"><span>YOUR IDEA. OUR NEXT BUILD.</span><i data-lucide="circuit-board"></i></div>
+        </div>
+        <h2 id="gold-heading">Build something of your own.</h2>
+        <p>Discuss your own app project directly with the MYCAM team. We agree what can be built before you pay.</p>
+        <div class="gold-price"><strong>&pound;3,000</strong><span>One-time / approved project</span></div>
+        <ol class="gold-steps"><li><span>01</span> Share your project, email and Telegram.</li><li><span>02</span> Chat with admin and agree the scope.</li><li><span>03</span> Pay through NOWPayments after approval.</li></ol>
+        <button class="button gold-button wide" type="button" id="request-gold">Discuss my project <i data-lucide="message-square"></i></button>
+        <p class="purchase-note">Subject to project approval. Not unlimited development or a promise to build every request. No payment before approval.</p>
+      </section>
+    </div>
+
+    <section id="account" class="account-section" aria-labelledby="account-heading">
+      <div class="account-heading"><div><p class="eyebrow">YOUR MYCAM</p><h2 id="account-heading">My account</h2><p id="account-email">Sign in to view your keys, payments and project chat.</p></div><div class="actions"><button class="icon-button" id="refresh-account" type="button" title="Refresh account" aria-label="Refresh account" hidden><i data-lucide="refresh-cw"></i></button><button class="plain-link" id="logout" type="button" hidden>Sign out</button></div></div>
+      <div id="signed-out"><button class="button outline" id="account-signin" type="button">Sign in / Create account</button></div>
+      <div id="verification" class="verification" hidden><p>Verify your email before buying keys or requesting Gold.</p><div class="actions"><button class="button small outline" id="send-verification" type="button">Send verification email</button><button class="button small outline" id="check-verification" type="button">I have verified my email</button></div></div>
+      <div id="account-content" hidden>
+        <nav class="account-tabs" aria-label="Account views"><button type="button" data-view="wallet" aria-pressed="true">My keys</button><button type="button" data-view="orders" aria-pressed="false">Orders</button><button type="button" data-view="project" aria-pressed="false">Gold project</button></nav>
+        <section id="view-wallet"><div id="wallet-list" class="wallet-list"></div><button class="plain-link" id="more-keys" type="button" hidden>Load more keys</button></section>
+        <section id="view-orders" hidden><div id="order-list" class="order-list"></div></section>
+        <section id="view-project" hidden>
+          <form id="gold-form" class="gold-request-form">
+            <h3>Your project brief</h3><p id="gold-email"></p>
+            <label>Telegram username <input id="telegram" autocomplete="off" placeholder="@yourname" pattern="@?[A-Za-z][A-Za-z0-9_]{4,31}" maxlength="33" required></label>
+            <label>What would you like to build? <textarea id="brief" rows="5" minlength="30" maxlength="5000" required placeholder="Describe your app, who it is for, and the main features you need."></textarea></label>
+            <label class="check-line"><input type="checkbox" id="gold-consent" required><span>I agree to share my email, Telegram username and project details with the MYCAM admin for this request. I accept the <a href="terms.html" target="_blank" rel="noopener">terms</a> and <a href="privacy.html" target="_blank" rel="noopener">privacy policy</a>.</span></label>
+            <button class="button gold-button" type="submit">Send request &amp; open chat <i data-lucide="send"></i></button>
+          </form>
+          <div id="gold-thread" hidden>
+            <div class="project-heading"><h3>My Gold project</h3><span id="project-state" class="status-badge"></span></div>
+            <p id="project-contact"></p><p id="project-brief" class="project-text"></p><p id="project-reference" class="purchase-note"></p>
+            <div id="project-decision" class="project-decision" hidden><h4 id="decision-title">Agreed scope &amp; terms</h4><p id="decision-text" class="project-text"></p></div>
+            <form id="gold-pay-form" hidden><label class="check-line"><input id="gold-pay-consent" type="checkbox" required><span>I accept the agreed scope and terms above, including the one-time &pound;3,000 Gold project price. Network fees must not reduce the amount received.</span></label><button class="button gold-button" type="submit">Pay &pound;3,000 with NOWPayments <i data-lucide="arrow-up-right"></i></button></form>
+            <p id="gold-payment-message" class="purchase-note"></p>
+            <div class="chat-heading"><h4>Project chat</h4><button class="plain-link" id="older-messages" type="button" hidden>Earlier messages</button></div>
+            <div id="messages" class="chat-messages" role="log" aria-label="Project messages"></div>
+            <form id="message-form" class="chat-compose"><label class="sr-only" for="message">Message to admin</label><textarea id="message" rows="2" maxlength="4000" required placeholder="Message the MYCAM team"></textarea><button type="submit" class="icon-button" title="Send message" aria-label="Send message"><i data-lucide="send"></i></button></form>
+            <button class="plain-link" id="new-project" type="button" hidden>Submit a different project</button>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="store-footer"><div class="wrap"><a href="./">Back to MYCAM</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="refunds.html">Refunds</a><a href="https://t.me/+isz4hFM1tgY1NTZk" target="_blank" rel="noopener">Join Telegram</a></div></footer>
+  <dialog id="auth-dialog" aria-labelledby="auth-title"><form id="auth-form">
+    <div class="auth-top"><h2 id="auth-title">Welcome back</h2><button class="icon-button" type="button" id="close-auth" title="Close sign in" aria-label="Close sign in"><i data-lucide="x"></i></button></div>
+    <div class="auth-modes"><button type="button" data-auth="signin" aria-pressed="true">Sign in</button><button type="button" data-auth="register" aria-pressed="false">Create account</button></div>
+    <label>Email <input id="auth-email" type="email" autocomplete="email" maxlength="254" required></label>
+    <label>Password <input id="auth-password" type="password" autocomplete="current-password" minlength="1" maxlength="128" required></label>
+    <p id="auth-error" class="form-error" role="alert"></p><button id="auth-submit" class="button mint wide" type="submit">Sign in</button>
+    <button class="plain-link" id="reset-password" type="button">Forgot password?</button>
+    <p class="purchase-note">By creating an account, you accept our <a href="terms.html">terms</a> and <a href="privacy.html">privacy policy</a>.</p>
+  </form></dialog>
+</body>
+</html>
