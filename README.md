@@ -2,6 +2,8 @@
 
 Official downloads and support for MYCAM on Android, Windows PC Studio and supported jailbroken iPhones.
 
+**[Join the MYCAM Telegram community](https://t.me/+isz4hFM1tgY1NTZk)** for updates, setup help and community support.
+
 By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 
 ## Download

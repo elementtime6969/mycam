@@ -83,7 +83,7 @@
   let dialogTrigger;
   function showDialog(dialog, trigger) {
     if (typeof dialog.showModal !== 'function') return false;
-    dialogTrigger = trigger; closeMenu(); document.getElementById('nonroot-notice').hidden = true;
+    dialogTrigger = trigger; closeMenu(); dismissNotice();
     // Stop inline playback when another tutorial opens.
     document.querySelectorAll('main .video-player iframe').forEach(frame => { const player = frame.parentElement; thumbnail(player, {video: player.dataset.video, title: player.dataset.title}); });
     dialog.showModal(); document.body.classList.add('modal-open'); dialog.querySelector('[data-close-dialog]').focus(); return true;
@@ -110,19 +110,44 @@
     document.querySelectorAll('.reveal').forEach(item => observer.observe(item));
   }
   const progress = document.querySelector('.scroll-progress'); const hero = document.querySelector('.hero-product'); const notice = document.getElementById('nonroot-notice');
+  const noticeKey = 'mycam-nonroot-video-shown';
+  const noticeCooldown = 24 * 60 * 60 * 1000;
   let noticeDismissed = false;
-  try { noticeDismissed = sessionStorage.getItem('mycam-nonroot-dismissed') === '1'; } catch (_) { /* Private browsing may disable storage. */ }
+  let noticeTrigger;
+  let noticeDue = false;
+  try {
+    const lastShown = Number(localStorage.getItem(noticeKey));
+    noticeDismissed = lastShown > 0 && Date.now() - lastShown < noticeCooldown;
+  } catch (_) { /* Still show at most once per page when storage is unavailable. */ }
+  function showNotice() {
+    if (noticeDismissed || !noticeDue || document.hidden || !menu.hidden || document.querySelector('dialog[open], .video-player iframe')) return;
+    noticeTrigger = document.activeElement;
+    notice.hidden = false;
+    noticeDismissed = true;
+    try { localStorage.setItem(noticeKey, String(Date.now())); } catch (_) {}
+  }
   let scheduled = false;
   function onScroll() {
     const max = document.documentElement.scrollHeight - innerHeight; const ratio = max > 0 ? scrollY / max : 0;
     progress.style.transform = `scaleX(${Math.min(1, Math.max(0, ratio))})`;
     hero.style.transform = !reduced.matches && innerWidth > 760 ? `translateY(${Math.min(scrollY * .06, 30)}px)` : '';
-    if (ratio > .3 && !noticeDismissed && !document.querySelector('dialog[open]')) { notice.hidden = false; noticeDismissed = true; }
+    if (ratio > .3) noticeDue = true;
+    showNotice();
     scheduled = false;
   }
   addEventListener('scroll', () => { if (!scheduled) { scheduled = true; requestAnimationFrame(onScroll); } }, {passive: true}); addEventListener('resize', onScroll); onScroll();
-  function dismissNotice() { notice.hidden = true; noticeDismissed = true; try { sessionStorage.setItem('mycam-nonroot-dismissed', '1'); } catch (_) {} }
+  setTimeout(() => { noticeDue = true; showNotice(); }, 12000);
+  document.addEventListener('visibilitychange', showNotice);
+  function dismissNotice() {
+    const restoreFocus = notice.contains(document.activeElement);
+    const wasVisible = !notice.hidden;
+    notice.hidden = true; noticeDismissed = true;
+    if (notice.querySelector('iframe')) thumbnail(document.getElementById('notice-player'), tutorials.nonroot);
+    if (wasVisible) { try { localStorage.setItem(noticeKey, String(Date.now())); } catch (_) {} }
+    if (restoreFocus && noticeTrigger?.isConnected) noticeTrigger.focus({preventScroll: true});
+  }
   document.getElementById('close-notice').addEventListener('click', dismissNotice);
+  document.addEventListener('keydown', event => { if (event.key === 'Escape' && !notice.hidden) dismissNotice(); });
   document.getElementById('notice-engine').addEventListener('click', () => { selectEngine('nonroot'); dismissNotice(); });
   document.addEventListener('error', event => { if (event.target.tagName === 'IMG' && event.target.src.includes('i.ytimg.com')) event.target.src = 'assets/mycam-logo.png'; }, true);
 })();
