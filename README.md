@@ -8,7 +8,7 @@ Official downloads and support for MYCAM on Android, Windows PC Studio and suppo
 
 Sign in to purchase activation keys with crypto or PayPal when available. Prices match the app; each key provides one calendar month from activation. Verified purchases are saved in your account.
 
-Gold is a **£3,000 one-time approved project** paid through NOWPayments only. Submit your email, Telegram username and project brief, then chat with the admin. Payment stays locked until the project scope is approved. Requests may be declined; Gold is not unlimited development.
+**MYCAM Gold is a separate custom app or website development service, from start to finish within an agreed scope. The £3,000 one-time project fee is not the price of a MYCAM activation key or subscription.** Submit your email, Telegram username and project brief, then chat with the admin. Payment is through NOWPayments only and stays locked until the project scope is approved. Requests may be declined; Gold is not unlimited development.
 
 By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 

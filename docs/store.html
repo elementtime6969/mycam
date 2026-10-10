@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MYCAM Store | Keys &amp; Gold</title>
-  <meta name="description" content="Buy MYCAM activation keys with PayPal or crypto, manage your keys, and discuss a custom app project with MYCAM Gold.">
+  <meta name="description" content="Buy MYCAM activation keys with PayPal or crypto, manage your keys, and discuss a separate custom app or website project with MYCAM Gold.">
   <meta name="theme-color" content="#101311"><link rel="icon" href="assets/mycam-logo.png">
   <link rel="stylesheet" href="assets/site.css?v=20261010-store"><link rel="stylesheet" href="assets/store.css?v=20261010-1">
   <script src="assets/lucide.min.js" defer></script><script type="module" src="assets/store.js?v=20261010-1"></script>
@@ -38,13 +38,14 @@
         </form>
       </section>
       <section class="gold-product" id="gold" aria-labelledby="gold-heading">
-        <div class="gold-member-card" aria-label="MYCAM Gold member card">
+        <div class="gold-member-card" aria-label="MYCAM Gold custom project card">
           <div class="gold-card-top"><img src="assets/mycam-logo.png" width="32" height="32" alt=""><span>MYCAM <b>GOLD</b></span><i data-lucide="sparkles"></i></div>
-          <div class="gold-card-word">GOLD MEMBER</div><div class="gold-card-bottom"><span>YOUR IDEA. OUR NEXT BUILD.</span><i data-lucide="circuit-board"></i></div>
+          <div class="gold-card-word">CUSTOM PROJECT</div><div class="gold-card-bottom"><span>YOUR IDEA. OUR NEXT BUILD.</span><i data-lucide="circuit-board"></i></div>
         </div>
         <h2 id="gold-heading">Build something of your own.</h2>
-        <p>Discuss your own app project directly with the MYCAM team. We agree what can be built before you pay.</p>
-        <div class="gold-price"><strong>&pound;3,000</strong><span>One-time / approved project</span></div>
+        <p>Have your own custom app or website built from start to finish within an agreed scope. Discuss your project directly with the MYCAM team before you pay.</p>
+        <div class="gold-price"><strong>&pound;3,000</strong><span>One-time / custom app or website project</span></div>
+        <p class="purchase-note"><strong>This is a separate development service. &pound;3,000 is not the price of a MYCAM activation key or subscription.</strong></p>
         <ol class="gold-steps"><li><span>01</span> Share your project, email and Telegram.</li><li><span>02</span> Chat with admin and agree the scope.</li><li><span>03</span> Pay through NOWPayments after approval.</li></ol>
         <button class="button gold-button wide" type="button" id="request-gold">Discuss my project <i data-lucide="message-square"></i></button>
         <p class="purchase-note">Subject to project approval. Not unlimited development or a promise to build every request. No payment before approval.</p>
@@ -63,7 +64,7 @@
           <form id="gold-form" class="gold-request-form">
             <h3>Your project brief</h3><p id="gold-email"></p>
             <label>Telegram username <input id="telegram" autocomplete="off" placeholder="@yourname" pattern="@?[A-Za-z][A-Za-z0-9_]{4,31}" maxlength="33" required></label>
-            <label>What would you like to build? <textarea id="brief" rows="5" minlength="30" maxlength="5000" required placeholder="Describe your app, who it is for, and the main features you need."></textarea></label>
+            <label>What would you like to build? <textarea id="brief" rows="5" minlength="30" maxlength="5000" required placeholder="Describe your app or website, who it is for, and the main features you need."></textarea></label>
             <label class="check-line"><input type="checkbox" id="gold-consent" required><span>I agree to share my email, Telegram username and project details with the MYCAM admin for this request. I accept the <a href="terms.html" target="_blank" rel="noopener">terms</a> and <a href="privacy.html" target="_blank" rel="noopener">privacy policy</a>.</span></label>
             <button class="button gold-button" type="submit">Send request &amp; open chat <i data-lucide="send"></i></button>
           </form>
@@ -71,7 +72,7 @@
             <div class="project-heading"><h3>My Gold project</h3><span id="project-state" class="status-badge"></span></div>
             <p id="project-contact"></p><p id="project-brief" class="project-text"></p><p id="project-reference" class="purchase-note"></p>
             <div id="project-decision" class="project-decision" hidden><h4 id="decision-title">Agreed scope &amp; terms</h4><p id="decision-text" class="project-text"></p></div>
-            <form id="gold-pay-form" hidden><label class="check-line"><input id="gold-pay-consent" type="checkbox" required><span>I accept the agreed scope and terms above, including the one-time &pound;3,000 Gold project price. Network fees must not reduce the amount received.</span></label><button class="button gold-button" type="submit">Pay &pound;3,000 with NOWPayments <i data-lucide="arrow-up-right"></i></button></form>
+            <form id="gold-pay-form" hidden><label class="check-line"><input id="gold-pay-consent" type="checkbox" required><span>I accept the agreed scope and terms above, including the one-time &pound;3,000 fee for my custom app or website project. This fee is not for a MYCAM activation key or subscription. Network fees must not reduce the amount received.</span></label><button class="button gold-button" type="submit">Pay &pound;3,000 project fee with NOWPayments <i data-lucide="arrow-up-right"></i></button></form>
             <p id="gold-payment-message" class="purchase-note"></p>
             <div class="chat-heading"><h4>Project chat</h4><button class="plain-link" id="older-messages" type="button" hidden>Earlier messages</button></div>
             <div id="messages" class="chat-messages" role="log" aria-label="Project messages"></div>
