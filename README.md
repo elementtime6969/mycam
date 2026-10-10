@@ -37,11 +37,11 @@ Version **1.0.1** adds the ZeusHold subscription guide and a visible seven-langu
 
 The application source code and signing keys are not included. Use only authorized media; never use MYCAM to bypass age, identity or liveness verification.
 
-## Hinge Auto
+## A1 assistant
 
-Hinge Auto is available as a companion download for MYCAM users. If you already have an active MYCAM subscription on your phone, you can use Hinge Auto for free with the same subscription access.
+A1 assistant is the companion app for MYCAM users. An active MYCAM subscription on the same phone also unlocks A1 assistant. Install and open MYCAM, then refresh access in A1. If you do not have active access, A1 offers PayPal, BTC / crypto and Flutterwave checkout for shared MYCAM + A1 access.
 
-[Download Hinge Auto v1.3](https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/HingeAuto-v1.3.apk)
+[Download A1 assistant v1.7.4](https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/A1-assistant-v1.7.4.apk)
 
 Scroll down to learn more about MYCAM modes and OBS setup.
 
