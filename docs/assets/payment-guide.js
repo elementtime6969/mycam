@@ -50,10 +50,12 @@
       const code = normalize(select.value);
       render(code);
       try { localStorage.setItem(storageKey, code); } catch { /* Storage may be disabled. */ }
+      window.dispatchEvent(new CustomEvent('mycam-language-change', { detail: code }));
     };
     select.addEventListener('input', applySelection);
     select.addEventListener('change', applySelection);
     panel.querySelector('[data-guide-link]').addEventListener('click', applySelection);
   }
   window.addEventListener('pageshow', () => render(savedLanguage() || panels[0]?.querySelector('select').value || preferred || 'en'));
+  window.addEventListener('mycam-language-change', event => render(event.detail));
 })();

@@ -98,7 +98,7 @@
     document.getElementById('tutorial-mount').replaceChildren(player); loadVideo(player);
   }));
   document.getElementById('open-pro').addEventListener('click', event => showDialog(document.getElementById('mycam-pro'), event.currentTarget));
-  document.querySelectorAll('dialog').forEach(dialog => {
+  document.querySelectorAll('#tutorial-dialog, #mycam-pro').forEach(dialog => {
     dialog.querySelector('[data-close-dialog]').addEventListener('click', () => dialog.close());
     dialog.addEventListener('click', event => { if (event.target !== dialog) return; const rect = dialog.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close(); });
     dialog.addEventListener('close', () => { if (dialog === tutorialDialog) document.getElementById('tutorial-mount').replaceChildren(); document.body.classList.remove('modal-open'); dialogTrigger?.focus({preventScroll: true}); });

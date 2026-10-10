@@ -1,0 +1,21 @@
+body.paypal-guide-open{overflow:hidden}
+dialog.paypal-guide{box-sizing:border-box;width:min(640px,calc(100% - 24px));max-height:calc(100dvh - 24px);margin:auto;padding:28px;border:1px solid #536457;border-radius:12px;background:#171d19;color:#f2f5f2;font:14px/1.6 Arial,sans-serif;overflow:auto;overscroll-behavior:contain;box-shadow:0 24px 80px #0008;text-align:start}
+dialog.paypal-guide::backdrop{background:#000b;backdrop-filter:blur(6px)}
+.paypal-guide h2{font-size:28px;line-height:1.2;margin:10px 0 16px;letter-spacing:-.5px;color:#f2f5f2}
+.paypal-guide h2:focus{outline:none}
+.paypal-guide p{font-size:14px;color:#d3ddd5;margin:0 0 18px}
+.paypal-guide-top{display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:12px;color:#b8e0c4}
+.paypal-guide button,.paypal-guide select{font:inherit}
+.paypal-guide-x{display:grid;place-items:center;flex:none;width:44px;height:44px;background:transparent;border:1px solid #536457;color:#f2f5f2;border-radius:8px;font-size:26px!important;cursor:pointer}
+.paypal-guide-language{display:flex!important;align-items:center;justify-content:space-between;gap:16px;margin:18px 0 22px;font-size:12px;color:#d3ddd5}
+.paypal-guide select{min-height:44px;max-width:65%;padding:8px;border:1px solid #536457;border-radius:6px;color:#f2f5f2;background:#202923}
+.paypal-guide-steps{display:grid;gap:14px;margin:0 0 24px;padding-inline-start:24px;list-style:decimal}
+.paypal-guide-steps li{padding-inline-start:4px;line-height:1.6}
+.paypal-guide-steps li::marker{color:#b8e0c4;font-weight:bold}
+.paypal-guide .paypal-guide-note{font-size:12px;border-inline-start:3px solid #b8e0c4;padding:12px 16px;background:#202923}
+.paypal-guide-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:24px}
+.paypal-guide a{color:#b8e0c4;font-size:12px;text-decoration:underline;text-underline-offset:3px}
+.paypal-guide-done{min-height:44px;padding:10px 24px;border:1px solid #b8e0c4;border-radius:6px;background:#b8e0c4;color:#101311;cursor:pointer;font-weight:bold!important;flex:none}
+.paypal-guide button:focus-visible,.paypal-guide select:focus-visible,.paypal-guide a:focus-visible,[data-paypal-guide-open]:focus-visible{outline:2px solid #b8e0c4;outline-offset:3px}
+button.paypal-guide-reopen{display:inline-block;min-height:44px;margin:8px 0;padding:8px 0;background:transparent;border:0;color:inherit;font:inherit;font-size:13px;text-decoration:underline;text-underline-offset:4px;text-align:start;cursor:pointer}
+@media(max-width:480px){dialog.paypal-guide{padding:20px}.paypal-guide h2{font-size:24px}.paypal-guide-footer{align-items:stretch;flex-direction:column}.paypal-guide-done{width:100%}}

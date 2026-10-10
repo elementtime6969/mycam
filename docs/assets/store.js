@@ -64,7 +64,7 @@ async function loadCatalog() {
   catalog = await response.json();
   $('quantity').max = catalog.keys.maxQuantity;
   document.querySelector('[value=paypal]').disabled = !catalog.keys.paypalAvailable;
-  $('paypal-note').textContent = catalog.keys.paypalAvailable ? 'One-time payment' : 'Currently unavailable';
+  $('paypal-note').textContent = catalog.keys.paypalAvailable ? 'Card or PayPal account' : 'Currently unavailable';
   if (!catalog.keys.paypalAvailable) document.querySelector('[value=nowpayments]').checked = true;
   quote();
 }
