@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MYCAM Store | Keys &amp; Gold</title>
+  <title>MYCAM Store | Keys, Gold &amp; Referrals</title>
   <meta name="description" content="Buy MYCAM activation keys with PayPal or crypto, manage your keys, and discuss a separate custom app or website project with MYCAM Gold.">
   <meta name="theme-color" content="#101311"><link rel="icon" href="assets/mycam-logo.png">
-  <link rel="stylesheet" href="assets/site.css?v=20261010-store"><link rel="stylesheet" href="assets/store.css?v=20261010-1">
+  <link rel="stylesheet" href="assets/site.css?v=20261010-store"><link rel="stylesheet" href="assets/store.css?v=20261014-referrals">
   <link rel="stylesheet" href="assets/paypal-guide.css?v=20261010-1">
   <script src="assets/paypal-guide.js?v=20261010-1" defer></script>
-  <script src="assets/lucide.min.js" defer></script><script type="module" src="assets/store.js?v=20261010-config"></script>
+  <script src="assets/lucide.min.js" defer></script><script type="module" src="assets/store.js?v=20261014-referrals"></script>
 </head>
 <body class="store-page">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header"><div class="wrap store-header">
     <a class="brand" href="./"><img src="assets/mycam-logo.png" width="36" height="36" alt=""><span>MYCAM<span class="brand-dot">.</span></span></a>
-    <nav aria-label="Store navigation"><a href="#keys">Keys</a><a href="#gold">Gold</a><a href="#account">My account</a></nav>
+    <nav aria-label="Store navigation"><a href="#keys">Keys</a><a href="#gold">Gold</a><a href="#account">My account</a><a id="referral-nav" href="#referrals">Refer &amp; Earn</a></nav>
     <button class="button small outline" id="login-button" type="button">Sign in <i data-lucide="log-in"></i></button>
   </div></header>
   <main id="main" class="wrap store-main">
@@ -57,12 +57,36 @@
 
     <section id="account" class="account-section" aria-labelledby="account-heading">
       <div class="account-heading"><div><p class="eyebrow">YOUR MYCAM</p><h2 id="account-heading">My account</h2><p id="account-email">Sign in to view your keys, payments and project chat.</p></div><div class="actions"><button class="icon-button" id="refresh-account" type="button" title="Refresh account" aria-label="Refresh account" hidden><i data-lucide="refresh-cw"></i></button><button class="plain-link" id="logout" type="button" hidden>Sign out</button></div></div>
+          <div id="referral-invite" class="referral-intro" hidden><h4>Use a friend's referral code</h4><p id="referral-invite-code"></p>
+            <button id="referral-invite-copy" type="button" class="button outline">Copy friend's code</button>
+            <p>Enter this code in MYCAM's subscription gate before opening PayPal, crypto or Flutterwave checkout.
+            Website key purchases, Gold projects and ZeusHold purchases do not earn referral progress.</p><a href="./" class="plain-link">Download MYCAM</a></div>
       <div id="signed-out"><button class="button outline" id="account-signin" type="button">Sign in / Create account</button></div>
       <div id="verification" class="verification" hidden><p>Verify your email before buying keys or requesting Gold.</p><div class="actions"><button class="button small outline" id="send-verification" type="button">Send verification email</button><button class="button small outline" id="check-verification" type="button">I have verified my email</button></div></div>
       <div id="account-content" hidden>
-        <nav class="account-tabs" aria-label="Account views"><button type="button" data-view="wallet" aria-pressed="true">My keys</button><button type="button" data-view="orders" aria-pressed="false">Orders</button><button type="button" data-view="project" aria-pressed="false">Gold project</button></nav>
+        <nav class="account-tabs" aria-label="Account views"><button type="button" data-view="wallet" aria-pressed="true">My keys</button><button type="button" data-view="orders" aria-pressed="false">Orders</button><button type="button" data-view="referrals" aria-pressed="false">Refer &amp; Earn</button><button type="button" data-view="project" aria-pressed="false">Gold project</button></nav>
         <section id="view-wallet"><div id="wallet-list" class="wallet-list"></div><button class="plain-link" id="more-keys" type="button" hidden>Load more keys</button></section>
         <section id="view-orders" hidden><div id="order-list" class="order-list"></div></section>
+        <section id="view-referrals" hidden>
+          <div class="referral-intro"><p class="eyebrow">REFER &amp; EARN</p><h3>Four payments. Your choice of reward.</h3>
+            <p>Share your code for MYCAM subscriptions. Each qualifying successful payment adds 25%.
+            At 100%, request one free MYCAM activation key or a £10 Amazon.co.uk gift card.</p></div>
+          <p id="referral-status" role="status"></p>
+          <div id="referral-enrol" hidden><label class="check-line"><input id="referral-consent" type="checkbox"><span>I accept the <a href="referral-terms.html">referral programme terms</a>.</span></label>
+            <button id="referral-enrol-button" class="button mint" type="button">Get my referral code</button></div>
+          <div id="referral-dashboard" hidden>
+            <p class="eyebrow">YOUR REFERRAL CODE</p><h3 id="referral-code"></h3>
+            <div class="actions"><button id="referral-copy" type="button" class="button outline">Copy code</button><button id="referral-share" type="button" class="button outline">Share link</button><button id="referral-refresh" type="button" class="plain-link">Refresh</button></div>
+            <progress id="referral-progress" max="100" value="0" aria-label="Referral progress"></progress>
+            <p id="referral-balance"></p><p id="referral-pending" class="purchase-note"></p>
+            <button id="referral-key" type="button" class="button mint">Request 1 free MYCAM key</button>
+            <label class="check-line"><input id="referral-marketplace" type="checkbox"><span>I can use a £10 gift card on Amazon.co.uk.</span></label>
+            <button id="referral-amazon" type="button" class="button outline">Request £10 Amazon gift card</button>
+            <p class="purchase-note">Admin reviews rewards. Payment holds affect reward delivery, never a paying customer's subscription access.</p>
+            <h4>Reward requests</h4><div id="referral-requests" class="wallet-list"></div>
+          </div>
+
+        </section>
         <section id="view-project" hidden>
           <form id="gold-form" class="gold-request-form">
             <h3>Your project brief</h3><p id="gold-email"></p>

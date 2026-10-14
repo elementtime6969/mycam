@@ -1,3 +1,4 @@
+import { mountReferrals } from './referrals.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.7.0/firebase-app.js';
 import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword,
   sendEmailVerification, sendPasswordResetEmail, signOut, reload } from 'https://www.gstatic.com/firebasejs/11.7.0/firebase-auth.js';
@@ -9,6 +10,7 @@ if (!response.ok) throw new Error('Store connection unavailable');
 const config = await response.json();
 if (config.projectId !== 'wallpaper-5b02e' || !config.apiKey || !config.authDomain || !config.appId) throw new Error('Store configuration unavailable');
 const auth = getAuth(initializeApp(config));
+const referrals = mountReferrals(auth, onAuthStateChanged);
 const $ = id => document.getElementById(id);
 const show = (id, visible) => { $(id).hidden = !visible; };
 const money = value => new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(value);
@@ -39,8 +41,9 @@ async function api(action, data = {}) {
 }
 function view(name, scroll = false) {
   pendingView = name;
+  if (name === 'referrals') referrals.refresh();
   document.querySelectorAll('[data-view]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.view === name)));
-  for (const item of ['wallet', 'orders', 'project']) show(`view-${item}`, item === name);
+  for (const item of ['wallet', 'orders', 'project', 'referrals']) show(`view-${item}`, item === name);
   if (scroll) $('account').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 function openAuth(target = 'wallet') { pendingView = target; $('auth-error').textContent = ''; $('auth-dialog').showModal(); }
@@ -184,7 +187,8 @@ document.querySelectorAll('[data-auth]').forEach(button => button.onclick = () =
   $('auth-error').textContent = '';
 });
 $('login-button').onclick = () => auth.currentUser ? view('wallet', true) : openAuth();
-$('account-signin').onclick = () => openAuth();
+$('account-signin').onclick = () => openAuth(pendingView);
+$('referral-nav').onclick = event => { event.preventDefault(); if (auth.currentUser) view('referrals', true); else openAuth('referrals'); };
 $('close-auth').onclick = () => $('auth-dialog').close();
 $('auth-form').onsubmit = async event => {
   event.preventDefault(); const button = $('auth-submit'); if (button.disabled) return; button.disabled = true; $('auth-error').textContent = '';
@@ -257,6 +261,7 @@ setInterval(async () => {
 }, 15000);
 window.addEventListener('focus', () => { if (auth.currentUser && !working) loadAccount().catch(error => notice(errorMessage(error), true)); });
 if (location.hash === '#gold') pendingView = 'project';
+if (location.hash === '#referrals' || new URL(location.href).searchParams.has('ref')) pendingView = 'referrals';
 loadCatalog().catch(error => { $('buy-keys').textContent = 'Prices unavailable'; notice(errorMessage(error), true); });
 icons();
 
