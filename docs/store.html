@@ -26,17 +26,19 @@
         <div class="product-kicker"><i data-lucide="key-round"></i><span>MYCAM PRO</span><span class="product-tag">ACTIVATION KEY</span></div>
         <h2 id="keys-heading">Your next month,<br>ready when you are.</h2>
         <p>One calendar month per key, starting when activated. Your purchased keys stay in your account.</p>
-        <div class="key-price"><strong id="key-price">&mdash;</strong><span>GBP / key</span></div>
+        <div class="key-price"><strong id="key-price">&mdash;</strong><span id="key-currency">GBP / key</span></div>
         <form id="key-form">
           <fieldset class="payment-options"><legend>Payment method</legend>
             <label><input type="radio" name="provider" value="nowpayments" checked> <span>Crypto <small>BTC + supported currencies</small></span></label>
             <label id="paypal-option"><input type="radio" name="provider" value="paypal"> <span>PayPal / Card <small id="paypal-note">Card or PayPal account</small></span></label>
+            <label><input type="radio" name="provider" value="paystack"> <span>Paystack <small>Nigerian &amp; international cards · NGN</small></span></label>
           </fieldset>
           <button class="paypal-guide-reopen" type="button" data-paypal-guide-open aria-haspopup="dialog" aria-controls="paypal-guide">How to pay by card with PayPal</button>
           <div class="purchase-total"><label for="quantity">Keys <input id="quantity" type="number" min="1" max="50" step="1" value="1" required></label><span>Total <strong id="key-total">&mdash;</strong></span></div>
           <label class="check-line"><input id="key-consent" type="checkbox" required><span>I accept the <a href="terms.html" target="_blank" rel="noopener">terms</a> and <a href="refunds.html" target="_blank" rel="noopener">refund policy</a>. This is a one-time key purchase, not a recurring subscription.</span></label>
           <button class="button mint wide" id="buy-keys" type="submit" disabled>Loading prices&hellip;</button>
           <p class="purchase-note" id="crypto-note">Send the full amount shown by NOWPayments. Exchange or network fees must not reduce the amount received. Partial payments do not issue keys.</p>
+          <p class="purchase-note" id="paystack-note" hidden>Paystack checkout is in naira. For an international card, your bank handles currency conversion and may charge conversion fees.</p>
           <button class="plain-link" id="reload-prices" type="button">Refresh prices</button>
         </form>
       </section>

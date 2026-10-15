@@ -13,11 +13,12 @@ const auth = getAuth(initializeApp(config));
 const referrals = mountReferrals(auth, onAuthStateChanged);
 const $ = id => document.getElementById(id);
 const show = (id, visible) => { $(id).hidden = !visible; };
-const money = value => new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(value);
+const money = (value, currency = 'GBP') => new Intl.NumberFormat('en-GB', { style: 'currency', currency }).format(value);
 const date = value => value ? new Date(value).toLocaleString() : '';
 const icons = () => window.lucide?.createIcons();
 let catalog, account, project, keyCursor, chatCursor, authMode = 'signin', pendingView = 'wallet', working = false, loading = false;
 let projectRequestId, messageRequestId, accountEpoch = 0;
+let keyCheckoutRequest;
 const statusNames = { waiting: 'Awaiting payment', creating: 'Preparing checkout', create_failed: 'Checkout needs review',
   partially_paid: 'Partial payment', confirmed: 'Confirming payment', confirming: 'Confirming payment', sending: 'Processing payment',
   finished: 'Paid', refunded: 'Refunded', expired: 'Expired', failed: 'Failed', unused: 'Ready to activate',
@@ -58,10 +59,13 @@ function selectedProvider() { return document.querySelector('[name=provider]:che
 function quote() {
   if (!catalog) return;
   const provider = selectedProvider(), unit = catalog.keys[provider], quantity = Number($('quantity').value);
-  $('key-price').textContent = money(unit); $('key-total').textContent = money(unit * (Number.isInteger(quantity) && quantity >= 1 ? quantity : 1));
+  const currency = provider === 'paystack' ? 'NGN' : 'GBP';
+  $('key-currency').textContent = `${currency} / key`;
+  $('key-price').textContent = money(unit, currency); $('key-total').textContent = money(unit * (Number.isInteger(quantity) && quantity >= 1 ? quantity : 1), currency);
   show('crypto-note', provider === 'nowpayments');
+  show('paystack-note', provider === 'paystack');
   $('buy-keys').disabled = !catalog.keys.enabled;
-  $('buy-keys').textContent = catalog.keys.enabled ? `Buy keys with ${provider === 'paypal' ? 'PayPal' : 'crypto'}` : 'Key sales currently unavailable';
+  $('buy-keys').textContent = catalog.keys.enabled ? `Buy keys with ${provider === 'paypal' ? 'PayPal' : provider === 'paystack' ? 'Paystack' : 'crypto'}` : 'Key sales currently unavailable';
 }
 async function loadCatalog() {
   const response = await fetch(ENDPOINT, { cache: 'no-store', signal: AbortSignal.timeout(30000) });
@@ -75,7 +79,8 @@ async function loadCatalog() {
 }
 function safeCheckout(url) {
   try { const u = new URL(url); return u.protocol === 'https:' && !u.username && !u.password && !u.port &&
-    (u.hostname === 'nowpayments.io' && /^\/payment\/?$/.test(u.pathname) || u.hostname === 'www.paypal.com' && /^\/checkoutnow\/?$/.test(u.pathname)); } catch { return false; }
+    (u.hostname === 'nowpayments.io' && /^\/payment\/?$/.test(u.pathname) || u.hostname === 'www.paypal.com' && /^\/checkoutnow\/?$/.test(u.pathname) ||
+      u.hostname === 'checkout.paystack.com' && !u.search && !u.hash && /^\/[A-Za-z0-9_-]{3,200}$/.test(u.pathname)); } catch { return false; }
 }
 function checkoutWindow() {
   const win = window.open('about:blank', '_blank');
@@ -109,9 +114,10 @@ function renderOrders(orders) {
   $('order-list').replaceChildren();
   if (!orders.length) $('order-list').append(node('p', 'No orders yet.', 'empty-state'));
   orders.forEach(order => {
+    if (keyCheckoutRequest?.orderId === order.orderId && ['finished', 'refunded', 'expired', 'failed'].includes(order.paymentStatus)) keyCheckoutRequest = null;
     const row = node('article', null, 'order-item'), info = node('div'), actions = node('div', null, 'order-actions');
-    info.append(node('strong', `${order.quantity} key${order.quantity === 1 ? '' : 's'} / ${money(order.priceAmount)}`),
-      node('p', `${order.provider === 'paypal' ? 'PayPal' : 'Crypto'} · ${date(order.createdAtMillis)}`), node('p', order.orderId));
+    info.append(node('strong', `${order.quantity} key${order.quantity === 1 ? '' : 's'} / ${money(order.priceAmount, order.provider === 'paystack' ? 'NGN' : 'GBP')}`),
+      node('p', `${order.provider === 'paypal' ? 'PayPal' : order.provider === 'paystack' ? 'Paystack' : 'Crypto'} · ${date(order.createdAtMillis)}`), node('p', order.orderId));
     actions.append(node('span', statusNames[order.paymentStatus] || order.paymentStatus, 'status-badge'));
     if (!['finished', 'refunded', 'expired', 'failed'].includes(order.paymentStatus)) {
       if (safeCheckout(order.invoiceUrl)) { const link = node('a', 'Continue payment', 'plain-link'); link.href = order.invoiceUrl; link.target = '_blank'; link.rel = 'noopener noreferrer'; actions.append(link); }
@@ -220,7 +226,10 @@ $('key-form').onsubmit = event => {
   const win = checkoutWindow();
   work($('buy-keys'), async () => { try {
     const provider = selectedProvider(), quantity = Number($('quantity').value);
-    const result = await api('keys.checkout', { provider, quantity, expectedAmount: catalog.keys[provider] * quantity, acceptTerms: $('key-consent').checked });
+    const signature = `${auth.currentUser.uid}:${provider}:${quantity}:${catalog.keys[provider]}`;
+    if (keyCheckoutRequest?.signature !== signature) keyCheckoutRequest = { signature, id: crypto.randomUUID() };
+    const result = await api('keys.checkout', { provider, quantity, requestId: keyCheckoutRequest.id, expectedAmount: catalog.keys[provider] * quantity, acceptTerms: $('key-consent').checked });
+    keyCheckoutRequest.orderId = result.orderId;
     launchCheckout(result, win); view('orders', true); await loadAccount();
   } catch (error) { win?.close(); throw error; } });
 };
