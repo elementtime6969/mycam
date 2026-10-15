@@ -1,10 +1,12 @@
 (() => {
   'use strict';
-  const apk = document.querySelector('.hero-actions a').href;
+  const apk = document.querySelector('.android-download-group > a.button').href;
   const tutorials = {
     standalone: { video: '57yzC7uYvX0', title: 'MYCAM standalone tutorial', url: 'https://youtu.be/57yzC7uYvX0?is=32Vgl2QqTEK6dMv6' },
     nonroot: { video: 'N-sgR6y6h9s', title: 'MYCAM non-root + MOCHI tutorial', url: 'https://youtu.be/N-sgR6y6h9s?is=lj3b_pDY7KCkOEXu' },
     legacy: { video: 'dzsUGq8qy1Y', title: 'MYCAM Legacy LSPosed tutorial', url: 'https://youtu.be/dzsUGq8qy1Y?si=q0GkRN_WRSyMR5h4' },
+    nightfall: { video: 'ia74-JO-OwQ', title: 'MYCAM Nightfall tutorial', url: 'https://youtu.be/ia74-JO-OwQ?is=R8rhjfXMcyoYVeok' },
+    reality: { video: 'Demu2_Ej8Tc', title: 'MYCAM Reality tutorial', url: 'https://youtu.be/Demu2_Ej8Tc?is=PRPulbhw8C7EtKX1' },
     windows: { video: '7yKQAaP4SZ0', title: 'MYCAM Windows PC Studio tutorial', url: 'https://youtu.be/7yKQAaP4SZ0?si=lLMXI89LKjY_VblE' },
     obs: { video: '4k45NKvzP4k', title: 'MYCAM OBS live streaming tutorial', url: 'https://youtu.be/4k45NKvzP4k?is=LY8h0Eux9Xc-1cVY' },
     ios: { video: 'JaYVvwRQ4vU', title: 'MYCAM iOS setup tutorial', url: 'https://youtu.be/JaYVvwRQ4vU?is=_dEw0d2QL0_TNPTS' }
@@ -12,7 +14,9 @@
   const engines = {
     standalone: { requirement: 'ROOTED ANDROID', title: 'Standalone. Direct by design.', description: 'Prepare your target app directly inside MYCAM. The standalone engine works without an LSPosed setup on supported rooted phones.', steps: ['Install the latest MYCAM APK.', 'Select the standalone engine.', 'Choose and prepare your target app.'], download: apk, downloadLabel: 'Download MYCAM', label: 'STANDALONE / DEMO & SETUP' },
     nonroot: { requirement: 'SUPPORTED NON-ROOT ANDROID', title: 'Your phone. No rooting.', description: 'Use the non-root engine with the required MOCHI helper. Keep your phone unrooted and follow the tutorial for a supported app setup.', steps: ['Install MYCAM and the MOCHI helper.', 'Follow the non-root setup tutorial.', 'Prepare a supported app and select your media.'], download: 'https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/MOCHI.apk', downloadLabel: 'Download MOCHI', label: 'NON-ROOT / DEMO & SETUP' },
-    legacy: { requirement: 'ROOT + LSPOSED', title: 'Legacy. A familiar route.', description: 'Use MYCAM Legacy when your rooted setup relies on LSPosed module activation. The Legacy mode is included in the same MYCAM app.', steps: ['Install MYCAM on a compatible rooted phone.', 'Follow the LSPosed activation tutorial.', 'Set up your target apps in MYCAM Legacy.'], download: apk, downloadLabel: 'Download MYCAM', label: 'LEGACY LSPOSED / DEMO & SETUP' }
+    legacy: { requirement: 'ROOT + LSPOSED', title: 'Legacy. A familiar route.', description: 'Use MYCAM Legacy when your rooted setup relies on LSPosed module activation. The Legacy mode is included in the same MYCAM app.', steps: ['Install MYCAM on a compatible rooted phone.', 'Follow the LSPosed activation tutorial.', 'Set up your target apps in MYCAM Legacy.'], download: apk, downloadLabel: 'Download MYCAM', label: 'LEGACY LSPOSED / DEMO & SETUP' },
+    nightfall: { requirement: 'ANDROID 16 & 17 / NO ROOT', title: 'Nightfall. Your native studio.', description: 'Use your media with original installed apps through Nightfall’s experimental native camera engine. Set up on your phone with Wireless debugging; no root or MOCHI helper is required. App and device compatibility varies.', steps: ['Install MYCAM and select Nightfall.', 'Pair this phone through Wireless debugging.', 'Add your media and open a supported app.'], download: apk, downloadLabel: 'Download MYCAM', label: 'NIGHTFALL / DEMO & SETUP' },
+    reality: { requirement: 'ANDROID 16 / SEPARATE VVIP ACCESS', title: 'Reality. Media in motion.', description: 'Choose videos, photos, Live 3D or an OBS stream, then adjust them with Reality’s remote. Requires a separate 30-day VVIP subscription (£150 or ₦230,000), or a valid VVIP key, plus Wireless debugging and supported device capabilities. Experimental; verification is not guaranteed.', steps: ['Install MYCAM and select Reality on Android 16.', 'Activate VVIP, accept the Reality terms and pair your phone.', 'Choose your source and a supported destination app.'], download: apk, downloadLabel: 'Download MYCAM', label: 'REALITY VVIP / DEMO & SETUP' }
   };
   const icons = () => window.lucide?.createIcons();
   icons();
