@@ -51,7 +51,7 @@ Jailbroken iPhone users can install MYCAM iOS and receive future package updates
 
 **[Add the MYCAM iOS repository to Sileo](https://shareswhatyoucan.com/mycam/)**
 
-Sileo source: `https://elementtime6969.github.io/mycam/sileo/`
+Sileo source: `https://shareswhatyoucan.com/mycam/`
 
 ## Ready Rooted Phone From Us
 
