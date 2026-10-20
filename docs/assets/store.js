@@ -3,6 +3,7 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.7.0/firebas
 import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword,
   sendEmailVerification, sendPasswordResetEmail, signOut, reload } from 'https://www.gstatic.com/firebasejs/11.7.0/firebase-auth.js';
 
+const IOS_ENDPOINT = 'https://europe-west2-wallpaper-5b02e.cloudfunctions.net/mycamIosWebStoreV1';
 const ENDPOINT = 'https://europe-west2-wallpaper-5b02e.cloudfunctions.net/myCamWebStore';
 async function startStore() {
 const response = await fetch(`${ENDPOINT}?config=web`, { cache: 'no-store', signal: AbortSignal.timeout(15000) });
@@ -16,6 +17,7 @@ const show = (id, visible) => { $(id).hidden = !visible; };
 const money = (value, currency = 'GBP') => new Intl.NumberFormat('en-GB', { style: 'currency', currency }).format(value);
 const date = value => value ? new Date(value).toLocaleString() : '';
 const icons = () => window.lucide?.createIcons();
+let iosCatalog, iosAccount, platform = null;
 let catalog, account, project, keyCursor, chatCursor, authMode = 'signin', pendingView = 'wallet', working = false, loading = false;
 let projectRequestId, messageRequestId, accountEpoch = 0;
 let keyCheckoutRequest;
@@ -31,12 +33,15 @@ function errorMessage(error) {
     'auth/too-many-requests': 'Too many attempts. Please wait and try again.', 'auth/network-request-failed': 'Connection failed. Check your network and retry.' };
   return messages[error.code] || error.message || 'Something went wrong. Please retry.';
 }
-async function api(action, data = {}) {
+async function api(action, data = {}, endpoint = ENDPOINT) {
   if (!auth.currentUser) throw new Error('Sign in to continue.');
+  const uid = auth.currentUser.uid;
   const token = await auth.currentUser.getIdToken();
-  const response = await fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+  if(auth.currentUser?.uid !== uid) throw new Error("Your account changed. Sign in again.");
+  const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
     body: JSON.stringify({ ...data, action }), signal: AbortSignal.timeout(115000), cache: 'no-store' });
   const value = await response.json();
+  if(auth.currentUser?.uid !== uid) throw new Error("Your account changed. Reopen your purchases.");
   if (!response.ok || value.ok === false) throw new Error(value.error || 'Request failed. Please retry.');
   return value;
 }
@@ -50,37 +55,67 @@ function view(name, scroll = false) {
 function openAuth(target = 'wallet') { pendingView = target; $('auth-error').textContent = ''; $('auth-dialog').showModal(); }
 async function work(button, action) {
   if (working) return;
-  working = true; const wasDisabled = button?.disabled;
+  working = true;$('key-platforms').disabled=true;$('key-methods').disabled=true;$('key-consent').disabled=true; const wasDisabled = button?.disabled;
   if (button) { button.disabled = true; button.setAttribute('aria-busy', 'true'); }
   try { await action(); } catch (error) { notice(errorMessage(error), true); }
-  finally { working = false; if (button) { button.disabled = wasDisabled; button.removeAttribute('aria-busy'); } }
+  finally { working = false;$('key-platforms').disabled=false;$('key-methods').disabled=false;$('key-consent').disabled=false; if (button) { button.disabled = wasDisabled; button.removeAttribute('aria-busy'); } quote(); }
 }
-function selectedProvider() { return document.querySelector('[name=provider]:checked').value; }
+const platformName = value => value === 'ios' ? 'iPhone / iPad' : 'Android';
+const providerName = value => ({paypal:'PayPal',paystack:'Paystack',flutterwave:'Flutterwave',nowpayments:'crypto'}[value] || value);
+function keyApi(value,action,data={}) {
+  return value === 'ios' ? api({'keys.checkout':'checkout','keys.check':'check',account:'account'}[action] || action,{...data,platform:'ios'},IOS_ENDPOINT)
+    : api(action,{...data,platform:'android'});
+}
+function selectedProvider() { return document.querySelector('[name=provider]:checked')?.value; }
+function currentPrices() {
+  if(platform === 'ios') return iosCatalog ? {...iosCatalog.prices,enabled:iosCatalog.enabled,maxQuantity:1,
+    providers:iosCatalog.providers || []} : null;
+  return platform === 'android' && catalog ? {...catalog.keys,providers:['nowpayments','paystack',...(catalog.keys.paypalAvailable?['paypal']:[])]} : null;
+}
 function quote() {
-  if (!catalog) return;
-  const provider = selectedProvider(), unit = catalog.keys[provider], quantity = Number($('quantity').value);
-  const currency = provider === 'paystack' ? 'NGN' : 'GBP';
-  $('key-currency').textContent = `${currency} / key`;
-  $('key-price').textContent = money(unit, currency); $('key-total').textContent = money(unit * (Number.isInteger(quantity) && quantity >= 1 ? quantity : 1), currency);
-  show('crypto-note', provider === 'nowpayments');
-  show('paystack-note', provider === 'paystack');
-  $('buy-keys').disabled = !catalog.keys.enabled;
-  $('buy-keys').textContent = catalog.keys.enabled ? `Buy keys with ${provider === 'paypal' ? 'PayPal' : provider === 'paystack' ? 'Paystack' : 'crypto'}` : 'Key sales currently unavailable';
+  const prices = currentPrices();
+  show('flutterwave-option',platform === 'ios');show('paystack-option',platform !== 'ios');
+  show('ios-quantity-note',platform === 'ios');
+  $('quantity').max = prices?.maxQuantity || 50;$('quantity').disabled = working || platform === 'ios';
+  if(platform === 'ios') $('quantity').value = '1';
+  document.querySelectorAll('[name=provider]').forEach(input => { input.disabled = !prices?.providers.includes(input.value); });
+  if(prices && !prices.providers.includes(selectedProvider())) {
+    const available = document.querySelector(`[name=provider][value="${prices.providers[0]}"]`);if(available) available.checked=true;
+  }
+  const provider=selectedProvider(),unit=prices?.[provider],quantity=Number($('quantity').value);
+  const currency=['paystack','flutterwave'].includes(provider)?'NGN':'GBP';
+  $('key-currency').textContent = `${currency} / ${platform ? platformName(platform)+' key' : 'key'}`;
+  $('key-price').textContent = Number.isFinite(unit)?money(unit,currency):'—';
+  $('key-total').textContent = Number.isFinite(unit)?money(unit*(Number.isInteger(quantity)&&quantity>=1?quantity:1),currency):'—';
+  $('key-duration').textContent = platform === 'ios' ? '30 days per iPhone / iPad key, starting at first activation.' : platform === 'android' ? 'One calendar month per Android key, starting at first activation.' : 'Choose your phone to see the right key and access period.';
+  $('platform-summary').textContent = platform ? `You are buying an ${platformName(platform)} key. It only activates MYCAM for ${platform === 'ios' ? 'iOS / iPadOS' : 'Android'}.` : 'Android and iPhone keys are separate. Choose your phone before buying.';
+  $('platform-consent').textContent = platform ? `I am buying an ${platformName(platform)} key for ${platformName(platform)} only.` : 'I have selected the correct phone platform.';
+  $('paypal-note').textContent = prices?.providers.includes('paypal')?'Card or PayPal account':'Currently unavailable';
+  show('crypto-note',Boolean(platform)&&provider === 'nowpayments');
+  show('paystack-note',Boolean(platform)&&['paystack','flutterwave'].includes(provider));
+  $('paystack-note').textContent = `${provider === 'flutterwave' ? 'Flutterwave' : 'Paystack'} checkout is in naira. For an international card, your bank handles currency conversion and may charge conversion fees.`;
+  const enabled=Boolean(prices?.enabled && prices.providers.includes(provider));
+  $('buy-keys').disabled = working || !enabled;
+  $('buy-keys').textContent = !platform?'Choose Android or iPhone':enabled?`Buy ${platformName(platform)} ${quantity === 1 ? 'key' : 'keys'} with ${providerName(provider)}`:'Key sales currently unavailable';
+}
+function selectPlatform(value) {
+  platform=['android','ios'].includes(value)?value:null;
+  document.querySelectorAll('[name=platform]').forEach(input => {input.checked=input.value===platform;});
+  $('key-consent').checked=false;quote();
+  const url=new URL(location.href);if(platform) url.searchParams.set('platform',platform);else url.searchParams.delete('platform');history.replaceState(null,'',url);
 }
 async function loadCatalog() {
-  const response = await fetch(ENDPOINT, { cache: 'no-store', signal: AbortSignal.timeout(30000) });
-  if (!response.ok) throw new Error('Prices are unavailable. Please refresh prices.');
-  catalog = await response.json();
-  $('quantity').max = catalog.keys.maxQuantity;
-  document.querySelector('[value=paypal]').disabled = !catalog.keys.paypalAvailable;
-  $('paypal-note').textContent = catalog.keys.paypalAvailable ? 'Card or PayPal account' : 'Currently unavailable';
-  if (!catalog.keys.paypalAvailable) document.querySelector('[value=nowpayments]').checked = true;
+  const fetchCatalog=async endpoint=>{const response=await fetch(endpoint,{cache:'no-store',signal:AbortSignal.timeout(30000)});if(!response.ok) throw new Error('Prices are unavailable. Refresh prices before buying.');return response.json();};
+  const [android,ios]=await Promise.allSettled([fetchCatalog(ENDPOINT),fetchCatalog(IOS_ENDPOINT)]);
+  if(android.status==='fulfilled') catalog=android.value;
+  if(ios.status==='fulfilled' && ios.value.platform==='ios') iosCatalog=ios.value;
   quote();
+  if(android.status==='rejected' || ios.status==='rejected') notice('Some platform prices could not load. Refresh prices before buying.',true);
 }
 function safeCheckout(url) {
   try { const u = new URL(url); return u.protocol === 'https:' && !u.username && !u.password && !u.port &&
     (u.hostname === 'nowpayments.io' && /^\/payment\/?$/.test(u.pathname) || u.hostname === 'www.paypal.com' && /^\/checkoutnow\/?$/.test(u.pathname) ||
-      u.hostname === 'checkout.paystack.com' && !u.search && !u.hash && /^\/[A-Za-z0-9_-]{3,200}$/.test(u.pathname)); } catch { return false; }
+      u.hostname === 'checkout.flutterwave.com' && /^\/v3\/hosted\/pay\/[^/]+$/.test(u.pathname) || u.hostname === 'checkout.paystack.com' && !u.search && !u.hash && /^\/[A-Za-z0-9_-]{3,200}$/.test(u.pathname)); } catch { return false; }
 }
 function checkoutWindow() {
   const win = window.open('about:blank', '_blank');
@@ -99,9 +134,9 @@ function renderKeys(keys, append = false) {
   if (!append && !keys.length) $('wallet-list').append(node('p', 'No keys yet. Completed purchases will appear here.', 'empty-state'));
   keys.forEach(key => {
     const row = node('article', null, 'wallet-item'), details = node('div');
-    details.append(node('span', statusNames[key.status] || key.status, 'status-badge'));
+    details.append(node('strong', `${platformName(key.platform)} key`, 'key-platform-label'),node('span', statusNames[key.status] || key.status, 'status-badge'));
     if (key.code) details.append(node('code', key.code));
-    details.append(node('p', key.accessUntilMillis ? `Access ends ${date(key.accessUntilMillis)}` : 'One calendar month from activation.'));
+    details.append(node('p', key.accessUntilMillis ? `Access ends ${date(key.accessUntilMillis)}` : (key.platform === 'ios' ? '30 days from first activation. iPhone / iPad only.' : 'One calendar month from activation. Android only.')));
     row.append(details);
     if (key.code) {
       const copy = node('button', 'Copy', 'button small outline'); copy.type = 'button';
@@ -116,13 +151,13 @@ function renderOrders(orders) {
   orders.forEach(order => {
     if (keyCheckoutRequest?.orderId === order.orderId && ['finished', 'refunded', 'expired', 'failed'].includes(order.paymentStatus)) keyCheckoutRequest = null;
     const row = node('article', null, 'order-item'), info = node('div'), actions = node('div', null, 'order-actions');
-    info.append(node('strong', `${order.quantity} key${order.quantity === 1 ? '' : 's'} / ${money(order.priceAmount, order.provider === 'paystack' ? 'NGN' : 'GBP')}`),
-      node('p', `${order.provider === 'paypal' ? 'PayPal' : order.provider === 'paystack' ? 'Paystack' : 'Crypto'} · ${date(order.createdAtMillis)}`), node('p', order.orderId));
+    info.append(node('strong', `${platformName(order.platform)} · ${order.quantity} key${order.quantity === 1 ? '' : 's'} / ${money(order.priceAmount, order.priceCurrency?.toUpperCase() || (order.provider === 'paystack' ? 'NGN' : 'GBP'))}`),
+      node('p', `${providerName(order.provider)} · ${date(order.createdAtMillis)}`), node('p', order.orderId));
     actions.append(node('span', statusNames[order.paymentStatus] || order.paymentStatus, 'status-badge'));
     if (!['finished', 'refunded', 'expired', 'failed'].includes(order.paymentStatus)) {
       if (safeCheckout(order.invoiceUrl)) { const link = node('a', 'Continue payment', 'plain-link'); link.href = order.invoiceUrl; link.target = '_blank'; link.rel = 'noopener noreferrer'; actions.append(link); }
       const check = node('button', 'Check payment', 'button small outline'); check.type = 'button';
-      check.onclick = () => work(check, async () => { const result = await api('keys.check', { orderId: order.orderId }); await loadAccount();
+      check.onclick = () => work(check, async () => { const result = await keyApi(order.platform,'keys.check', { orderId: order.orderId }); await loadAccount();
         notice(result.issued ? 'Payment verified. Your keys are ready in My keys.' : result.verification === 'unavailable' ? 'Provider verification is unavailable. Do not pay again; retry shortly.' : 'Payment checked. Keys appear once the full payment is verified.'); }); actions.append(check);
     }
     row.append(info, actions); $('order-list').append(row);
@@ -171,11 +206,17 @@ async function loadAccount() {
   if (!auth.currentUser || loading) return;
   loading = true; const epoch = accountEpoch;
   try {
-    const result = await api('account'); if (epoch !== accountEpoch) return;
-    account = result; keyCursor = result.nextCursor;
-    renderKeys(result.keys || []); renderOrders(result.orders || []); renderProject(result.project);
-    show('more-keys', Boolean(keyCursor)); show('verification', !result.verified);
-    $('account-email').textContent = result.email; $('gold-email').textContent = `Contact email: ${result.email}`;
+    const [android,ios]=await Promise.allSettled([api('account'),keyApi('ios','account')]);
+    if(epoch !== accountEpoch) return;
+    if(android.status==='fulfilled') account=android.value;
+    if(ios.status==='fulfilled') iosAccount=ios.value;
+    keyCursor=account?.nextCursor;
+    renderKeys([...(account?.keys||[]).map(key=>({...key,platform:'android'})),...(iosAccount?.keys||[])]);
+    renderOrders([...(account?.orders||[]).map(order=>({...order,platform:'android'})),...(iosAccount?.orders||[])].sort((a,b)=>b.createdAtMillis-a.createdAtMillis));
+    if(android.status==='fulfilled') renderProject(account.project);
+    show('more-keys',Boolean(keyCursor));show('verification',!auth.currentUser?.emailVerified);
+    $('account-email').textContent=auth.currentUser?.email||'';$('gold-email').textContent=`Contact email: ${auth.currentUser?.email||''}`;
+    if(android.status==='rejected'||ios.status==='rejected') notice('Some purchases could not refresh. Your existing keys are safe; refresh your account to retry.',true);
     await loadThread();
   } finally {
     loading = false;
@@ -218,17 +259,19 @@ $('check-verification').onclick = () => work($('check-verification'), async () =
 $('logout').onclick = () => work($('logout'), () => signOut(auth));
 $('refresh-account').onclick = () => work($('refresh-account'), loadAccount);
 $('reload-prices').onclick = () => work($('reload-prices'), loadCatalog);
-document.querySelectorAll('[name=provider]').forEach(el => el.onchange = quote); $('quantity').oninput = quote;
+document.querySelectorAll('[name=platform]').forEach(el => el.onchange = () => {if(!working) selectPlatform(el.value);});
+document.querySelectorAll('[name=provider]').forEach(el => el.onchange = () => {$('key-consent').checked=false;quote();}); $('quantity').oninput = quote;
 $('key-form').onsubmit = event => {
   event.preventDefault(); if (!auth.currentUser) return openAuth('orders');
   if (!auth.currentUser.emailVerified) { notice('Verify your email in My account first.', true); return view('orders', true); }
-  if (working || !catalog) return;
+  if (working || !platform || !currentPrices()?.enabled) return;
   const win = checkoutWindow();
   work($('buy-keys'), async () => { try {
+    const selectedPlatform=platform,prices=currentPrices();
     const provider = selectedProvider(), quantity = Number($('quantity').value);
-    const signature = `${auth.currentUser.uid}:${provider}:${quantity}:${catalog.keys[provider]}`;
+    const signature = `${auth.currentUser.uid}:${selectedPlatform}:${provider}:${quantity}:${prices[provider]}`;
     if (keyCheckoutRequest?.signature !== signature) keyCheckoutRequest = { signature, id: crypto.randomUUID() };
-    const result = await api('keys.checkout', { provider, quantity, requestId: keyCheckoutRequest.id, expectedAmount: catalog.keys[provider] * quantity, acceptTerms: $('key-consent').checked });
+    const result = await keyApi(selectedPlatform,'keys.checkout', { provider, quantity, requestId: keyCheckoutRequest.id, expectedAmount: prices[provider] * quantity, expectedCurrency:['paystack','flutterwave'].includes(provider)?'NGN':'GBP', acceptTerms: $('key-consent').checked });
     keyCheckoutRequest.orderId = result.orderId;
     launchCheckout(result, win); view('orders', true); await loadAccount();
   } catch (error) { win?.close(); throw error; } });
@@ -253,7 +296,7 @@ $('older-messages').onclick = () => work($('older-messages'), () => loadThread(t
 $('more-keys').onclick = () => work($('more-keys'), async () => { const epoch = accountEpoch, next = await api('account', { cursor: keyCursor });
   if (epoch !== accountEpoch) return; renderKeys(next.keys || [], true); keyCursor = next.nextCursor; show('more-keys', Boolean(keyCursor)); });
 onAuthStateChanged(auth, user => {
-  accountEpoch++; account = null; project = null; keyCursor = null; chatCursor = null; projectRequestId = null; messageRequestId = null;
+  accountEpoch++; account = null; iosAccount = null; keyCheckoutRequest = null; project = null; keyCursor = null; chatCursor = null; projectRequestId = null; messageRequestId = null;
   $('wallet-list').replaceChildren(); $('order-list').replaceChildren(); $('messages').replaceChildren(); $('brief').value = ''; $('message').value = ''; $('telegram').value = '';
   renderProject(null); $('gold-email').textContent = ''; $('gold-consent').checked = false;
   show('account-content', Boolean(user)); show('signed-out', !user); show('logout', Boolean(user)); show('refresh-account', Boolean(user)); show('verification', Boolean(user && !user.emailVerified));
@@ -271,6 +314,7 @@ setInterval(async () => {
 window.addEventListener('focus', () => { if (auth.currentUser && !working) loadAccount().catch(error => notice(errorMessage(error), true)); });
 if (location.hash === '#gold') pendingView = 'project';
 if (location.hash === '#referrals' || new URL(location.href).searchParams.has('ref')) pendingView = 'referrals';
+selectPlatform(new URL(location.href).searchParams.get('platform'));
 loadCatalog().catch(error => { $('buy-keys').textContent = 'Prices unavailable'; notice(errorMessage(error), true); });
 icons();
 

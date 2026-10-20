@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MYCAM Store | Keys, Gold &amp; Referrals</title>
-  <meta name="description" content="Buy MYCAM activation keys with PayPal or crypto, manage your keys, and discuss a separate custom app or website project with MYCAM Gold.">
+  <meta name="description" content="Choose Android or iPhone / iPad activation keys, manage your purchases, and discuss a separate custom app or website project with MYCAM Gold.">
   <meta name="theme-color" content="#101311"><link rel="icon" href="assets/mycam-logo.png">
-  <link rel="stylesheet" href="assets/site.css?v=20261010-store"><link rel="stylesheet" href="assets/store.css?v=20261014-referrals">
+  <link rel="stylesheet" href="assets/site.css?v=20261010-store"><link rel="stylesheet" href="assets/store.css?v=20261020-platform-keys">
   <link rel="stylesheet" href="assets/paypal-guide.css?v=20261010-1">
   <script src="assets/paypal-guide.js?v=20261010-1" defer></script>
-  <script src="assets/lucide.min.js" defer></script><script type="module" src="assets/store.js?v=20261014-referrals"></script>
+  <script src="assets/lucide.min.js" defer></script><script type="module" src="assets/store.js?v=20261020-platform-keys"></script>
 </head>
 <body class="store-page">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -24,21 +24,29 @@
     <div class="store-products">
       <section class="key-product" id="keys" aria-labelledby="keys-heading">
         <div class="product-kicker"><i data-lucide="key-round"></i><span>MYCAM PRO</span><span class="product-tag">ACTIVATION KEY</span></div>
-        <h2 id="keys-heading">Your next month,<br>ready when you are.</h2>
-        <p>One calendar month per key, starting when activated. Your purchased keys stay in your account.</p>
+        <h2 id="keys-heading">Your phone.<br>Your key.</h2>
+        <p id="key-duration">Choose your phone to see the right key and access period. Your purchased keys stay in your account.</p>
         <div class="key-price"><strong id="key-price">&mdash;</strong><span id="key-currency">GBP / key</span></div>
         <form id="key-form">
-          <fieldset class="payment-options"><legend>Payment method</legend>
+          <fieldset class="platform-options" id="key-platforms"><legend>1. Which phone is this key for?</legend>
+            <label><input type="radio" name="platform" value="android" required><span><strong>Android</strong><small>MYCAM for Android</small></span><i data-lucide="smartphone"></i></label>
+            <label><input type="radio" name="platform" value="ios" required><span><strong>iPhone / iPad</strong><small>MYCAM for iOS / iPadOS</small></span><i data-lucide="tablet-smartphone"></i></label>
+          </fieldset>
+          <p id="platform-summary" class="platform-summary" role="status">Android and iPhone keys are separate. Choose your phone before buying.</p>
+          <p class="purchase-note">Buying for iPhone or iPad? <a href="ios-setup.html">Check the iOS setup and compatibility guide</a> before paying.</p>
+          <fieldset class="payment-options" id="key-methods"><legend>2. Payment method</legend>
             <label><input type="radio" name="provider" value="nowpayments" checked> <span>Crypto <small>BTC + supported currencies</small></span></label>
             <label id="paypal-option"><input type="radio" name="provider" value="paypal"> <span>PayPal / Card <small id="paypal-note">Card or PayPal account</small></span></label>
-            <label><input type="radio" name="provider" value="paystack"> <span>Paystack <small>Nigerian &amp; international cards · NGN</small></span></label>
+            <label id="paystack-option"><input type="radio" name="provider" value="paystack"> <span>Paystack <small>Nigerian &amp; international cards · NGN</small></span></label>
+            <label id="flutterwave-option" hidden><input type="radio" name="provider" value="flutterwave"> <span>Flutterwave <small>Cards &amp; local payment options · NGN</small></span></label>
           </fieldset>
           <button class="paypal-guide-reopen" type="button" data-paypal-guide-open aria-haspopup="dialog" aria-controls="paypal-guide">How to pay by card with PayPal</button>
           <div class="purchase-total"><label for="quantity">Keys <input id="quantity" type="number" min="1" max="50" step="1" value="1" required></label><span>Total <strong id="key-total">&mdash;</strong></span></div>
-          <label class="check-line"><input id="key-consent" type="checkbox" required><span>I accept the <a href="terms.html" target="_blank" rel="noopener">terms</a> and <a href="refunds.html" target="_blank" rel="noopener">refund policy</a>. This is a one-time key purchase, not a recurring subscription.</span></label>
+          <label class="check-line"><input id="key-consent" type="checkbox" required><span><span id="platform-consent">I have selected the correct phone platform.</span> I accept the <a href="terms.html" target="_blank" rel="noopener">terms</a> and <a href="refunds.html" target="_blank" rel="noopener">refund policy</a>. This is a one-time key purchase, not a recurring subscription.</span></label>
           <button class="button mint wide" id="buy-keys" type="submit" disabled>Loading prices&hellip;</button>
           <p class="purchase-note" id="crypto-note">Send the full amount shown by NOWPayments. Exchange or network fees must not reduce the amount received. Partial payments do not issue keys.</p>
           <p class="purchase-note" id="paystack-note" hidden>Paystack checkout is in naira. For an international card, your bank handles currency conversion and may charge conversion fees.</p>
+          <p class="purchase-note" id="ios-quantity-note" hidden>iPhone / iPad keys are sold one at a time. Each IOS key provides 30 days from first activation. Enter it in MYCAM on your iPhone or iPad.</p>
           <button class="plain-link" id="reload-prices" type="button">Refresh prices</button>
         </form>
       </section>
