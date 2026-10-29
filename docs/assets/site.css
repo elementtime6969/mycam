@@ -73,3 +73,8 @@ dialog{padding:0;background:#171d19;color:#f2f5f2;border:1px solid #536457;borde
 /* Keep all five engine choices readable on phones and tablets. */
 @media(max-width:1100px){.engine-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:480px){.engine-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* MyCam OS joins the existing platform downloads. */
+.download-platforms{grid-template-columns:repeat(4,minmax(0,1fr))}.os-preview-label{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);vertical-align:middle}.platform-download h3 .os-preview-label{display:block;margin-top:6px}.os-requirements{display:grid;grid-template-columns:1.4fr 1fr;gap:72px;margin-top:44px}.os-requirements h3{font-size:26px}.os-download-facts{display:flex;flex-direction:column;gap:12px;padding:26px;border:1px solid var(--line);border-radius:6px}.os-download-facts strong{font-size:24px;color:var(--mint)}.os-download-facts span{font-size:14px;color:var(--muted)}
+@media(max-width:1100px){.download-platforms{grid-template-columns:repeat(2,minmax(0,1fr))}.platform-download{padding:28px!important}.platform-download:nth-child(2){border-right:0}.platform-download:nth-child(-n+2){border-bottom:1px solid var(--line)}.os-requirements{gap:30px}.desktop-nav{gap:16px}}
+@media(max-width:640px){.download-platforms{grid-template-columns:1fr}.platform-download{padding:26px 0!important;border-right:0;border-bottom:1px solid var(--line)}.os-requirements{grid-template-columns:1fr;gap:24px}.studio-preview figcaption{flex-wrap:wrap}.os-download-facts{padding:22px}}
