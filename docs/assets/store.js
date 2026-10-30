@@ -113,9 +113,18 @@ async function loadCatalog() {
   if(android.status==='rejected' || ios.status==='rejected') notice('Some platform prices could not load. Refresh prices before buying.',true);
 }
 function safeCheckout(url) {
-  try { const u = new URL(url); return u.protocol === 'https:' && !u.username && !u.password && !u.port &&
-    (u.hostname === 'nowpayments.io' && /^\/payment\/?$/.test(u.pathname) || u.hostname === 'www.paypal.com' && /^\/checkoutnow\/?$/.test(u.pathname) ||
-      u.hostname === 'checkout.flutterwave.com' && /^\/v3\/hosted\/pay\/[^/]+$/.test(u.pathname) || u.hostname === 'checkout.paystack.com' && !u.search && !u.hash && /^\/[A-Za-z0-9_-]{3,200}$/.test(u.pathname)); } catch { return false; }
+  try {
+    const u = new URL(url);
+    if (u.protocol !== 'https:' || u.username || u.password || u.port) return false;
+    if (u.origin === 'https://mycamwebstore-uc63yuw73a-nw.a.run.app' && u.pathname === '/checkout' && !u.search) {
+      const params = new URLSearchParams(u.hash.slice(1));
+      return [...params].length === 3 && params.getAll('kind').length === 1 && params.get('kind') === 'keys' &&
+        params.getAll('order').length === 1 && /^mycam_[a-f0-9]{32}$/.test(params.get('order') || '') &&
+        params.getAll('token').length === 1 && /^[a-f0-9]{64}$/.test(params.get('token') || '');
+    }
+    return u.hostname === 'nowpayments.io' && /^\/payment\/?$/.test(u.pathname) || u.hostname === 'www.paypal.com' && /^\/checkoutnow\/?$/.test(u.pathname) ||
+      u.hostname === 'checkout.flutterwave.com' && /^\/v3\/hosted\/pay\/[^/]+$/.test(u.pathname) || u.hostname === 'checkout.paystack.com' && !u.search && !u.hash && /^\/[A-Za-z0-9_-]{3,200}$/.test(u.pathname);
+  } catch { return false; }
 }
 function checkoutWindow() {
   const win = window.open('about:blank', '_blank');
@@ -273,8 +282,10 @@ $('key-form').onsubmit = event => {
     if (keyCheckoutRequest?.signature !== signature) keyCheckoutRequest = { signature, id: crypto.randomUUID() };
     const result = await keyApi(selectedPlatform,'keys.checkout', { provider, quantity, requestId: keyCheckoutRequest.id, expectedAmount: prices[provider] * quantity, expectedCurrency:['paystack','flutterwave'].includes(provider)?'NGN':'GBP', acceptTerms: $('key-consent').checked });
     keyCheckoutRequest.orderId = result.orderId;
-    launchCheckout(result, win); view('orders', true); await loadAccount();
-  } catch (error) { win?.close(); throw error; } });
+    launchCheckout(result, win);
+  } catch (error) { win?.close(); throw error; }
+    view('orders', true); await loadAccount();
+  });
 };
 $('request-gold').onclick = () => { if (!auth.currentUser) openAuth('project'); else { view('project', true); } };
 $('gold-form').onsubmit = event => { event.preventDefault(); const button = event.submitter;
