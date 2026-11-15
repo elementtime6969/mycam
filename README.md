@@ -22,18 +22,18 @@ Non-root engine users must also install the third-party helper that powers the n
 
 ## Windows PC Studio
 
-**[Download MYCAM PC Studio v1.0.1 for Windows](https://github.com/elementtime6969/mycam/releases/download/pc-v1.0.1/MYCAM-PC-Setup-1.0.1-x64.exe)**
+**[Download MYCAM PC Studio v1.0.3 for Windows](https://github.com/elementtime6969/mycam/releases/download/pc-v1.0.3/MYCAM-PC-Setup-1.0.3-x64.exe)**
 
 Run this single setup `.exe`. After you accept the terms, it automatically downloads and SHA-256-verifies the remaining components, installs the camera interfaces and creates Start menu and desktop shortcuts. Do not download or unpack the component ZIP files yourself.
 
-- Windows 11 x64, administrator access and internet required. Allow 12 GB free during installation.
+- Windows 11 x64, administrator access and internet required. Allow 25 GB free during installation.
 - Local neural portrait processing requires supported NVIDIA CUDA hardware.
 - Activate with a valid MYCAM key or purchase access inside the app. Feature and voice-account limits still apply.
 - This release is not Authenticode publisher-signed; Windows may show an unknown-publisher warning. Verify the official release and checksums before installing.
 
-[Windows tutorial](https://youtu.be/7yKQAaP4SZ0?si=lLMXI89LKjY_VblE) · [Windows release and SHA-256 checksums](https://github.com/elementtime6969/mycam/releases/tag/pc-v1.0.1)
+[Windows tutorial](https://youtu.be/7yKQAaP4SZ0?si=lLMXI89LKjY_VblE) · [Windows release and SHA-256 checksums](https://github.com/elementtime6969/mycam/releases/tag/pc-v1.0.3)
 
-Version **1.0.1** adds the ZeusHold subscription guide and a visible seven-language selector, removes Stripe purchases, and preserves the camera startup fix for `0x80040111`. Existing PC users can reinstall, then restart Windows. On Windows 11 N editions, install the [Media Feature Pack](https://support.microsoft.com/en-us/windows/experience/platform-variants/media-feature-pack-for-windows-n) if missing, then restart.
+Version **1.0.3** adds a separate neural photo runtime for NVIDIA RTX 50-series GPUs, including the RTX 5090 Laptop GPU. Older GPUs retain the original runtime. Close MYCAM, install the update and reopen it. The release notes describe validation and hardware-test limits. On Windows 11 N editions, install the [Media Feature Pack](https://support.microsoft.com/en-us/windows/experience/platform-variants/media-feature-pack-for-windows-n) if missing, then restart.
 
 The application source code and signing keys are not included. Use only authorized media; never use MYCAM to bypass age, identity or liveness verification.
 
