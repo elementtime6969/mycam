@@ -14,6 +14,9 @@ By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 
 ## Download
 
+**Mac public preview:** [Download MYCAM Mac 0.4.0](https://github.com/elementtime6969/mycam/releases/download/mac-v0.4.0/MYCAM-Mac-0.4.0-universal.dmg) · [Mac setup](https://elementtime6969.github.io/mycam/mac-setup.html). About 28.5 MB. Uses **iOS activation keys**. Neural Photo is not included.
+
+
 [Download MYCAM v2.29.81](https://github.com/elementtime6969/mycam/releases/download/v2.29.81/Mycam-v2.29.81.apk)
 
 Non-root engine users must also install the third-party helper that powers the non-root setup:
