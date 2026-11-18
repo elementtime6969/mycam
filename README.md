@@ -1,6 +1,6 @@
 # MYCAM
 
-Official downloads and support for MYCAM on Android, Windows PC Studio and supported jailbroken iPhones.
+Official downloads and support for MYCAM on Android, Windows PC Studio, Mac and supported jailbroken iPhones.
 
 **[Join the MYCAM Telegram community](https://t.me/+isz4hFM1tgY1NTZk)** for updates, setup help and community support.
 
