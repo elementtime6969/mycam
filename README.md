@@ -19,6 +19,8 @@ By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 
 [Download MYCAM v2.29.82](https://github.com/elementtime6969/mycam/releases/download/v2.29.82/Mycam-v2.29.82.apk)
 
+[3D model download ZIP](https://wallpaper-5b02e.web.app/mycam/live3d/neural-v1.zip) (482 MB). In MyCam, open **Live 3D Studio → MyCam Photo → Import model pack** and select the downloaded ZIP.
+
 Non-root engine users must also install the third-party helper that powers the non-root setup:
 
 [Download MOCHI helper](https://raw.githubusercontent.com/elementtime6969/mycam/main/downloads/MOCHI.apk)
