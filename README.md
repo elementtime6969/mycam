@@ -27,7 +27,7 @@ Non-root engine users must also install the third-party helper that powers the n
 
 ## Windows PC Studio
 
-**[Download MYCAM PC Studio v1.0.8 for Windows](https://github.com/elementtime6969/mycam/releases/download/pc-v1.0.8/MYCAM-PC-Setup-1.0.8-x64.exe)**
+**[Download MYCAM PC Studio v1.0.9 for Windows](https://github.com/elementtime6969/mycam/releases/download/pc-v1.0.9/MYCAM-PC-Setup-1.0.9-x64.exe)**
 
 Run this single setup `.exe`. After you accept the terms, it automatically downloads and SHA-256-verifies the remaining components, installs the camera interfaces and creates Start menu and desktop shortcuts. Do not download or unpack the component ZIP files yourself.
 
@@ -36,9 +36,9 @@ Run this single setup `.exe`. After you accept the terms, it automatically downl
 - Activate with a valid MYCAM key or purchase access inside the app. Feature and voice-account limits still apply.
 - This release is not Authenticode publisher-signed; Windows may show an unknown-publisher warning. Verify the official release and checksums before installing.
 
-[Windows tutorial](https://youtu.be/7yKQAaP4SZ0?si=lLMXI89LKjY_VblE) · [Windows release and SHA-256 checksums](https://github.com/elementtime6969/mycam/releases/tag/pc-v1.0.8)
+[Windows tutorial](https://youtu.be/7yKQAaP4SZ0?si=lLMXI89LKjY_VblE) · [Windows release and SHA-256 checksums](https://github.com/elementtime6969/mycam/releases/tag/pc-v1.0.9)
 
-Version **1.0.8** adds Free resize and Media in 3D to the Windows remote. Adjust width and height independently or keep them linked. Imported images still fill the canvas by default. PC Studio offers 1080p and 4K virtual-camera output, a custom virtual-camera name, and an in-app Decart guide. Decart requires feature access and credits. MyCam Photo still offers 49 prepared head views. Neural photo supports compatible NVIDIA CUDA hardware, including RTX 50-series GPUs. Close MYCAM, run the new setup over your existing installation, and reopen it. On Windows 11 N editions, install the [Media Feature Pack](https://support.microsoft.com/en-us/windows/experience/platform-variants/media-feature-pack-for-windows-n) if missing, then restart.
+Version **1.0.9** reduces lag when moving the head control in MyCam Photo and fixes a camera startup error after reopening MYCAM. The Windows remote includes Free resize and Media in 3D. In VMOS Cloud, select the plain **Camera** entry with a 9:16 MYCAM canvas for portrait output. Imported images still fill the canvas by default. PC Studio offers 1080p and 4K virtual-camera output, a custom virtual-camera name, and an in-app Decart guide. Decart requires feature access and credits. MyCam Photo still offers 49 prepared head views. Neural photo supports compatible NVIDIA CUDA hardware, including RTX 50-series GPUs. Close MYCAM, run the new setup over your existing installation, and reopen it. On Windows 11 N editions, install the [Media Feature Pack](https://support.microsoft.com/en-us/windows/experience/platform-variants/media-feature-pack-for-windows-n) if missing, then restart.
 
 The application source code and signing keys are not included. Use only authorized media; never use MYCAM to bypass age, identity or liveness verification.
 
