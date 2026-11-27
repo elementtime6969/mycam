@@ -17,7 +17,7 @@ By downloading or using MYCAM, you agree to the [MYCAM Terms of Use](TERMS.md).
 **Mac public preview:** [Download MYCAM Mac 0.4.0](https://github.com/elementtime6969/mycam/releases/download/mac-v0.4.0/MYCAM-Mac-0.4.0-universal.dmg) · [Mac setup](https://elementtime6969.github.io/mycam/mac-setup.html). About 28.5 MB. Uses **iOS activation keys**. Neural Photo is not included.
 
 
-[Download MYCAM v2.29.83](https://github.com/elementtime6969/mycam/releases/download/v2.29.83/Mycam-v2.29.83.apk)
+[Download MYCAM v2.29.86](https://github.com/elementtime6969/mycam/releases/download/v2.29.86/Mycam-v2.29.86.apk)
 
 [3D model download ZIP](https://wallpaper-5b02e.web.app/mycam/live3d/neural-v1.zip) (482 MB). In MyCam, open **Live 3D Studio → MyCam Photo → Import model pack** and select the downloaded ZIP.
 
@@ -112,11 +112,11 @@ MYCAM can hook the target app camera during a live call or camera session and sw
 | --- | --- |
 | App | MYCAM |
 | Package | `com.destiny.mycam` |
-| Version | `2.29.83` |
-| Version code | `148` |
-| APK file | `Mycam-v2.29.83.apk` release asset |
-| APK size | `426,989,680` bytes |
-| Published | `2026-11-23` |
+| Version | `2.29.86` |
+| Version code | `151` |
+| APK file | `Mycam-v2.29.86.apk` release asset |
+| APK size | `433,404,444` bytes |
+| Published | `2026-11-27` |
 
 ## Requirements
 
